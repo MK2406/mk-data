@@ -1,0 +1,1169 @@
+{
+ "app": "mk",
+ "schema": 2,
+ "version": 2026110702,
+ "updated": "2026-11-07",
+ "batch": "II MBA 2025-27 · PSG Institute of Management",
+ "periods": [
+  [
+   "08:30",
+   "09:25"
+  ],
+  [
+   "09:25",
+   "10:20"
+  ],
+  [
+   "10:40",
+   "11:35"
+  ],
+  [
+   "11:35",
+   "12:30"
+  ],
+  [
+   "13:40",
+   "14:35"
+  ],
+  [
+   "14:35",
+   "15:30"
+  ],
+  [
+   "15:40",
+   "16:35"
+  ],
+  [
+   "16:35",
+   "17:30"
+  ],
+  [
+   "17:40",
+   "18:30"
+  ]
+ ],
+ "breaks": {
+  "2": "B",
+  "4": "L",
+  "6": "B",
+  "8": "B"
+ },
+ "term": {
+  "start": "2026-07-20",
+  "lastClass": "2026-11-20",
+  "end": "2026-12-05"
+ },
+ "examSlots": {
+  "FN": [
+   "08:55",
+   "12:05"
+  ],
+  "AN": [
+   "13:55",
+   "17:05"
+  ]
+ },
+ "courses": {
+  "24GA03": {
+   "name": "Investment Analysis & Portfolio Management",
+   "short": "IAPM",
+   "staff": "Dr. D. Susana",
+   "room": "Trading Lab"
+  },
+  "24GA04": {
+   "name": "Financial Derivatives",
+   "short": "FD",
+   "staff": "Dr. J. Ravi Shankar / Dr. J. Nancy Christina",
+   "room": "Trading Lab"
+  },
+  "24VA04": {
+   "name": "Marketing of Financial Services",
+   "short": "MFS",
+   "staff": "Dr. Nithya",
+   "room": "Trading Lab / 001"
+  },
+  "24GA02": {
+   "name": "Financial Services",
+   "short": "FS",
+   "staff": "Dr. Arunachalam",
+   "room": "Trading Lab"
+  },
+  "24GC09": {
+   "name": "Sales & Market Development",
+   "short": "SMD",
+   "staff": "Dr. R. Chitra (1 & 3) / Dr. S. Narendra Rathnaraj (2)",
+   "room": "007"
+  },
+  "24GC03": {
+   "name": "Customer Relationship Management",
+   "short": "CRM",
+   "staff": "Dr. R. Venkatalakshmi",
+   "room": "001"
+  },
+  "24GC02": {
+   "name": "Consumer and Buyer Behaviour",
+   "short": "CBB",
+   "staff": "Dr. T. Priyanga",
+   "room": "001"
+  },
+  "24VC05": {
+   "name": "Martech",
+   "short": "MT",
+   "staff": "Dr. S. Narendra Rathnaraj / Dr. Shirly",
+   "room": "007"
+  },
+  "24GB10": {
+   "name": "Talent Acquisition & Management",
+   "short": "TAM",
+   "staff": "Dr. M. Kirupa Pryadarshini",
+   "room": "109"
+  },
+  "24GB06": {
+   "name": "Learning & Development",
+   "short": "L&D",
+   "staff": "Dr. N. Ram Kumar",
+   "room": "001"
+  },
+  "24VB03": {
+   "name": "Digital Transformation in HR",
+   "short": "DTHR",
+   "staff": "Dr. Vijaya Vardhan Manchala",
+   "room": "305"
+  },
+  "24GB04": {
+   "name": "Labour Legislation & Industrial Relations",
+   "short": "LLIR",
+   "staff": "Dr. Firdaus Bashir",
+   "room": "305"
+  },
+  "24GD03": {
+   "name": "Project Management",
+   "short": "PM",
+   "staff": "Dr. V. Harish",
+   "room": "109"
+  },
+  "24VD01": {
+   "name": "Six Sigma",
+   "short": "SS",
+   "staff": "Dr. Ganesh Kumar",
+   "room": "001"
+  },
+  "24GD01": {
+   "name": "Total Quality Management",
+   "short": "TQM",
+   "staff": "Mr. R. Ravi Kumar",
+   "room": "007"
+  },
+  "24GD02": {
+   "name": "Supply Chain Management",
+   "short": "SCM",
+   "staff": "Mr. Sathish / Dr. A. Sandhya",
+   "room": "109"
+  },
+  "24GE04": {
+   "name": "Predictive Analytics",
+   "short": "PA",
+   "staff": "Dr. R. Sujatha",
+   "room": "007"
+  },
+  "24GM32": {
+   "name": "Strategic Management",
+   "short": "SM",
+   "staff": "A: Dr. Uma Maheswari · B, C: Dr. Shirly · D: Dr. Vaishnavi D",
+   "room": "A 001 · B 007 · C 007 · D 109"
+  },
+  "24GM33": {
+   "name": "Board Room Simulation",
+   "short": "BRS",
+   "staff": "Dr. M. Ganeshwari / Dr. Shirly / Dr. Venkatalakshmi R / Mr. G. Kangasabapathy",
+   "room": "001 / 007 / 101 / 109"
+  },
+  "24GM34": {
+   "name": "Project Work (Phase I)",
+   "short": "PROJ",
+   "staff": "All faculty"
+  },
+  "24GM31": {
+   "name": "Summer Internship",
+   "short": "SI"
+  },
+  "24GM35": {
+   "name": "Audit Course III",
+   "short": "AC"
+  },
+  "24Q024": {
+   "name": "Automation in Production S…",
+   "short": "AIP"
+  },
+  "24Q017": {
+   "name": "Portfolio Management Servi…",
+   "short": "PMS"
+  },
+  "24Q023": {
+   "name": "Managerial Skills for Inte…",
+   "short": "MSI"
+  },
+  "24GW33": {
+   "name": "Legal Framework for Sustai…",
+   "short": "LFS"
+  },
+  "24GW34": {
+   "name": "Sustainable Supply Chain M…",
+   "short": "SSCM"
+  },
+  "24GW32": {
+   "name": "Business Analytics",
+   "short": "BA"
+  },
+  "24VB01": {
+   "name": "Emotional Intelligence for…",
+   "short": "EI"
+  },
+  "24GB08": {
+   "name": "Performance Management",
+   "short": "PFM"
+  }
+ },
+ "exams": [
+  {
+   "code": "24GA03",
+   "date": "2026-11-23",
+   "slot": "AN"
+  },
+  {
+   "code": "24GB04",
+   "date": "2026-11-23",
+   "slot": "AN"
+  },
+  {
+   "code": "24GD01",
+   "date": "2026-11-23",
+   "slot": "AN"
+  },
+  {
+   "code": "24Q024",
+   "date": "2026-11-23",
+   "slot": "AN"
+  },
+  {
+   "code": "24GC03",
+   "date": "2026-11-24",
+   "slot": "AN"
+  },
+  {
+   "code": "24GD03",
+   "date": "2026-11-24",
+   "slot": "AN"
+  },
+  {
+   "code": "24Q023",
+   "date": "2026-11-24",
+   "slot": "AN"
+  },
+  {
+   "code": "24GB06",
+   "date": "2026-11-25",
+   "slot": "AN"
+  },
+  {
+   "code": "24GC09",
+   "date": "2026-11-25",
+   "slot": "AN"
+  },
+  {
+   "code": "24GD02",
+   "date": "2026-11-26",
+   "slot": "AN"
+  },
+  {
+   "code": "24GW33",
+   "date": "2026-11-26",
+   "slot": "AN"
+  },
+  {
+   "code": "24Q017",
+   "date": "2026-11-26",
+   "slot": "AN"
+  },
+  {
+   "code": "24GW34",
+   "date": "2026-11-27",
+   "slot": "AN"
+  },
+  {
+   "code": "24GB10",
+   "date": "2026-11-28",
+   "slot": "AN"
+  },
+  {
+   "code": "24GA02",
+   "date": "2026-11-30",
+   "slot": "AN"
+  },
+  {
+   "code": "24GB08",
+   "date": "2026-11-30",
+   "slot": "AN"
+  },
+  {
+   "code": "24VB01",
+   "date": "2026-11-30",
+   "slot": "AN"
+  },
+  {
+   "code": "24GA04",
+   "date": "2026-12-01",
+   "slot": "AN"
+  },
+  {
+   "code": "24GC02",
+   "date": "2026-12-02",
+   "slot": "AN"
+  },
+  {
+   "code": "24GM32",
+   "date": "2026-12-03",
+   "slot": "AN",
+   "upd": "Moved from 27 Nov (CoE correction, 22 Oct 2026)"
+  },
+  {
+   "code": "24GW32",
+   "date": "2026-12-04",
+   "slot": "AN"
+  },
+  {
+   "code": "24VA04",
+   "date": "2026-12-04",
+   "slot": "AN"
+  },
+  {
+   "code": "24VB03",
+   "date": "2026-12-04",
+   "slot": "AN"
+  },
+  {
+   "code": "24VC05",
+   "date": "2026-12-04",
+   "slot": "AN"
+  },
+  {
+   "code": "24VD01",
+   "date": "2026-12-04",
+   "slot": "AN"
+  },
+  {
+   "code": "24GE04",
+   "date": "2026-12-05",
+   "slot": "AN",
+   "upd": "Moved from 3 Dec (CoE correction, 22 Oct 2026)"
+  }
+ ],
+ "calendar": [
+  {
+   "id": "c202607201",
+   "date": "2026-07-20",
+   "t": "Semester III begins · Project phase I starts",
+   "cat": "key"
+  },
+  {
+   "id": "c202607231",
+   "date": "2026-07-23",
+   "t": "CRMT 2026 International Conference",
+   "cat": "event",
+   "end": "2026-07-24"
+  },
+  {
+   "id": "c202607271",
+   "date": "2026-07-27",
+   "t": "Board Room Simulation",
+   "cat": "key",
+   "end": "2026-07-28"
+  },
+  {
+   "id": "c202607291",
+   "date": "2026-07-29",
+   "t": "Internship Poster Presentation",
+   "cat": "key"
+  },
+  {
+   "id": "c202607301",
+   "date": "2026-07-30",
+   "t": "Board Room Simulation",
+   "cat": "key",
+   "end": "2026-08-01"
+  },
+  {
+   "id": "c202608031",
+   "date": "2026-08-03",
+   "t": "Project work",
+   "cat": "key"
+  },
+  {
+   "id": "c202608051",
+   "date": "2026-08-05",
+   "t": "Project work",
+   "cat": "key",
+   "end": "2026-08-06"
+  },
+  {
+   "id": "c202608081",
+   "date": "2026-08-08",
+   "t": "Finance Bootcamp",
+   "cat": "event",
+   "end": "2026-08-09"
+  },
+  {
+   "id": "c202608101",
+   "date": "2026-08-10",
+   "t": "Placement training",
+   "cat": "key",
+   "end": "2026-08-14"
+  },
+  {
+   "id": "c202608151",
+   "date": "2026-08-15",
+   "t": "Independence Day",
+   "cat": "hol"
+  },
+  {
+   "id": "c202608171",
+   "date": "2026-08-17",
+   "t": "Regular classes resume",
+   "cat": "key"
+  },
+  {
+   "id": "c202608241",
+   "date": "2026-08-24",
+   "t": "Week of Games",
+   "cat": "event",
+   "end": "2026-08-28"
+  },
+  {
+   "id": "c202608242",
+   "date": "2026-08-24",
+   "t": "Project viva Phase I week",
+   "cat": "key",
+   "end": "2026-08-28"
+  },
+  {
+   "id": "c202608261",
+   "date": "2026-08-26",
+   "t": "Milad-un-Nabi / Onam",
+   "cat": "hol"
+  },
+  {
+   "id": "c202608291",
+   "date": "2026-08-29",
+   "t": "Finance Bootcamp",
+   "cat": "event",
+   "end": "2026-08-30"
+  },
+  {
+   "id": "c202609021",
+   "date": "2026-09-02",
+   "t": "Foundation Day",
+   "cat": "event"
+  },
+  {
+   "id": "c202609041",
+   "date": "2026-09-04",
+   "t": "Krishna Jayanthi",
+   "cat": "hol"
+  },
+  {
+   "id": "c202609071",
+   "date": "2026-09-07",
+   "t": "WOW",
+   "cat": "event",
+   "end": "2026-09-11"
+  },
+  {
+   "id": "c202609121",
+   "date": "2026-09-12",
+   "t": "WOW Finale",
+   "cat": "event"
+  },
+  {
+   "id": "c202609141",
+   "date": "2026-09-14",
+   "t": "Vinayagar Chaturthi",
+   "cat": "hol"
+  },
+  {
+   "id": "c202609241",
+   "date": "2026-09-24",
+   "t": "Class Committee Meeting I",
+   "cat": "key"
+  },
+  {
+   "id": "c202610021",
+   "date": "2026-10-02",
+   "t": "Gandhi Jayanthi",
+   "cat": "hol"
+  },
+  {
+   "id": "c202610051",
+   "date": "2026-10-05",
+   "t": "Project Interim Review week",
+   "cat": "key",
+   "end": "2026-10-08"
+  },
+  {
+   "id": "c202610091",
+   "date": "2026-10-09",
+   "t": "Talent Night",
+   "cat": "event"
+  },
+  {
+   "id": "c202610151",
+   "date": "2026-10-15",
+   "t": "Project Interim Review",
+   "cat": "key"
+  },
+  {
+   "id": "c202610191",
+   "date": "2026-10-19",
+   "t": "Saraswathi Pooja",
+   "cat": "hol"
+  },
+  {
+   "id": "c202610201",
+   "date": "2026-10-20",
+   "t": "Vijayadashami",
+   "cat": "hol"
+  },
+  {
+   "id": "c202610291",
+   "date": "2026-10-29",
+   "t": "Class Committee Meeting II",
+   "cat": "key"
+  },
+  {
+   "id": "c202611051",
+   "date": "2026-11-05",
+   "t": "Project Phase II report submission",
+   "cat": "key"
+  },
+  {
+   "id": "c202611061",
+   "date": "2026-11-06",
+   "t": "Diwali celebration (Manavar Illam)",
+   "cat": "event"
+  },
+  {
+   "id": "c202611081",
+   "date": "2026-11-08",
+   "t": "Diwali",
+   "cat": "hol"
+  },
+  {
+   "id": "c202611131",
+   "date": "2026-11-13",
+   "t": "Project Viva Voce",
+   "cat": "key"
+  },
+  {
+   "id": "c202611201",
+   "date": "2026-11-20",
+   "t": "Last working day (Semester III)",
+   "cat": "key"
+  },
+  {
+   "id": "c202611231",
+   "date": "2026-11-23",
+   "t": "Semester III exams begin",
+   "cat": "key"
+  },
+  {
+   "id": "c202612091",
+   "date": "2026-12-09",
+   "t": "Semester IV classes begin",
+   "cat": "key"
+  },
+  {
+   "id": "c202612171",
+   "date": "2026-12-17",
+   "t": "AIMS Convention",
+   "cat": "event",
+   "end": "2026-12-19"
+  },
+  {
+   "id": "c202612191",
+   "date": "2026-12-19",
+   "t": "Rapport",
+   "cat": "event"
+  },
+  {
+   "id": "c202612251",
+   "date": "2026-12-25",
+   "t": "Christmas",
+   "cat": "hol"
+  },
+  {
+   "id": "c202701011",
+   "date": "2027-01-01",
+   "t": "New Year",
+   "cat": "hol"
+  },
+  {
+   "id": "c202701151",
+   "date": "2027-01-15",
+   "t": "Pongal",
+   "cat": "hol"
+  },
+  {
+   "id": "c202701161",
+   "date": "2027-01-16",
+   "t": "Thiruvalluvar Day",
+   "cat": "hol"
+  },
+  {
+   "id": "c202701171",
+   "date": "2027-01-17",
+   "t": "Uzhavar Thirunal",
+   "cat": "hol"
+  },
+  {
+   "id": "c202701211",
+   "date": "2027-01-21",
+   "t": "Class Committee Meeting I (Sem IV)",
+   "cat": "key"
+  },
+  {
+   "id": "c202701221",
+   "date": "2027-01-22",
+   "t": "Srijana",
+   "cat": "event",
+   "end": "2027-01-23"
+  },
+  {
+   "id": "c202701261",
+   "date": "2027-01-26",
+   "t": "Republic Day",
+   "cat": "hol"
+  },
+  {
+   "id": "c202702021",
+   "date": "2027-02-02",
+   "t": "C. R. Swaminathan Endowment Lecture",
+   "cat": "event"
+  },
+  {
+   "id": "c202702141",
+   "date": "2027-02-14",
+   "t": "GIP",
+   "cat": "event",
+   "end": "2027-02-28"
+  },
+  {
+   "id": "c202702251",
+   "date": "2027-02-25",
+   "t": "Class Committee Meeting II (Sem IV)",
+   "cat": "key"
+  },
+  {
+   "id": "c202702271",
+   "date": "2027-02-27",
+   "t": "Project completion (MBA) · Research paper submission (WM&SE)",
+   "cat": "key"
+  },
+  {
+   "id": "c202703031",
+   "date": "2027-03-03",
+   "t": "AIMA NSMG 2027",
+   "cat": "event",
+   "end": "2027-03-05"
+  },
+  {
+   "id": "c202703081",
+   "date": "2027-03-08",
+   "t": "International Women's Day",
+   "cat": "event"
+  },
+  {
+   "id": "c202703101",
+   "date": "2027-03-10",
+   "t": "Ramzan",
+   "cat": "hol"
+  },
+  {
+   "id": "c202703121",
+   "date": "2027-03-12",
+   "t": "Annual Day 2027",
+   "cat": "event"
+  },
+  {
+   "id": "c202703251",
+   "date": "2027-03-25",
+   "t": "Last working day (Semester IV)",
+   "cat": "key"
+  },
+  {
+   "id": "c202703261",
+   "date": "2027-03-26",
+   "t": "Good Friday",
+   "cat": "hol"
+  },
+  {
+   "id": "c202703291",
+   "date": "2027-03-29",
+   "t": "Semester IV exams begin",
+   "cat": "key"
+  },
+  {
+   "id": "c202704071",
+   "date": "2027-04-07",
+   "t": "Telugu New Year's Day",
+   "cat": "hol"
+  },
+  {
+   "id": "c202704141",
+   "date": "2027-04-14",
+   "t": "Tamil New Year",
+   "cat": "hol"
+  },
+  {
+   "id": "c202704191",
+   "date": "2027-04-19",
+   "t": "Mahaveer Jayanthi",
+   "cat": "hol"
+  },
+  {
+   "id": "c202705011",
+   "date": "2027-05-01",
+   "t": "May Day",
+   "cat": "hol"
+  },
+  {
+   "id": "c202705151",
+   "date": "2027-05-15",
+   "t": "Graduation Day",
+   "cat": "key"
+  }
+ ],
+ "mess": {
+  "from": "2026-10-23",
+  "portal": "https://edviewx.psgtech.ac.in/hostel",
+  "meals": [
+   {
+    "k": "breakfast",
+    "l": "Breakfast",
+    "s": "07:30",
+    "e": "09:30"
+   },
+   {
+    "k": "lunch",
+    "l": "Lunch",
+    "s": "12:00",
+    "e": "14:00"
+   },
+   {
+    "k": "snacks",
+    "l": "Snacks",
+    "s": "15:30",
+    "e": "16:30"
+   },
+   {
+    "k": "dinner",
+    "l": "Dinner",
+    "s": "19:00",
+    "e": "21:00"
+   }
+  ],
+  "daily": {
+   "breakfast": [
+    "Tea",
+    "Coffee",
+    "Milk",
+    "Bread",
+    "Jam",
+    "Nilavembu kashayam"
+   ],
+   "dinner": [
+    "Rice",
+    "Rasam",
+    "Curd rice",
+    "Banana (1)"
+   ]
+  },
+  "menu": {
+   "Monday": {
+    "breakfast": [
+     "Idli",
+     "Ulundu vadai (1)",
+     "Mixed veg sambar",
+     "Idli podi",
+     "Rava upma",
+     "Mint chutney",
+     "Ragi koozh"
+    ],
+    "lunch": [
+     "Paruppu kulambu",
+     "Rice",
+     "Rasam",
+     "Curd",
+     "Beetroot poriyal",
+     "*Egg (full boiled)",
+     "*Egg gravy",
+     "Ghee",
+     "Lemon juice",
+     "Paruppu podi",
+     "Tapioca chips",
+     "Mor milagai",
+     "Veg salad"
+    ],
+    "snacks": [
+     "Masala sundal",
+     "Ginger tea",
+     "Coffee",
+     "Milk"
+    ],
+    "dinner": [
+     "Mushroom fried rice",
+     "Tamarind rice",
+     "*Boiled egg",
+     "Tomato sauce",
+     "Potato chips",
+     "Pickle"
+    ]
+   },
+   "Tuesday": {
+    "breakfast": [
+     "Idiyappam",
+     "Kadalai curry",
+     "Rava kichadi",
+     "Coconut milk",
+     "Ragi koozh",
+     "Badam milk"
+    ],
+    "lunch": [
+     "Sweet",
+     "Mushroom biryani",
+     "Veg kurma",
+     "Curd pachadi",
+     "Rice",
+     "Rasam",
+     "Curd",
+     "*Boiled egg",
+     "Potato chips",
+     "Tomato pickle",
+     "Mor milagai"
+    ],
+    "snacks": [
+     "Poli",
+     "Tea",
+     "Rose milk"
+    ],
+    "dinner": [
+     "Chapati",
+     "White sundal kurma",
+     "*Chicken gravy",
+     "*Gobi masala",
+     "*Boiled egg",
+     "*Egg gravy",
+     "Jam",
+     "Kambu sadam",
+     "Pickle"
+    ]
+   },
+   "Wednesday": {
+    "breakfast": [
+     "Ven pongal",
+     "Aval upma",
+     "Kesari",
+     "Ulundu vadai (1)",
+     "Tiffin sambar",
+     "Coconut chutney",
+     "Ragi koozh"
+    ],
+    "lunch": [
+     "Kara kulambu",
+     "Mor kulambu",
+     "Rice",
+     "Rasam",
+     "Curd",
+     "Mixed poriyal",
+     "*Omelette",
+     "Onion rings",
+     "Mango-ginger pickle",
+     "Veg soup",
+     "Mor milagai"
+    ],
+    "snacks": [
+     "Jusberry biscuit",
+     "Masala tea",
+     "Milk",
+     "Dry ginger coffee"
+    ],
+    "dinner": [
+     "Dosa",
+     "Sautéed onion",
+     "*Egg kulambu",
+     "Lemon rice",
+     "Coconut chutney",
+     "Tomato chutney",
+     "Sambar",
+     "*Boiled egg",
+     "Pickle",
+     "Idli podi",
+     "Sesame oil"
+    ]
+   },
+   "Thursday": {
+    "breakfast": [
+     "Idli",
+     "Samba rava upma",
+     "Tomato chutney",
+     "Knol-khol sambar",
+     "Ellu podi",
+     "Sesame oil",
+     "Ulundu vadai (1)",
+     "Ragi koozh"
+    ],
+    "lunch": [
+     "Drumstick sambar",
+     "Rice",
+     "Rasam",
+     "Curd",
+     "Cabbage poriyal",
+     "Wheel chips",
+     "*Omelette",
+     "Pickle",
+     "Ghee",
+     "Sesame oil",
+     "Ice cream",
+     "Mor milagai"
+    ],
+    "snacks": [
+     "Potato samosa (1)",
+     "Tea",
+     "Milk",
+     "Coffee"
+    ],
+    "dinner": [
+     "Chapati",
+     "Paneer butter masala",
+     "*Chettinad chicken gravy",
+     "*Mushroom manchurian",
+     "Kambu sadam",
+     "Jam",
+     "Pickle"
+    ]
+   },
+   "Friday": {
+    "breakfast": [
+     "Noodles",
+     "Ragi semiya",
+     "Coconut chutney",
+     "Bread toast",
+     "*Omelette",
+     "Butter",
+     "Kambu koozh",
+     "Veg salad",
+     "Green peas kurma",
+     "Tomato sauce"
+    ],
+    "lunch": [
+     "Sundal kulambu",
+     "Rice",
+     "Rasam",
+     "Curd",
+     "Carrot poriyal",
+     "Appalam",
+     "*Egg (full boiled)",
+     "Paruppu / paal payasam",
+     "Garlic pickle",
+     "Tomato thokku",
+     "Mor milagai"
+    ],
+    "snacks": [
+     "Veg puff (1)",
+     "Tea",
+     "Milk",
+     "Coffee"
+    ],
+    "dinner": [
+     "Mushroom biryani",
+     "Tomato rice",
+     "Curd pachadi",
+     "*Boiled egg",
+     "Potato chips",
+     "Pickle"
+    ]
+   },
+   "Saturday": {
+    "breakfast": [
+     "Roast dosa",
+     "Kadalai curry",
+     "Rava upma",
+     "Idli podi",
+     "Sesame oil",
+     "Coconut chutney",
+     "Ragi koozh",
+     "Ragi malt"
+    ],
+    "lunch": [
+     "Radish sambar",
+     "Rice",
+     "Kovakkai poriyal",
+     "Rasam",
+     "Curd",
+     "Groundnut thuvaiyal",
+     "*Egg kulambu",
+     "Appalam",
+     "Buttermilk",
+     "Mor milagai"
+    ],
+    "snacks": [
+     "Biscuit (1 pkt)",
+     "Ginger tea",
+     "Coffee",
+     "Milk"
+    ],
+    "dinner": [
+     "Chapati",
+     "Coconut rice",
+     "Veg kurma",
+     "Malli thuvaiyal",
+     "Jam",
+     "Pickle"
+    ]
+   },
+   "Sunday": {
+    "breakfast": [
+     "Bread toast",
+     "Bombay toast",
+     "Arisi kanji",
+     "Semiya upma",
+     "*Omelette",
+     "Butter",
+     "Pudina thuvaiyal"
+    ],
+    "lunch": [
+     "Veg biryani",
+     "Curd pachadi",
+     "Rice",
+     "Rasam",
+     "Curd",
+     "Potato chips",
+     "*Boiled egg",
+     "*Chilli gobi",
+     "*Pallipalayam chicken",
+     "Mor milagai",
+     "Lemon juice"
+    ],
+    "snacks": [
+     "Tea cake (1)",
+     "Tea",
+     "Coffee",
+     "Milk"
+    ],
+    "dinner": [
+     "Idli",
+     "Tomato thokku",
+     "Sambar",
+     "Coconut chutney",
+     "Mint rice",
+     "Potato chips",
+     "Pickle",
+     "Ellu podi",
+     "Sesame oil"
+    ]
+   }
+  },
+  "specials": {
+   "Tuesday": {
+    "meal": "lunch",
+    "item": "Sweet",
+    "label": "Sweet",
+    "note": "Rotates: gulab jamun, makkan beda, mothi laddoo, bread halwa"
+   },
+   "Thursday": {
+    "meal": "lunch",
+    "item": "Ice cream",
+    "label": "Ice cream"
+   },
+   "Friday": {
+    "meal": "lunch",
+    "item": "Paruppu / paal payasam",
+    "label": "Payasam"
+   },
+   "Sunday": {
+    "meal": "lunch",
+    "item": "Pallipalayam chicken",
+    "label": "Pallipalayam chicken"
+   }
+  },
+  "tokens": [
+   {
+    "name": "Boiled egg",
+    "icon": "egg",
+    "match": [
+     "boiled egg"
+    ]
+   },
+   {
+    "name": "Full boil egg",
+    "icon": "eggHalf",
+    "match": [
+     "full boiled",
+     "full boil egg"
+    ]
+   },
+   {
+    "name": "Omelette",
+    "icon": "omelette",
+    "match": [
+     "omelette"
+    ]
+   },
+   {
+    "name": "Egg gravy",
+    "icon": "gravy",
+    "match": [
+     "egg gravy"
+    ]
+   },
+   {
+    "name": "Chicken gravy",
+    "icon": "chicken",
+    "match": [
+     "chicken gravy"
+    ]
+   },
+   {
+    "name": "Mushroom manchurian",
+    "icon": "mushroom",
+    "match": [
+     "mushroom manchurian"
+    ]
+   },
+   {
+    "name": "Gobi chilli",
+    "icon": "chilli",
+    "match": [
+     "chilli gobi",
+     "gobi chilli"
+    ]
+   }
+  ],
+  "notes": [
+   "Give your feedback to the mess supervisor.",
+   "The menu is subject to change depending on stock in store.",
+   "Egg, chicken and chilli gobi are provided on token basis.",
+   "Banana variety depends on stock available: karpuravalli, poovan, morris, red banana.",
+   "Tuesday sweet rotates: gulab jamun, makkan beda, mothi laddoo, bread halwa.",
+   "If groceries aren't available, the regular menu can't be followed. After 8:30 pm, if a listed item isn't available, noodles are provided. If egg items aren't available, omelette is provided."
+  ]
+ },
+ "announcements": [],
+ "links": {
+  "feedback": ""
+ },
+ "sources": [
+  "II MBA Timetable, Sem III (w.e.f. 10.08.2026)",
+  "Academic Calendar 2026-27",
+  "Academic Schedule II MBA & MBA (WM&SE) 2026-27",
+  "CoE Semester Examinations Nov 2026 timetable (09.10.2026) + correction (22.10.2026)"
+ ]
+}

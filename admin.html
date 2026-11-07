@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>MK admin</title>
+<style>
+:root{--bg:#F4F4F1;--s1:#fff;--s2:#ECECE7;--ink:#0C0C0E;--ink2:#56575D;--ink3:#8A8B91;--line:rgba(12,12,14,.1);--acc:#5546F6;--ok:#11A050;--bad:#D63B3B;--warn:#B57200}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--ink);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+header b{font-size:18px}header span{font-size:12.5px;opacity:.7;margin-left:auto;text-align:right}
+main{max-width:720px;margin:0 auto;padding:14px 14px 120px}
+nav{display:flex;gap:6px;overflow-x:auto;margin:0 0 12px;padding-bottom:2px}
+nav button{flex:none;border:1px solid var(--line);background:var(--s1);border-radius:999px;padding:8px 13px;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+nav button[aria-pressed=true]{background:var(--ink);color:#fff}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+h2{font-size:17px;margin:0 0 10px}h3{font-size:14px;margin:14px 0 6px;color:var(--ink2);text-transform:uppercase;letter-spacing:.08em}
+label{display:block;font-size:13px;font-weight:700;color:var(--ink2);margin:0 0 10px}
+input,select,textarea{display:block;width:100%;margin-top:5px;font:inherit;padding:10px 11px;border-radius:11px;border:1px solid var(--line);background:var(--s2);color:var(--ink)}
+textarea{min-height:80px;resize:vertical}.code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;min-height:180px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:12px;padding:11px 15px;font:inherit;font-weight:800;cursor:pointer;background:var(--ink);color:#fff}
+.btn.acc{background:var(--acc)}.btn.soft{background:var(--s2);color:var(--ink)}.btn.bad{background:var(--bad)}.btn.sm{padding:7px 10px;font-size:13px}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line)}.item:first-of-type{border-top:0}
+.item div{flex:1;min-width:0}.item small{display:block;color:var(--ink3);font-weight:600}
+.hint{font-size:13px;color:var(--ink2)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+#bar{position:fixed;left:0;right:0;bottom:0;background:var(--s1);border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:10px;align-items:center;justify-content:center;z-index:6}
+#bar span{font-size:13.5px;font-weight:700;flex:1;max-width:420px}
+.diff{font-size:13.5px}.diff li{margin:3px 0}.diff .add{color:var(--ok)}.diff .del{color:var(--bad)}.diff .chg{color:var(--warn)}
+#toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 14px;border-radius:12px;font-weight:700;display:none;z-index:9;max-width:90%}
+.hide{display:none}
+</style>
+</head>
+<body>
+<header><b>MK admin</b><span id="who">Not signed in</span></header>
+<main>
+<nav id="tabs"></nav>
+<section id="v"></section>
+</main>
+<div id="bar"><span id="state">Load the current data to start.</span><button class="btn soft" id="reviewBtn" disabled>Review</button><button class="btn acc" id="pubBtn" disabled>Publish</button></div>
+<div id="toast"></div>
+<script>
+"use strict";
+/* ---------- settings (kept only in this browser) ---------- */
+const CFG=JSON.parse(localStorage.getItem("mkAdmin")||"{}");
+const saveCfg=()=>localStorage.setItem("mkAdmin",JSON.stringify(CFG));
+let LIVE=null,LIVE_SHA=null,DRAFT=null,TAB="ann";
+const $=s=>document.querySelector(s),esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display="none",3000);};
+const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
+const clone=o=>JSON.parse(JSON.stringify(o));
+const b64e=s=>btoa(unescape(encodeURIComponent(s))),b64d=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,""))));
+const api=(path,opt={})=>fetch("https://api.github.com/repos/"+CFG.owner+"/"+(CFG.repo||"mk-data")+path,Object.assign({},opt,{headers:Object.assign({"Accept":"application/vnd.github+json","Authorization":"Bearer "+CFG.token,"X-GitHub-Api-Version":"2022-11-28"},opt.headers||{})}));
+
+async function load(){if(!CFG.owner||!CFG.token){TAB="set";draw();return;}
+  $("#state").textContent="Loading…";
+  try{const r=await api("/contents/data.json?ref="+(CFG.branch||"main"));if(!r.ok)throw new Error(r.status===401?"Token not accepted":r.status===404?"Repo or data.json not found":"GitHub error "+r.status);
+    const j=await r.json();LIVE=JSON.parse(b64d(j.content));LIVE_SHA=j.sha;DRAFT=clone(LIVE);$("#who").textContent=CFG.owner+"/"+(CFG.repo||"mk-data")+" · v"+LIVE.version;mark();draw();}
+  catch(e){$("#state").innerHTML='<span class="bad">'+esc(e.message)+"</span>";TAB="set";draw();}}
+
+/* ---------- what changed (plain words) ---------- */
+function diff(a,b){const out=[];if(!a||!b)return out;
+  const byId=(L,k)=>Object.fromEntries((L||[]).map(x=>[x[k],x]));
+  const cmp=(name,L1,L2,k,label)=>{const A=byId(L1,k),B=byId(L2,k);
+    Object.keys(B).forEach(id=>{if(!A[id])out.push(["add",name+": "+label(B[id])]);else if(JSON.stringify(A[id])!==JSON.stringify(B[id]))out.push(["chg",name+": "+label(A[id])+" → "+label(B[id])]);});
+    Object.keys(A).forEach(id=>{if(!B[id])out.push(["del",name+" removed: "+label(A[id])]);});};
+  cmp("Announcement",a.announcements,b.announcements,"id",x=>x.t);
+  cmp("Calendar",a.calendar,b.calendar,"id",x=>x.date+(x.end?"–"+x.end:"")+" "+x.t+" ("+x.cat+")");
+  cmp("Exam",a.exams,b.exams,"code",x=>x.code+" on "+x.date+" "+x.slot);
+  cmp("Course",Object.entries(a.courses||{}).map(([k,v])=>({k,...v})),Object.entries(b.courses||{}).map(([k,v])=>({k,...v})),"k",x=>x.k+" "+x.name+(x.room?" · "+x.room:""));
+  ["periods","breaks","term","examSlots","links"].forEach(k=>{if(JSON.stringify(a[k])!==JSON.stringify(b[k]))out.push(["chg",k+" changed"]);});
+  if(JSON.stringify(a.mess)!==JSON.stringify(b.mess))out.push(["chg","Mess menu or timings changed"]);
+  return out;}
+function mark(){const d=diff(LIVE,DRAFT);$("#state").innerHTML=d.length?'<span class="warn">'+d.length+" change"+(d.length>1?"s":"")+" not published yet</span>":"Everything is published.";$("#pubBtn").disabled=!d.length;$("#reviewBtn").disabled=!d.length;}
+
+/* ---------- publish ---------- */
+function nextVersion(){const d=today().replace(/-/g,"");let v=+(d+"01");const cur=+(LIVE&&LIVE.version||0);if(v<=cur)v=cur+1;return v;}
+function check(o){const errs=[];const isD=s=>/^\d{4}-\d\d-\d\d$/.test(s);
+  if(o.app!=="mk"||o.schema!==2)errs.push("Not an MK data file (app/schema).");
+  (o.exams||[]).forEach(x=>{if(!x.code||!isD(x.date)||!["FN","AN"].includes(x.slot))errs.push("Exam "+(x.code||"?")+": needs code, date YYYY-MM-DD and FN or AN.");});
+  (o.calendar||[]).forEach(x=>{if(!x.id||!isD(x.date)||!x.t||!["key","hol","event"].includes(x.cat))errs.push("Calendar item "+(x.t||x.id)+": needs date, title and type.");});
+  (o.announcements||[]).forEach(x=>{if(!x.id||!x.t)errs.push("Announcement needs a title.");});
+  if(JSON.stringify(o).length>450000)errs.push("File too big.");return errs;}
+async function publish(){const d=diff(LIVE,DRAFT);if(!d.length)return;const errs=check(DRAFT);if(errs.length){alert("Fix these first:\n\n"+errs.join("\n"));return;}
+  if(!confirm("Publish "+d.length+" change(s) to every MK phone?\n\n"+d.map(x=>"• "+x[1]).slice(0,15).join("\n")))return;
+  const out=clone(DRAFT);out.version=nextVersion();out.updated=today();
+  $("#pubBtn").disabled=true;$("#state").textContent="Publishing…";
+  const r=await api("/contents/data.json",{method:"PUT",body:JSON.stringify({message:"MK data v"+out.version+": "+d.map(x=>x[1]).slice(0,3).join("; "),content:b64e(JSON.stringify(out,null,1)+"\n"),sha:LIVE_SHA,branch:CFG.branch||"main"})});
+  if(!r.ok){const t=await r.text();$("#state").innerHTML='<span class="bad">Publish failed ('+r.status+'). '+(r.status===409?"Someone else changed it. Reload and try again.":esc(t.slice(0,120)))+"</span>";$("#pubBtn").disabled=false;return;}
+  toast("Published v"+out.version+". Phones get it next time MK opens, or within about an hour.");await load();}
+
+/* ---------- views ---------- */
+const TABS=[["ann","Announce"],["cal","Calendar"],["exam","Exams"],["mess","Mess"],["course","Subjects"],["paste","Paste update"],["history","Restore"],["set","Settings"]];
+function draw(){$("#tabs").innerHTML=TABS.map(([k,l])=>`<button data-tab="${k}" aria-pressed="${TAB===k}">${l}</button>`).join("");
+  const V={ann:vAnn,cal:vCal,exam:vExam,mess:vMess,course:vCourse,paste:vPaste,history:vHist,set:vSet}[TAB];
+  $("#v").innerHTML=(!DRAFT&&TAB!=="set")?'<div class="card"><p class="hint">Fill in Settings first.</p></div>':V();}
+function vAnn(){const L=(DRAFT.announcements||[]).slice().sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+  return `<div class="card"><h2>Send an announcement</h2><p class="hint">Shows under the bell in MK and as a notification. Keep it short.</p>
+  <label>Title<input id="aT" maxlength="80" placeholder="e.g. Class shifted to room 007"></label>
+  <label>Message<textarea id="aB" maxlength="600" placeholder="Details (optional)"></textarea></label>
+  <div class="row"><label>For<input id="aTo" value="Everyone" maxlength="40"></label><label>Date<input id="aD" type="date" value="${today()}"></label></div>
+  <button class="btn acc" data-act="annAdd">Add announcement</button></div>
+  <div class="card"><h2>Current (${L.length})</h2>${L.length?L.map(a=>`<div class="item"><div><b>${esc(a.t)}</b><small>${esc(a.date||"")} · ${esc(a.to||"Everyone")}</small>${a.b?`<span class="hint">${esc(a.b)}</span>`:""}</div><button class="btn soft sm" data-act="annDel" data-id="${esc(a.id)}">Remove</button></div>`).join(""):'<p class="hint">None.</p>'}</div>`;}
+function vCal(){const L=(DRAFT.calendar||[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
+  return `<div class="card"><h2>Add a calendar date</h2><div class="row"><label>Date<input id="cD" type="date"></label><label>Till (optional)<input id="cE" type="date"></label></div>
+  <label>Title<input id="cT" maxlength="80" placeholder="e.g. Guest lecture"></label>
+  <label>Type<select id="cC"><option value="key">Key date</option><option value="hol">Holiday</option><option value="event">Event</option></select></label>
+  <label>Note shown in the app if this changed (optional)<input id="cU" maxlength="120" placeholder="e.g. Moved from 12 Nov"></label>
+  <button class="btn acc" data-act="calAdd">Add date</button></div>
+  <div class="card"><h2>All dates (${L.length})</h2>${L.map(x=>`<div class="item"><div><b>${esc(x.t)}</b><small>${esc(x.date)}${x.end?" → "+esc(x.end):""} · ${({key:"Key date",hol:"Holiday",event:"Event"})[x.cat]}${x.upd?" · "+esc(x.upd):""}</small></div><button class="btn soft sm" data-act="calDel" data-id="${esc(x.id)}">Remove</button></div>`).join("")}</div>`;}
+function vExam(){const L=(DRAFT.exams||[]).slice().sort((a,b)=>a.date.localeCompare(b.date)||a.code.localeCompare(b.code));
+  return `<div class="card"><h2>Add or change an exam</h2><p class="hint">Same course code again = that exam is moved. Students only see exams for their own subjects.</p>
+  <div class="row"><label>Course code<input id="xC" maxlength="10" placeholder="24GA03" style="text-transform:uppercase"></label><label>Session<select id="xS"><option>AN</option><option>FN</option></select></label></div>
+  <div class="row"><label>Date<input id="xD" type="date"></label><label>Change note (optional)<input id="xU" maxlength="120" placeholder="Moved from 27 Nov"></label></div>
+  <button class="btn acc" data-act="exAdd">Save exam</button></div>
+  <div class="card"><h2>All exams (${L.length})</h2>${L.map(x=>`<div class="item"><div><b>${esc(x.code)} · ${esc((DRAFT.courses[x.code]||{}).name||"")}</b><small>${esc(x.date)} ${esc(x.slot)}${x.upd?" · "+esc(x.upd):""}</small></div><button class="btn soft sm" data-act="exDel" data-id="${esc(x.code)}">Remove</button></div>`).join("")}</div>`;}
+function vMess(){const m=DRAFT.mess,days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+  return `<div class="card"><h2>Mess menu</h2><p class="hint">One line per dish. Put * in front of token items (e.g. *Omelette). No prices.</p>
+  <label>Day<select id="mDay">${days.map(d=>`<option ${d===(window.MDAY||"Monday")?"selected":""}>${d}</option>`).join("")}</select></label>
+  ${m.meals.map(ml=>`<label>${esc(ml.l)} (${esc(ml.s)}–${esc(ml.e)})<textarea data-meal="${esc(ml.k)}">${esc(((m.menu[window.MDAY||"Monday"]||{})[ml.k]||[]).join("\n"))}</textarea></label>`).join("")}
+  <button class="btn acc" data-act="messSave">Save this day</button></div>
+  <div class="card"><h2>Meal timings</h2>${m.meals.map((ml,i)=>`<div class="row"><label>${esc(ml.l)} from<input type="time" data-ms="${i}" value="${esc(ml.s)}"></label><label>till<input type="time" data-me="${i}" value="${esc(ml.e)}"></label></div>`).join("")}
+  <label>Menu valid from<input id="mFrom" type="date" value="${esc(m.from||"")}"></label><button class="btn acc" data-act="mealSave">Save timings</button></div>`;}
+function vCourse(){const C=DRAFT.courses;
+  return `<div class="card"><h2>Subjects</h2><p class="hint">Names, short forms (2–4 letters), staff and room shown in MK. Students' own edits always win on their phone.</p>
+  ${Object.keys(C).sort().map(k=>`<details><summary><b>${esc(k)}</b> · ${esc(C[k].name)} <span class="hint">${esc(C[k].short||"")}</span></summary>
+   <div class="row"><label>Name<input data-c="${k}" data-f="name" value="${esc(C[k].name||"")}"></label><label>Short<input data-c="${k}" data-f="short" maxlength="4" value="${esc(C[k].short||"")}"></label></div>
+   <div class="row"><label>Staff<input data-c="${k}" data-f="staff" value="${esc(C[k].staff||"")}"></label><label>Room<input data-c="${k}" data-f="room" value="${esc(C[k].room||"")}"></label></div></details>`).join("")}
+  <h3>Add a subject</h3><div class="row"><label>Code<input id="nC" maxlength="10"></label><label>Short<input id="nS" maxlength="4"></label></div><label>Name<input id="nN"></label><button class="btn acc" data-act="courseAdd">Add subject</button></div>`;}
+function vPaste(){return `<div class="card"><h2>Paste an update from Claude</h2>
+  <p class="hint">Got a notice on paper, a PDF or an Excel sheet? Send it to Claude and say <b>“MK update”</b>. Paste the code you get back here, check the list of changes, then Publish.</p>
+  <textarea id="pIn" class="code" placeholder='{"mk_update":1, ...}'></textarea>
+  <button class="btn acc" data-act="pasteApply">Check and add to draft</button><div id="pOut"></div></div>`;}
+function vHist(){return `<div class="card"><h2>Restore an earlier version</h2><p class="hint">Published something wrong? Pick an earlier version, check it, then Publish. Phones switch back on their next refresh.</p><button class="btn soft" data-act="histLoad">Show recent versions</button><div id="hOut"></div></div>`;}
+function vSet(){return `<div class="card"><h2>Settings</h2><p class="hint">Saved only in this browser. Never share the token.</p>
+  <label>GitHub user name<input id="sO" value="${esc(CFG.owner||"")}" autocapitalize="off"></label>
+  <div class="row"><label>Repository<input id="sR" value="${esc(CFG.repo||"mk-data")}"></label><label>Branch<input id="sB" value="${esc(CFG.branch||"main")}"></label></div>
+  <label>Access token (fine-grained, Contents: Read and write, only mk-data)<input id="sT" type="password" value="${esc(CFG.token||"")}" autocomplete="off"></label>
+  <button class="btn acc" data-act="setSave">Save and load data</button> <button class="btn soft" data-act="setForget">Forget token</button></div>
+  ${DRAFT?`<div class="card"><h2>App links</h2><label>Feedback form link (Google Forms pre-filled link with {text})<input id="lF" value="${esc((DRAFT.links||{}).feedback||"")}" placeholder="https://docs.google.com/forms/d/e/.../viewform?usp=pp_url&entry.123={text}"></label><button class="btn acc" data-act="linkSave">Save to draft</button></div>`:""}`;}
+
+/* ---------- "MK update" codes from Claude ---------- */
+function applyUpdate(D,u){const log=[],uid=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+  if(!u||u.mk_update!==1)throw new Error('This is not an MK update code (it must start with {"mk_update":1).');
+  const A=u.announcements||{};(A.add||[]).forEach(a=>{D.announcements.push({id:uid("a"),t:String(a.t||a.title),b:String(a.b||a.body||""),to:String(a.to||"Everyone"),date:a.date||today()});log.push("announcement");});
+  (A.remove||[]).forEach(id=>{D.announcements=D.announcements.filter(x=>x.id!==id);});
+  const C=u.calendar||{};(C.add||[]).forEach(x=>{const o={id:uid("c"+String(x.date).replace(/-/g,"")),date:x.date,t:String(x.t),cat:x.cat||"key"};if(x.end)o.end=x.end;if(x.upd)o.upd=String(x.upd);D.calendar.push(o);});
+  (C.remove||[]).forEach(id=>{D.calendar=D.calendar.filter(x=>x.id!==id);});
+  (C.change||[]).forEach(x=>{const o=D.calendar.find(c=>c.id===x.id);if(o)Object.assign(o,x);});
+  const E=u.exams||{};(E.set||[]).forEach(x=>{const o={code:String(x.code).toUpperCase(),date:x.date,slot:x.slot||"AN"};if(x.upd)o.upd=String(x.upd);D.exams=D.exams.filter(e=>e.code!==o.code);D.exams.push(o);});
+  (E.remove||[]).forEach(c=>{D.exams=D.exams.filter(e=>e.code!==c);});
+  if(u.courses&&u.courses.set)Object.entries(u.courses.set).forEach(([k,v])=>{D.courses[k]=Object.assign(D.courses[k]||{},v);});
+  if(u.mess){const m=u.mess;if(m.menu)Object.entries(m.menu).forEach(([d,v])=>{D.mess.menu[d]=Object.assign(D.mess.menu[d]||{},v);});["meals","from","daily","specials","tokens","notes","portal"].forEach(k=>{if(m[k]!==undefined)D.mess[k]=m[k];});}
+  ["periods","breaks","term","examSlots","links"].forEach(k=>{if(u[k]!==undefined)D[k]=u[k];});
+  return D;}
+
+/* ---------- actions ---------- */
+const ACT={
+ annAdd(){const t=$("#aT").value.trim();if(!t)return toast("Add a title");DRAFT.announcements.push({id:"a"+Date.now().toString(36),t,b:$("#aB").value.trim(),to:$("#aTo").value.trim()||"Everyone",date:$("#aD").value||today()});draw();mark();toast("Added to draft. Tap Publish to send.");},
+ annDel(id){DRAFT.announcements=DRAFT.announcements.filter(x=>x.id!==id);draw();mark();},
+ calAdd(){const d=$("#cD").value,t=$("#cT").value.trim();if(!d||!t)return toast("Date and title needed");const o={id:"c"+d.replace(/-/g,"")+Date.now().toString(36).slice(-3),date:d,t,cat:$("#cC").value};const e=$("#cE").value;if(e&&e>d)o.end=e;const up=$("#cU").value.trim();if(up)o.upd=up;DRAFT.calendar.push(o);draw();mark();},
+ calDel(id){DRAFT.calendar=DRAFT.calendar.filter(x=>x.id!==id);draw();mark();},
+ exAdd(){const c=$("#xC").value.trim().toUpperCase(),d=$("#xD").value;if(!c||!d)return toast("Code and date needed");const o={code:c,date:d,slot:$("#xS").value},u=$("#xU").value.trim();if(u)o.upd=u;DRAFT.exams=DRAFT.exams.filter(x=>x.code!==c);DRAFT.exams.push(o);if(!DRAFT.courses[c])toast("Note: "+c+" isn't in Subjects yet. Add its name there.");draw();mark();},
+ exDel(c){DRAFT.exams=DRAFT.exams.filter(x=>x.code!==c);draw();mark();},
+ messSave(){const d=$("#mDay").value;DRAFT.mess.menu[d]=DRAFT.mess.menu[d]||{};document.querySelectorAll("[data-meal]").forEach(t=>{DRAFT.mess.menu[d][t.dataset.meal]=t.value.split("\n").map(s=>s.trim()).filter(Boolean);});mark();toast(d+" saved to draft");},
+ mealSave(){DRAFT.mess.meals.forEach((m,i)=>{m.s=document.querySelector(`[data-ms="${i}"]`).value;m.e=document.querySelector(`[data-me="${i}"]`).value;});const f=$("#mFrom").value;if(f)DRAFT.mess.from=f;mark();toast("Timings saved to draft");},
+ courseAdd(){const c=$("#nC").value.trim().toUpperCase(),n=$("#nN").value.trim();if(!c||!n)return toast("Code and name needed");DRAFT.courses[c]={name:n,short:$("#nS").value.trim().toUpperCase()||c};draw();mark();},
+ pasteApply(){const out=$("#pOut");try{const raw=$("#pIn").value.trim().replace(/^```(json)?|```$/g,"");const u=JSON.parse(raw);const before=clone(DRAFT);applyUpdate(DRAFT,u);
+   const d=diff(before,DRAFT);out.innerHTML=`<h3>Added to draft</h3><ul class="diff">${d.map(x=>`<li class="${x[0]}">${esc(x[1])}</li>`).join("")||"<li>No changes</li>"}</ul><p class="hint">Check these, then tap Publish.</p>`;mark();}
+   catch(e){out.innerHTML='<p class="bad">'+esc(e.message)+"</p>";}},
+ async histLoad(){const o=$("#hOut");o.textContent="Loading…";const r=await api("/commits?path=data.json&per_page=10&sha="+(CFG.branch||"main"));if(!r.ok){o.textContent="Couldn't load history";return;}
+   const L=await r.json();o.innerHTML=L.map((c,i)=>`<div class="item"><div><b>${esc(c.commit.message.split("\n")[0])}</b><small>${esc(new Date(c.commit.author.date).toLocaleString())}${i===0?" · live now":""}</small></div>${i?`<button class="btn soft sm" data-act="histUse" data-id="${c.sha}">Use this</button>`:""}</div>`).join("");},
+ async histUse(sha){const r=await api("/contents/data.json?ref="+sha);if(!r.ok)return toast("Couldn't load that version");const j=await r.json();DRAFT=JSON.parse(b64d(j.content));DRAFT.version=LIVE.version;draw();mark();toast("Loaded into draft. Review, then Publish.");},
+ setSave(){CFG.owner=$("#sO").value.trim();CFG.repo=$("#sR").value.trim()||"mk-data";CFG.branch=$("#sB").value.trim()||"main";CFG.token=$("#sT").value.trim();saveCfg();TAB="ann";load();},
+ linkSave(){const u=$("#lF").value.trim();if(u&&!/^https:\/\//.test(u))return toast("Link must start with https://");DRAFT.links=Object.assign({},DRAFT.links,{feedback:u});mark();toast("Saved to draft. Tap Publish.");},
+ setForget(){delete CFG.token;saveCfg();toast("Token removed from this browser");draw();}
+};
+document.addEventListener("click",e=>{const t=e.target.closest("[data-tab]");if(t){TAB=t.dataset.tab;draw();return;}
+  const a=e.target.closest("[data-act]");if(a&&ACT[a.dataset.act])ACT[a.dataset.act](a.dataset.id);});
+document.addEventListener("change",e=>{if(e.target.id==="mDay"){window.MDAY=e.target.value;draw();}
+  if(e.target.dataset.c){const c=DRAFT.courses[e.target.dataset.c];const v=e.target.value.trim();if(v)c[e.target.dataset.f]=e.target.dataset.f==="short"?v.toUpperCase():v;else delete c[e.target.dataset.f];mark();}});
+$("#pubBtn").onclick=publish;
+$("#reviewBtn").onclick=()=>{const d=diff(LIVE,DRAFT);alert(d.map(x=>({add:"+ ",del:"− ",chg:"~ "})[x[0]]+x[1]).join("\n"));};
+window.addEventListener("beforeunload",e=>{if(LIVE&&diff(LIVE,DRAFT).length){e.preventDefault();e.returnValue="";}});
+load();draw();
+</script>
+</body>
+</html>
