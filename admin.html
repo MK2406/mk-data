@@ -6,40 +6,67 @@
 <meta name="robots" content="noindex">
 <title>MK admin</title>
 <style>
-:root{--bg:#F4F4F1;--s1:#fff;--s2:#ECECE7;--ink:#0C0C0E;--ink2:#56575D;--ink3:#8A8B91;--line:rgba(12,12,14,.1);--acc:#5546F6;--ok:#11A050;--bad:#D63B3B;--warn:#B57200}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{position:sticky;top:0;z-index:5;background:var(--ink);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
-header b{font-size:18px}header span{font-size:12.5px;opacity:.7;margin-left:auto;text-align:right}
-main{max-width:720px;margin:0 auto;padding:14px 14px 120px}
-nav{display:flex;gap:6px;overflow-x:auto;margin:0 0 12px;padding-bottom:2px}
-nav button{flex:none;border:1px solid var(--line);background:var(--s1);border-radius:999px;padding:8px 13px;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
-nav button[aria-pressed=true]{background:var(--ink);color:#fff}
-.card{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
-h2{font-size:17px;margin:0 0 10px}h3{font-size:14px;margin:14px 0 6px;color:var(--ink2);text-transform:uppercase;letter-spacing:.08em}
-label{display:block;font-size:13px;font-weight:700;color:var(--ink2);margin:0 0 10px}
-input,select,textarea{display:block;width:100%;margin-top:5px;font:inherit;padding:10px 11px;border-radius:11px;border:1px solid var(--line);background:var(--s2);color:var(--ink)}
-textarea{min-height:80px;resize:vertical}.code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;min-height:180px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:12px;padding:11px 15px;font:inherit;font-weight:800;cursor:pointer;background:var(--ink);color:#fff}
-.btn.acc{background:var(--acc)}.btn.soft{background:var(--s2);color:var(--ink)}.btn.bad{background:var(--bad)}.btn.sm{padding:7px 10px;font-size:13px}
-.btn[disabled]{opacity:.4;pointer-events:none}
-.item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line)}.item:first-of-type{border-top:0}
-.item div{flex:1;min-width:0}.item small{display:block;color:var(--ink3);font-weight:600}
-.hint{font-size:13px;color:var(--ink2)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
-#bar{position:fixed;left:0;right:0;bottom:0;background:var(--s1);border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:10px;align-items:center;justify-content:center;z-index:6}
-#bar span{font-size:13.5px;font-weight:700;flex:1;max-width:420px}
-.diff{font-size:13.5px}.diff li{margin:3px 0}.diff .add{color:var(--ok)}.diff .del{color:var(--bad)}.diff .chg{color:var(--warn)}
-#toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 14px;border-radius:12px;font-weight:700;display:none;z-index:9;max-width:90%}
+:root{--bg:#F4F4F1;--s1:#fff;--s2:#F0F0EC;--s3:#E6E6E0;--ink:#0C0C0E;--ink2:#52535A;--ink3:#8A8B91;--line:rgba(12,12,14,.09);--acc:#5546F6;--acc-s:#ECEAFF;--acc-t:#4335E0;--ok:#11A050;--ok-s:#E3F6EA;--bad:#D63B3B;--bad-s:#FCE8E8;--warn:#B57200;--warn-s:#FFF3DC;--r:18px;--sh:0 1px 2px rgba(12,12,14,.04),0 8px 24px -12px rgba(12,12,14,.12)}
+@media (prefers-color-scheme:dark){:root{--bg:#0A0A0C;--s1:#151519;--s2:#1E1E23;--s3:#28282E;--ink:#F3F3F5;--ink2:#B4B5BC;--ink3:#7D7E86;--line:rgba(255,255,255,.08);--acc-s:#24204A;--acc-t:#A9A1FF;--ok-s:#0F2A1B;--bad-s:#331617;--warn-s:#33270F;--sh:none}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:5;background:#0C0C0E;color:#fff}
+.hin{max-width:880px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
+.lg{width:38px;height:38px;border-radius:12px;background:#1d1d22;display:grid;place-items:center;flex:none}
+.ht b{display:block;font-size:17px;letter-spacing:-.01em}.ht span{font-size:12px;color:#A3A4AB}
+#who{margin-left:auto;font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:999px;background:#1d1d22;color:#C9CAD0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+#who.on{background:rgba(17,160,80,.18);color:#6BE39C}
+main{max-width:880px;margin:0 auto;padding:18px 18px 130px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.stat{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:var(--sh)}
+.stat b{display:block;font-size:22px;letter-spacing:-.02em;line-height:1.1}.stat span{font-size:12px;font-weight:700;color:var(--ink3)}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 0 14px;background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:6px;box-shadow:var(--sh)}
+nav button{flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:7px;border:0;background:transparent;color:var(--ink2);border-radius:11px;padding:9px 10px;font:inherit;font-weight:700;font-size:13.5px;cursor:pointer;white-space:nowrap}
+nav button svg{width:17px;height:17px}
+nav button:hover{background:var(--s2);color:var(--ink)}
+nav button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:14px;box-shadow:var(--sh)}
+h2{font-size:18px;letter-spacing:-.01em;margin:0 0 4px}h3{font-size:12px;margin:18px 0 8px;color:var(--ink3);text-transform:uppercase;letter-spacing:.1em}
+.card>.hint:first-of-type{margin:0 0 14px}
+label{display:block;font-size:13px;font-weight:700;color:var(--ink2);margin:0 0 12px}
+input,select,textarea{display:block;width:100%;margin-top:6px;font:inherit;font-size:15px;padding:11px 13px;border-radius:12px;border:1.5px solid transparent;background:var(--s2);color:var(--ink);outline:none;transition:border-color .15s,background .15s}
+input:focus,select:focus,textarea:focus{border-color:var(--acc);background:var(--s1)}
+textarea{min-height:90px;resize:vertical}.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;min-height:200px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:12px;padding:11px 16px;font:inherit;font-weight:800;font-size:14.5px;cursor:pointer;background:var(--ink);color:var(--bg);transition:transform .1s,opacity .15s}
+.btn:active{transform:scale(.97)}.btn.acc{background:var(--acc);color:#fff}.btn.soft{background:var(--s2);color:var(--ink)}.btn.bad{background:var(--bad);color:#fff}.btn.sm{padding:7px 11px;font-size:13px;border-radius:10px}
+.btn[disabled]{opacity:.35;pointer-events:none}
+.item{display:flex;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}.item:first-of-type{border-top:0}
+.item div{flex:1;min-width:0}.item b{display:block}.item small{display:block;color:var(--ink3);font-weight:600;font-size:12.5px}
+.item .hint{display:block;margin-top:2px}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;background:var(--ink3)}
+.dot.key{background:#5546F6}.dot.hol{background:#E8A21A}.dot.event{background:#14A3A3}.dot.exam{background:#E0457B}.dot.ann{background:#11A050}
+.hint{font-size:13.5px;color:var(--ink2)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+details{border-top:1px solid var(--line);padding:10px 0}details:first-of-type{border-top:0}
+summary{cursor:pointer;list-style:none;display:flex;gap:8px;align-items:baseline}summary::-webkit-details-marker{display:none}
+summary::before{content:"›";color:var(--ink3);font-weight:800;transition:transform .15s}details[open] summary::before{transform:rotate(90deg)}
+details .row{margin-top:10px}
+.empty{text-align:center;padding:18px;color:var(--ink3);font-weight:600}
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:6;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.bin{max-width:880px;margin:0 auto;display:flex;gap:10px;align-items:center}
+#state{flex:1;font-size:13.5px;font-weight:700;color:var(--ink2);display:flex;align-items:center;gap:8px;min-width:0}
+#state .pill{white-space:nowrap;padding:5px 10px;border-radius:999px;font-size:12.5px}
+.pill.warn{background:var(--warn-s);color:var(--warn)}.pill.ok{background:var(--ok-s);color:var(--ok)}.pill.bad{background:var(--bad-s);color:var(--bad)}
+.diff{font-size:13.5px;padding-left:18px}.diff li{margin:4px 0}.diff .add{color:var(--ok)}.diff .del{color:var(--bad)}.diff .chg{color:var(--warn)}
+#toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:14px;font-weight:700;font-size:14px;display:none;z-index:9;max-width:92%;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .hide{display:none}
+@media (max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}nav button span{display:none}nav button{padding:10px}.row{grid-template-columns:1fr}main{padding:14px 12px 130px}#who{max-width:45%}}
+@media (max-width:620px){nav button[aria-pressed=true] span{display:inline}}
 </style>
 </head>
 <body>
-<header><b>MK admin</b><span id="who">Not signed in</span></header>
+<header><div class="hin"><div class="lg"><svg width="26" height="13" viewBox="0 0 128 64" aria-hidden="true"><path fill="#fff" d="M0,64L0,0L12,0L12,64Z M12,0L30,26L48,0L48,22L30,48L12,22Z M48,0L60,0L60,64L48,64Z M70,0L82,0L82,64L70,64Z M82,24L106,0L123,0L82,41Z M85,38L96,27L128,64L111,64Z"/></svg></div><div class="ht"><b>MK admin</b><span>Campus data for every MK phone</span></div><span id="who">Not signed in</span></div></header>
 <main>
+<div class="stats" id="stats"></div>
 <nav id="tabs"></nav>
 <section id="v"></section>
 </main>
-<div id="bar"><span id="state">Load the current data to start.</span><button class="btn soft" id="reviewBtn" disabled>Review</button><button class="btn acc" id="pubBtn" disabled>Publish</button></div>
+<div id="bar"><div class="bin"><span id="state">Load the current data to start.</span><button class="btn soft" id="reviewBtn" disabled>Review</button><button class="btn acc" id="pubBtn" disabled>Publish</button></div></div>
 <div id="toast"></div>
 <script>
 "use strict";
@@ -57,8 +84,8 @@ const api=(path,opt={})=>fetch("https://api.github.com/repos/"+CFG.owner+"/"+(CF
 async function load(){if(!CFG.owner||!CFG.token){TAB="set";draw();return;}
   $("#state").textContent="Loading…";
   try{const r=await api("/contents/data.json?ref="+(CFG.branch||"main"));if(!r.ok)throw new Error(r.status===401?"Token not accepted":r.status===404?"Repo or data.json not found":"GitHub error "+r.status);
-    const j=await r.json();LIVE=JSON.parse(b64d(j.content));LIVE_SHA=j.sha;DRAFT=clone(LIVE);$("#who").textContent=CFG.owner+"/"+(CFG.repo||"mk-data")+" · v"+LIVE.version;mark();draw();}
-  catch(e){$("#state").innerHTML='<span class="bad">'+esc(e.message)+"</span>";TAB="set";draw();}}
+    const j=await r.json();LIVE=JSON.parse(b64d(j.content));LIVE_SHA=j.sha;DRAFT=clone(LIVE);const w=$("#who");w.textContent="● "+CFG.owner+"/"+(CFG.repo||"mk-data");w.className="on";mark();draw();}
+  catch(e){$("#state").innerHTML='<span class="pill bad">'+esc(e.message)+"</span>";TAB="set";draw();}}
 
 /* ---------- what changed (plain words) ---------- */
 function diff(a,b){const out=[];if(!a||!b)return out;
@@ -73,7 +100,7 @@ function diff(a,b){const out=[];if(!a||!b)return out;
   ["periods","breaks","term","examSlots","links"].forEach(k=>{if(JSON.stringify(a[k])!==JSON.stringify(b[k]))out.push(["chg",k+" changed"]);});
   if(JSON.stringify(a.mess)!==JSON.stringify(b.mess))out.push(["chg","Mess menu or timings changed"]);
   return out;}
-function mark(){const d=diff(LIVE,DRAFT);$("#state").innerHTML=d.length?'<span class="warn">'+d.length+" change"+(d.length>1?"s":"")+" not published yet</span>":"Everything is published.";$("#pubBtn").disabled=!d.length;$("#reviewBtn").disabled=!d.length;}
+function mark(){const d=diff(LIVE,DRAFT);$("#state").innerHTML=d.length?'<span class="pill warn">'+d.length+" change"+(d.length>1?"s":"")+'</span> not published yet':'<span class="pill ok">Up to date</span> Everything is published';$("#pubBtn").disabled=!d.length;$("#reviewBtn").disabled=!d.length;}
 
 /* ---------- publish ---------- */
 function nextVersion(){const d=today().replace(/-/g,"");let v=+(d+"01");const cur=+(LIVE&&LIVE.version||0);if(v<=cur)v=cur+1;return v;}
@@ -93,7 +120,12 @@ async function publish(){const d=diff(LIVE,DRAFT);if(!d.length)return;const errs
 
 /* ---------- views ---------- */
 const TABS=[["ann","Announce"],["cal","Calendar"],["exam","Exams"],["mess","Mess"],["course","Subjects"],["paste","Paste update"],["history","Restore"],["set","Settings"]];
-function draw(){$("#tabs").innerHTML=TABS.map(([k,l])=>`<button data-tab="${k}" aria-pressed="${TAB===k}">${l}</button>`).join("");
+const IC={ann:'<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 0 1 0 6"/>',cal:'<rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',exam:'<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>',mess:'<path d="M5 3v8a3 3 0 0 0 3 3v7M11 3v8M8 3v7M17 3c-2 2-2 6 0 8v10"/>',course:'<path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/>',paste:'<path d="M9 4h6v3H9z"/><path d="M15 5h3v16H6V5h3"/><path d="M9 12h6M9 16h4"/>',history:'<path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v4h4M12 8v4l3 2"/>',set:'<circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2 1.2L10 21h4l.5-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.4-2-1.6c.1-.4.1-.8.1-1.2z"/>'};
+const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
+function stats(){const el=$("#stats");if(!DRAFT){el.innerHTML="";return;}const t=today(),D=DRAFT;
+  const up=(D.exams||[]).filter(x=>x.date>=t).length,cal=(D.calendar||[]).filter(x=>(x.end||x.date)>=t).length;
+  el.innerHTML=[[`v${LIVE.version}`,"Live version"],[(D.announcements||[]).length,"Announcements"],[up,"Exams ahead"],[cal,"Dates ahead"]].map(([b,l])=>`<div class="stat"><b>${esc(b)}</b><span>${l}</span></div>`).join("");}
+function draw(){stats();$("#tabs").innerHTML=TABS.map(([k,l])=>`<button data-tab="${k}" aria-pressed="${TAB===k}" title="${l}">${svg(k)}<span>${l}</span></button>`).join("");
   const V={ann:vAnn,cal:vCal,exam:vExam,mess:vMess,course:vCourse,paste:vPaste,history:vHist,set:vSet}[TAB];
   $("#v").innerHTML=(!DRAFT&&TAB!=="set")?'<div class="card"><p class="hint">Fill in Settings first.</p></div>':V();}
 function vAnn(){const L=(DRAFT.announcements||[]).slice().sort((a,b)=>(b.date||"").localeCompare(a.date||""));
@@ -102,20 +134,20 @@ function vAnn(){const L=(DRAFT.announcements||[]).slice().sort((a,b)=>(b.date||"
   <label>Message<textarea id="aB" maxlength="600" placeholder="Details (optional)"></textarea></label>
   <div class="row"><label>For<input id="aTo" value="Everyone" maxlength="40"></label><label>Date<input id="aD" type="date" value="${today()}"></label></div>
   <button class="btn acc" data-act="annAdd">Add announcement</button></div>
-  <div class="card"><h2>Current (${L.length})</h2>${L.length?L.map(a=>`<div class="item"><div><b>${esc(a.t)}</b><small>${esc(a.date||"")} · ${esc(a.to||"Everyone")}</small>${a.b?`<span class="hint">${esc(a.b)}</span>`:""}</div><button class="btn soft sm" data-act="annDel" data-id="${esc(a.id)}">Remove</button></div>`).join(""):'<p class="hint">None.</p>'}</div>`;}
+  <div class="card"><h2>Current (${L.length})</h2>${L.length?L.map(a=>`<div class="item"><span class="dot ann"></span><div><b>${esc(a.t)}</b><small>${esc(a.date||"")} · ${esc(a.to||"Everyone")}</small>${a.b?`<span class="hint">${esc(a.b)}</span>`:""}</div><button class="btn soft sm" data-act="annDel" data-id="${esc(a.id)}">Remove</button></div>`).join(""):'<p class="empty">No announcements. Students see an empty bell.</p>'}</div>`;}
 function vCal(){const L=(DRAFT.calendar||[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
   return `<div class="card"><h2>Add a calendar date</h2><div class="row"><label>Date<input id="cD" type="date"></label><label>Till (optional)<input id="cE" type="date"></label></div>
   <label>Title<input id="cT" maxlength="80" placeholder="e.g. Guest lecture"></label>
   <label>Type<select id="cC"><option value="key">Key date</option><option value="hol">Holiday</option><option value="event">Event</option></select></label>
   <label>Note shown in the app if this changed (optional)<input id="cU" maxlength="120" placeholder="e.g. Moved from 12 Nov"></label>
   <button class="btn acc" data-act="calAdd">Add date</button></div>
-  <div class="card"><h2>All dates (${L.length})</h2>${L.map(x=>`<div class="item"><div><b>${esc(x.t)}</b><small>${esc(x.date)}${x.end?" → "+esc(x.end):""} · ${({key:"Key date",hol:"Holiday",event:"Event"})[x.cat]}${x.upd?" · "+esc(x.upd):""}</small></div><button class="btn soft sm" data-act="calDel" data-id="${esc(x.id)}">Remove</button></div>`).join("")}</div>`;}
+  <div class="card"><h2>All dates (${L.length})</h2>${L.map(x=>`<div class="item"><span class="dot ${x.cat}"></span><div><b>${esc(x.t)}</b><small>${esc(x.date)}${x.end?" → "+esc(x.end):""} · ${({key:"Key date",hol:"Holiday",event:"Event"})[x.cat]}${x.upd?" · "+esc(x.upd):""}</small></div><button class="btn soft sm" data-act="calDel" data-id="${esc(x.id)}">Remove</button></div>`).join("")}</div>`;}
 function vExam(){const L=(DRAFT.exams||[]).slice().sort((a,b)=>a.date.localeCompare(b.date)||a.code.localeCompare(b.code));
   return `<div class="card"><h2>Add or change an exam</h2><p class="hint">Same course code again = that exam is moved. Students only see exams for their own subjects.</p>
   <div class="row"><label>Course code<input id="xC" maxlength="10" placeholder="24GA03" style="text-transform:uppercase"></label><label>Session<select id="xS"><option>AN</option><option>FN</option></select></label></div>
   <div class="row"><label>Date<input id="xD" type="date"></label><label>Change note (optional)<input id="xU" maxlength="120" placeholder="Moved from 27 Nov"></label></div>
   <button class="btn acc" data-act="exAdd">Save exam</button></div>
-  <div class="card"><h2>All exams (${L.length})</h2>${L.map(x=>`<div class="item"><div><b>${esc(x.code)} · ${esc((DRAFT.courses[x.code]||{}).name||"")}</b><small>${esc(x.date)} ${esc(x.slot)}${x.upd?" · "+esc(x.upd):""}</small></div><button class="btn soft sm" data-act="exDel" data-id="${esc(x.code)}">Remove</button></div>`).join("")}</div>`;}
+  <div class="card"><h2>All exams (${L.length})</h2>${L.map(x=>`<div class="item"><span class="dot exam"></span><div><b>${esc(x.code)} · ${esc((DRAFT.courses[x.code]||{}).name||"")}</b><small>${esc(x.date)} ${esc(x.slot)}${x.upd?" · "+esc(x.upd):""}</small></div><button class="btn soft sm" data-act="exDel" data-id="${esc(x.code)}">Remove</button></div>`).join("")}</div>`;}
 function vMess(){const m=DRAFT.mess,days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
   return `<div class="card"><h2>Mess menu</h2><p class="hint">One line per dish. Put * in front of token items (e.g. *Omelette). No prices.</p>
   <label>Day<select id="mDay">${days.map(d=>`<option ${d===(window.MDAY||"Monday")?"selected":""}>${d}</option>`).join("")}</select></label>
