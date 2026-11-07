@@ -1,7 +1,7 @@
 {
  "app": "mk",
  "schema": 2,
- "version": 2026110710,
+ "version": 2026110711,
  "updated": "2026-11-07",
  "batch": "II MBA 2025-27 · PSG Institute of Management",
  "periods": [
@@ -1158,7 +1158,7 @@
  },
  "announcements": [],
  "links": {
-  "feedback": ""
+  "feedback": "https://docs.google.com/forms/d/e/1FAIpQLScLyQPoPoFBayZ4Qh9zynDW1p6-XZT18ex3HF2xHX9-c-pYaQ/viewform?usp=pp_url&entry.84489064=%7Btext%7D"
  },
  "sources": [
   "II MBA Timetable, Sem III (w.e.f. 10.08.2026)",
