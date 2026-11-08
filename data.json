@@ -1,7 +1,7 @@
 {
  "app": "mk",
  "schema": 2,
- "version": 2026110804,
+ "version": 2026110805,
  "updated": "2026-11-08",
  "batch": "II MBA 2025-27 · PSG Institute of Management",
  "periods": [
@@ -1156,15 +1156,7 @@
    "If groceries aren't available, the regular menu can't be followed. After 8:30 pm, if a listed item isn't available, noodles are provided. If egg items aren't available, omelette is provided."
   ]
  },
- "announcements": [
-  {
-   "id": "amw7hflwn",
-   "t": "Test",
-   "b": "Diwali",
-   "to": "Everyone",
-   "date": "2026-11-08"
-  }
- ],
+ "announcements": [],
  "links": {
   "feedback": "https://docs.google.com/forms/d/e/1FAIpQLScLyQPoPoFBayZ4Qh9zynDW1p6-XZT18ex3HF2xHX9-c-pYaQ/viewform?usp=pp_url&entry.84489064=%7Btext%7D"
  },
