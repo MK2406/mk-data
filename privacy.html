@@ -4,86 +4,258 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MK – Campus Companion · Privacy policy</title>
-<meta name="description" content="Privacy policy for MK – Campus Companion, an unofficial app for PSG eCampus students.">
+<meta name="description" content="Privacy policy for MK – Campus Companion, an unofficial app for PSG eCampus students. Your data stays on your phone.">
+<meta name="theme-color" content="#5546F6">
 <style>
-:root{--bg:#F4F4F1;--s1:#fff;--s2:#F0F0EC;--ink:#0C0C0E;--ink2:#52535A;--ink3:#8A8B91;--line:rgba(12,12,14,.09);--acc:#5546F6;--acc-s:#ECEAFF;--acc-t:#4335E0;--ok:#11A050;--ok-s:#E3F6EA;--sh:0 1px 2px rgba(12,12,14,.04),0 8px 24px -12px rgba(12,12,14,.12)}
-@media (prefers-color-scheme:dark){:root{--bg:#0A0A0C;--s1:#151519;--s2:#1E1E23;--ink:#F3F3F5;--ink2:#B4B5BC;--ink3:#7D7E86;--line:rgba(255,255,255,.08);--acc-s:#24204A;--acc-t:#A9A1FF;--ok-s:#0F2A1B;--sh:none}}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-.hero{background:#0C0C0E;color:#fff;padding:44px 20px 64px}
-.wrap{max-width:760px;margin:0 auto}
-.brand{display:flex;align-items:center;gap:12px;margin-bottom:26px}
-.lg{width:44px;height:44px;border-radius:14px;background:#1d1d22;display:grid;place-items:center}
-.brand b{display:block;font-size:16px}.brand span{font-size:13px;color:#A3A4AB}
-h1{font-size:clamp(30px,6vw,42px);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px}
-.lead{color:#C9CAD0;font-size:17px;max-width:560px;margin:0}
-.meta{margin-top:18px;font-size:13px;color:#8E8F96}
-.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:-36px}
-.chip{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:8px}
-.chip i{width:34px;height:34px;border-radius:11px;background:var(--ok-s);color:var(--ok);display:grid;place-items:center}
-.chip svg,.sec svg{width:18px;height:18px}
-.chip b{font-size:14px;line-height:1.3}
-main{padding:0 20px 60px}
-.sec{background:var(--s1);border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin-top:14px;box-shadow:var(--sh);display:grid;grid-template-columns:40px 1fr;gap:4px 14px}
-.sec>*:not(.ic){grid-column:2}.sec .ic{grid-column:1;width:40px;height:40px;border-radius:12px;background:var(--acc-s);color:var(--acc-t);display:grid;place-items:center;grid-row:span 2}
-h2{font-size:18px;letter-spacing:-.01em;margin:8px 0 0}
-.sec p{margin:6px 0 0;color:var(--ink2)}.sec p:first-of-type{margin-top:4px}
-.sec ul{margin:8px 0 0;padding-left:20px;color:var(--ink2)}.sec li{margin:3px 0}
-.note{margin-top:14px;padding:16px 20px;border-radius:16px;background:var(--s2);color:var(--ink2);font-size:14.5px}
-.mail{display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--acc);color:#fff;text-decoration:none;font-weight:800;padding:11px 16px;border-radius:12px}
-footer{text-align:center;color:var(--ink3);font-size:13px;padding:10px 20px 40px}
-@media (max-width:640px){.sec>*:not(.ic){grid-column:1}.chips{grid-template-columns:repeat(2,1fr)}.sec{grid-template-columns:1fr;padding:18px}.sec .ic{grid-row:auto}h2{margin-top:4px}}
+:root{--bg:#F4F4F1;--s1:#fff;--s2:#F0F0EC;--s3:#E6E6E0;--ink:#0C0C0E;--ink2:#52535A;--ink3:#8A8B91;--line:rgba(12,12,14,.09);
+ --acc:#5546F6;--acc-s:#ECEAFF;--acc-t:#4335E0;--ok:#11A050;--ok-s:#E3F6EA;--bad:#D63B3B;--bad-s:#FCE8E8;--warn:#B7791F;--warn-s:#FDF3E1;
+ --sh:0 1px 2px rgba(12,12,14,.04),0 10px 30px -14px rgba(12,12,14,.16)}
+@media (prefers-color-scheme:dark){:root{--bg:#0A0A0C;--s1:#151519;--s2:#1E1E23;--s3:#28282E;--ink:#F3F3F5;--ink2:#B4B5BC;--ink3:#7D7E86;--line:rgba(255,255,255,.08);
+ --acc-s:#24204A;--acc-t:#A9A1FF;--ok:#3CCB7A;--ok-s:#0F2A1B;--bad:#F06A6A;--bad-s:#331617;--warn:#E5B04A;--warn-s:#33270F;--sh:none}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--acc-t)}
+svg.i{width:18px;height:18px;flex:none}
+.pz{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-style:normal}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(125deg,#3F2FE6 0%,#5546F6 45%,#8A5CFF 100%);padding:34px 20px 92px}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero::before{width:420px;height:420px;right:-140px;top:-160px;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 68%)}
+.hero::after{width:300px;height:300px;left:-120px;bottom:-170px;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+.wrap{max-width:1040px;margin:0 auto;position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:12px}
+.lg{width:46px;height:46px;border-radius:15px;background:#0C0C0E;display:grid;place-items:center;box-shadow:0 8px 20px -8px rgba(0,0,0,.45)}
+.brand b{display:block;font-size:16px;line-height:1.2}.brand span{font-size:13px;color:rgba(255,255,255,.75)}
+.hero h1{font-size:clamp(32px,6.4vw,54px);line-height:1.05;letter-spacing:-.035em;margin:34px 0 14px;max-width:720px}
+.hero h1 .pz{font-size:.85em;display:inline-block;transform-origin:70% 80%;animation:wave 2.4s ease-in-out 1s 2}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}15%,45%{transform:rotate(14deg)}30%{transform:rotate(-8deg)}}
+@media (prefers-reduced-motion:reduce){.hero h1 .pz{animation:none}html{scroll-behavior:auto}}
+.lead{font-size:clamp(16px,2.2vw,18.5px);color:rgba(255,255,255,.86);max-width:640px;margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px)}
+.pill svg{width:15px;height:15px}
+
+/* ---------- at a glance ---------- */
+main{padding:0 20px 40px}
+.glance{margin-top:-58px;background:var(--s1);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);padding:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.g{display:flex;gap:12px;align-items:flex-start;padding:10px}
+.g i{width:38px;height:38px;border-radius:12px;background:var(--ok-s);color:var(--ok);display:grid;place-items:center;flex:none}
+.g b{display:block;font-size:14.5px;line-height:1.3}.g span{display:block;font-size:13px;color:var(--ink3);line-height:1.4;margin-top:2px}
+
+/* ---------- layout ---------- */
+.cols{display:grid;grid-template-columns:230px 1fr;gap:28px;margin-top:28px;align-items:start}
+.toc{position:sticky;top:20px;background:var(--s1);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh)}
+.toc p{margin:2px 8px 8px;font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.toc a{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink2);font-size:14px;font-weight:600;padding:8px;border-radius:10px}
+.toc a:hover{background:var(--s2);color:var(--ink)}
+.toc a span{width:22px;height:22px;border-radius:7px;background:var(--s2);color:var(--ink3);font-size:11.5px;font-weight:800;display:grid;place-items:center;flex:none}
+
+/* ---------- diagram ---------- */
+.card{background:var(--s1);border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);padding:22px 24px;margin-bottom:16px}
+.kick{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--acc-t);margin:0 0 4px}
+.card>h2{font-size:21px;letter-spacing:-.02em;margin:0 0 6px;line-height:1.25}
+.sub{color:var(--ink2);margin:0 0 18px;font-size:15px}
+.flow{display:grid;grid-template-columns:1fr 64px 1.15fr 64px 1fr;align-items:center}
+.node{border:1px solid var(--line);border-radius:16px;padding:14px;background:var(--s2);text-align:center}
+.node .ni{width:44px;height:44px;border-radius:14px;margin:0 auto 8px;display:grid;place-items:center;background:var(--s1);color:var(--ink2);border:1px solid var(--line)}
+.node .ni svg{width:22px;height:22px}
+.node b{display:block;font-size:14.5px}.node small{display:block;color:var(--ink3);font-size:12.5px;line-height:1.4;margin-top:3px}
+.node.me{background:var(--acc);color:#fff;border-color:transparent;box-shadow:0 14px 30px -14px var(--acc)}
+.node.me .ni{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.25)}
+.node.me small{color:rgba(255,255,255,.8)}
+.node.me ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.node.me li{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.16)}
+.arr{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--ink3);font-size:11px;font-weight:700;text-align:center;line-height:1.25}
+.arr svg{width:26px;height:26px;color:var(--acc-t)}
+.none{margin-top:14px;display:flex;align-items:center;gap:10px;justify-content:center;font-size:13.5px;color:var(--ink2);background:var(--bad-s);border-radius:12px;padding:10px 12px}
+.none svg{color:var(--bad)}
+
+/* ---------- table ---------- */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:14.5px}
+.tbl th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);font-weight:800;padding:0 12px 10px}
+.tbl td{padding:12px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+.tbl td:first-child{color:var(--ink);font-weight:700}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:800;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.tag svg{width:13px;height:13px}
+.t-ok{background:var(--ok-s);color:var(--ok)}.t-w{background:var(--warn-s);color:var(--warn)}
+
+/* ---------- sections ---------- */
+.sec{background:var(--s1);border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);padding:22px 24px;margin-bottom:16px;display:grid;grid-template-columns:44px 1fr;gap:0 16px}
+.sec .ic{width:44px;height:44px;border-radius:14px;background:var(--acc-s);color:var(--acc-t);display:grid;place-items:center;position:relative}
+.sec .ic svg{width:20px;height:20px}
+.sec .ic em{position:absolute;right:-6px;top:-6px;width:20px;height:20px;border-radius:50%;background:var(--s1);border:1px solid var(--line);font-style:normal;font-size:11px;font-weight:800;color:var(--ink3);display:grid;place-items:center}
+.sec h2{font-size:19px;letter-spacing:-.015em;margin:8px 0 6px;line-height:1.3}
+.sec p{margin:0 0 10px;color:var(--ink2)}.sec p:last-child{margin-bottom:0}
+.sec ul{margin:0 0 10px;padding:0;list-style:none}
+.sec li{position:relative;padding-left:22px;margin:6px 0;color:var(--ink2)}
+.sec li::before{content:"";position:absolute;left:4px;top:.68em;width:7px;height:7px;border-radius:50%;background:var(--acc)}
+.sec b{color:var(--ink)}
+.hl{display:flex;gap:10px;align-items:flex-start;background:var(--s2);border-radius:12px;padding:11px 13px;font-size:14.5px;color:var(--ink2);margin-top:4px}
+.hl svg{color:var(--acc-t);margin-top:2px}
+.path{display:inline-flex;align-items:center;gap:4px;font-weight:700;color:var(--ink);background:var(--s2);border-radius:7px;padding:1px 7px;font-size:.93em;white-space:nowrap}
+
+.contact{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:linear-gradient(125deg,#3F2FE6,#5546F6 55%,#8A5CFF);color:#fff;border-radius:20px;padding:22px 24px;margin-bottom:16px}
+.contact b{display:block;font-size:19px}.contact span{color:rgba(255,255,255,.82);font-size:14.5px}
+.mail{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#3F2FE6;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:13px;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.note{display:flex;gap:10px;align-items:flex-start;padding:14px 18px;border-radius:16px;background:var(--s2);color:var(--ink2);font-size:14.5px}
+footer{text-align:center;color:var(--ink3);font-size:13px;padding:6px 20px 44px}
+footer b{color:var(--ink2)}
+
+@media (max-width:900px){.cols{grid-template-columns:1fr}.toc{display:none}.glance{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){
+ .hero{padding:26px 18px 84px}.hero h1{margin-top:26px}
+ main{padding:0 14px 30px}
+ .glance{padding:10px;gap:4px}.g{flex-direction:column;gap:8px;padding:10px}
+ .card,.sec{padding:18px}
+ .sec{grid-template-columns:1fr}.sec .ic{margin-bottom:6px}.sec h2{margin-top:4px}
+ .flow{grid-template-columns:1fr;gap:6px}.arr{flex-direction:row;justify-content:center;gap:8px;padding:2px 0}.arr svg{transform:rotate(90deg)}
+ .tbl thead{display:none}.tbl tr{display:block;border-top:1px solid var(--line);padding:10px 0}.tbl td{display:block;border:0;padding:3px 2px}
+ .tbl td[data-l]::before{content:attr(data-l);display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);font-weight:800}
+ .contact{padding:20px}.mail{width:100%;justify-content:center}
+}
+@media print{.hero{background:#5546F6;-webkit-print-color-adjust:exact;print-color-adjust:exact}.toc{display:none}.cols{grid-template-columns:1fr}.card,.sec,.glance{box-shadow:none;break-inside:avoid}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+ <symbol id="phone" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+ <symbol id="down" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+ <symbol id="link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+ <symbol id="msg" viewBox="0 0 24 24"><path d="M5 5h14a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 19 17H10l-4.5 3.5V17H5a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 5 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+ <symbol id="trash" viewBox="0 0 24 24"><path d="M4.5 7h15M10 7V4.5h4V7M6.5 7l1 13h9l1-13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 20.5c1.2-3.6 4.1-5.5 7.5-5.5s6.3 1.9 7.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+ <symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 7l8.5 6 8.5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+ <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15M14 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="arrowL" viewBox="0 0 24 24"><path d="M20 12H5M10 7l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.5 5.2 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.2-3.5-8.5S9.6 5.9 12 3.5z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+ <symbol id="file" viewBox="0 0 24 24"><path d="M6.5 3h7l4 4v14h-11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M13.5 3v4h4M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+ <symbol id="server" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="6.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="4" y="13.5" width="16" height="6.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 21L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+ <symbol id="cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 10h16M8.5 3v4M15.5 3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+ <symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v5.5M12 7.8v.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+ <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+</svg>
+
 <header class="hero"><div class="wrap">
-  <div class="brand"><div class="lg"><svg width="28" height="14" viewBox="0 0 128 64" aria-hidden="true"><path fill="#fff" d="M0,64L0,0L12,0L12,64Z M12,0L30,26L48,0L48,22L30,48L12,22Z M48,0L60,0L60,64L48,64Z M70,0L82,0L82,64L70,64Z M82,24L106,0L123,0L82,41Z M85,38L96,27L128,64L111,64Z"/></svg></div><div><b>MK – Campus Companion</b><span>Privacy policy</span></div></div>
-  <h1>Your data stays on your phone.</h1>
+  <div class="brand"><div class="lg"><svg width="28" height="14" viewBox="0 0 128 64" aria-hidden="true"><path fill="#fff" d="M0,64L0,0L12,0L12,64Z M12,0L30,26L48,0L48,22L30,48L12,22Z M48,0L60,0L60,64L48,64Z M70,0L82,0L82,64L70,64Z M82,24L106,0L123,0L82,41Z M85,38L96,27L128,64L111,64Z"/></svg></div>
+    <div><b>MK – Campus Companion</b><span>Privacy policy</span></div></div>
+  <h1>Your data stays on your phone. <span class="pz" role="img" aria-label="peace">✌️</span></h1>
   <p class="lead">MK is an unofficial app made by a student for students. It is not affiliated with, endorsed by or run by PSG Institutions.</p>
-  <p class="meta">Last updated: 7 November 2026</p>
+  <div class="pills">
+    <span class="pill"><svg><use href="#cal"/></svg>Last updated: 9 November 2026</span>
+    <span class="pill"><svg><use href="#clock"/></svg>2 minute read</span>
+    <span class="pill"><svg><use href="#info"/></svg>Unofficial student app</span>
+  </div>
 </div></header>
 
 <main><div class="wrap">
-  <div class="chips">
-    <div class="chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i><b>No accounts or servers</b></div>
-    <div class="chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i><b>Password never seen</b></div>
-    <div class="chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i><b>No ads or analytics</b></div>
-    <div class="chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i><b>Nothing sold or shared</b></div>
+  <div class="glance" aria-label="At a glance">
+    <div class="g"><i><svg class="i"><use href="#check"/></svg></i><div><b>No accounts or servers</b><span>MK has nowhere to send your data</span></div></div>
+    <div class="g"><i><svg class="i"><use href="#check"/></svg></i><div><b>Password never seen</b><span>You type it on the real eCampus page</span></div></div>
+    <div class="g"><i><svg class="i"><use href="#check"/></svg></i><div><b>No ads or analytics</b><span>No tracking of any kind</span></div></div>
+    <div class="g"><i><svg class="i"><use href="#check"/></svg></i><div><b>Nothing sold or shared</b><span>Not to anyone, ever</span></div></div>
   </div>
 
-  <section class="sec"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/></svg></span>
-    <h2>What MK does not collect</h2>
-    <p>MK has no server and no accounts. It does not collect, send, sell or share any personal data. There are no ads and no analytics.</p></section>
+  <div class="cols">
+    <nav class="toc" aria-label="On this page"><p>On this page</p>
+      <a href="#flow"><span>✦</span>How data moves</a>
+      <a href="#summary"><span>✦</span>Data summary</a>
+      <a href="#s1"><span>1</span>What MK does not collect</a>
+      <a href="#s2"><span>2</span>eCampus login</a>
+      <a href="#s3"><span>3</span>Data on your phone</a>
+      <a href="#s4"><span>4</span>Data MK downloads</a>
+      <a href="#s5"><span>5</span>Reminders</a>
+      <a href="#s6"><span>6</span>Links and updates</a>
+      <a href="#s7"><span>7</span>Feedback</a>
+      <a href="#s8"><span>8</span>Deleting your data</a>
+      <a href="#s9"><span>9</span>Contact</a>
+    </nav>
 
-  <section class="sec"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
-    <h2>eCampus login</h2>
-    <p>When you connect eCampus, you type your roll number and password on the official eCampus web page shown inside the app. MK never reads, sees or stores your password. eCampus keeps you logged in with its own cookie, stored only on your phone.</p></section>
+    <div>
+      <section class="card" id="flow">
+        <p class="kick">In one picture</p>
+        <h2>How your data moves</h2>
+        <p class="sub">Your eCampus data goes from eCampus to your phone and stays there. MK only downloads public campus information; it uploads nothing about you.</p>
+        <div class="flow">
+          <div class="node"><div class="ni"><svg><use href="#globe"/></svg></div><b>eCampus</b><small>The official website. You log in here yourself.</small></div>
+          <div class="arr"><svg><use href="#arrow"/></svg>Your attendance and timetable</div>
+          <div class="node me"><div class="ni"><svg><use href="#phone"/></svg></div><b>Your phone</b><small>Everything MK keeps is stored here only</small>
+            <ul><li>Attendance</li><li>Timetable</li><li>Notes and plans</li><li>Name and settings</li></ul></div>
+          <div class="arr"><svg><use href="#arrowL"/></svg>Download only</div>
+          <div class="node"><div class="ni"><svg><use href="#file"/></svg></div><b>Public campus file</b><small>Dates, exams, mess menu and announcements, on GitHub</small></div>
+        </div>
+        <div class="none"><svg class="i"><use href="#server"/></svg>MK has no server of its own. Nothing about you is uploaded anywhere.</div>
+      </section>
 
-  <section class="sec"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18h2"/></svg></span>
-    <h2>Data stored on your phone</h2>
-    <p>After you log in, MK reads your attendance and timetable from eCampus and saves them on your phone. Your own edits are also saved only on your phone:</p>
-    <ul><li>subject names, short forms, rooms and staff</li><li>notes and your own plans</li><li>your name and settings</li></ul>
-    <p>This data is excluded from cloud backups and device transfers.</p></section>
+      <section class="card" id="summary">
+        <p class="kick">At a glance</p>
+        <h2>Data summary</h2>
+        <table class="tbl">
+          <thead><tr><th>Data</th><th>Does MK collect it?</th><th>Where it lives</th></tr></thead>
+          <tbody>
+            <tr><td>eCampus password</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>Never seen</span></td><td data-l="Where it lives">Only typed on the eCampus page</td></tr>
+            <tr><td>Attendance and timetable</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No</span></td><td data-l="Where it lives">Your phone only</td></tr>
+            <tr><td>Name, notes, plans, settings</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No</span></td><td data-l="Where it lives">Your phone only</td></tr>
+            <tr><td>Location, contacts, photos, files</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>Not accessed</span></td><td data-l="Where it lives">MK has no permission to read them</td></tr>
+            <tr><td>Ads, analytics, tracking</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>None</span></td><td data-l="Where it lives">Not used in MK</td></tr>
+            <tr><td>Feedback you send</td><td data-l="Does MK collect it?"><span class="tag t-w"><svg><use href="#info"/></svg>Only if you send it</span></td><td data-l="Where it lives">MK's Google Form (see section 7)</td></tr>
+          </tbody>
+        </table>
+      </section>
 
-  <section class="sec"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></span>
-    <h2>Data MK downloads</h2>
-    <p>MK downloads one public file with the mess menu, academic calendar, exam dates and announcements. Downloading it sends no personal information.</p></section>
+      <section class="sec" id="s1"><span class="ic"><svg><use href="#shield"/></svg><em>1</em></span><div>
+        <h2>What MK does not collect</h2>
+        <p>MK has no server and no accounts. The app does not collect, send, sell or share any personal data. There are no ads and no analytics. The only thing that ever reaches MK's maker is feedback you choose to send (section 7).</p></div></section>
 
-  <section class="sec"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></span>
-    <h2>Reminders and announcements</h2>
-    <p>Class, exam and mess reminders are set on your phone by MK itself. To check for new announcements, MK downloads the same public file about once an hour. Nothing about you is sent. You can turn each kind of notification on or off in Account.</p></section>
+      <section class="sec" id="s2"><span class="ic"><svg><use href="#lock"/></svg><em>2</em></span><div>
+        <h2>eCampus login</h2>
+        <p>When you connect eCampus, you type your roll number and password on the official eCampus web page shown inside the app. MK never reads, sees or stores your password. eCampus keeps you logged in with its own cookie, stored only on your phone.</p></div></section>
 
-  <section class="sec"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></span>
-    <h2>Deleting your data</h2>
-    <ul><li><b>Account → Disconnect</b> logs you out of eCampus and deletes your attendance and timetable.</li><li><b>Account → Clear everything</b> deletes all of MK's data on your phone.</li><li>Uninstalling MK deletes everything it stored.</li></ul></section>
+      <section class="sec" id="s3"><span class="ic"><svg><use href="#phone"/></svg><em>3</em></span><div>
+        <h2>Data stored on your phone</h2>
+        <p>After you log in, MK reads your attendance and timetable from eCampus and saves them on your phone. Your own edits are also saved only on your phone:</p>
+        <ul><li>subject names, short forms, rooms and staff</li><li>notes and your own plans</li><li>your name and settings</li></ul>
+        <div class="hl"><svg class="i"><use href="#info"/></svg><span>This data is excluded from cloud backups and device transfers.</span></div></div></section>
 
-  <section class="sec"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg></span>
-    <h2>Contact</h2>
-    <p>Questions about privacy or the app:</p>
-    <p><a class="mail" href="mailto:mkapps2406@gmail.com">mkapps2406@gmail.com</a></p></section>
+      <section class="sec" id="s4"><span class="ic"><svg><use href="#down"/></svg><em>4</em></span><div>
+        <h2>Data MK downloads</h2>
+        <p>MK downloads one public file with the mess menu, academic calendar, exam dates, announcements, help answers and the latest app version number. Downloading it sends no personal information.</p>
+        <p>The file is hosted on GitHub. Like any website, GitHub can see the internet (IP) address of the phone that downloads it.</p></div></section>
 
-  <p class="note">If this policy changes, the new version will be posted on this page with a new date.</p>
+      <section class="sec" id="s5"><span class="ic"><svg><use href="#bell"/></svg><em>5</em></span><div>
+        <h2>Reminders and announcements</h2>
+        <p>Class, exam and mess reminders are set on your phone by MK itself. To check for new announcements, MK downloads the same public file about every 30 minutes. Nothing about you is sent.</p>
+        <p>Sound and vibration are played by MK on your phone. You can turn them off, and MK stays quiet on silent, in Do Not Disturb and, if you choose, at night. You can turn each kind of notification on or off in <span class="path">Account</span>.</p></div></section>
+
+      <section class="sec" id="s6"><span class="ic"><svg><use href="#link"/></svg><em>6</em></span><div>
+        <h2>Links and updates</h2>
+        <p>Links in announcements, the feedback form and MK's social pages open in your browser or in that app. Those websites have their own privacy policies. MK only opens secure (https) links and shows you the website name first.</p>
+        <p>When a new version of MK is out, MK shows an “Update available” message by comparing its own version number with the public file. Updates come from the Google Play Store.</p></div></section>
+
+      <section class="sec" id="s7"><span class="ic"><svg><use href="#msg"/></svg><em>7</em></span><div>
+        <h2>Feedback</h2>
+        <p><span class="path">Send feedback</span> opens a Google Form in your browser. To help fix problems, the form is pre-filled with your MK version, Android version and phone model. You can see and change this before sending, and nothing is sent unless you submit the form.</p>
+        <p>Feedback is stored in MK's Google Forms account and used only to fix and improve MK. Google's own privacy policy applies to Google Forms.</p></div></section>
+
+      <section class="sec" id="s8"><span class="ic"><svg><use href="#trash"/></svg><em>8</em></span><div>
+        <h2>Deleting your data</h2>
+        <ul><li><span class="path">Account → Disconnect</span> logs you out of eCampus and deletes your attendance and timetable.</li>
+            <li><span class="path">Account → Clear everything</span> deletes all of MK's data on your phone.</li>
+            <li>Uninstalling MK deletes everything it stored.</li></ul></div></section>
+
+      <div class="contact" id="s9">
+        <div><b>Questions about privacy or the app?</b><span>Write to MK. A real person reads every email.</span></div>
+        <a class="mail" href="mailto:mkapps2406@gmail.com"><svg class="i"><use href="#mail"/></svg>mkapps2406@gmail.com</a>
+      </div>
+
+      <p class="note"><svg class="i" style="color:var(--ink3)"><use href="#info"/></svg><span>If this policy changes, the new version will be posted on this page with a new date.</span></p>
+    </div>
+  </div>
 </div></main>
-<footer>MK – Campus Companion · Unofficial. Not made by PSG.</footer>
+<footer><b>MK – Campus Companion</b> · Unofficial. Not made by PSG.</footer>
 </body>
 </html>

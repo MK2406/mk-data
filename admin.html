@@ -4,179 +4,334 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#4B3BF0">
 <title>MK admin</title>
 <style>
-:root{--bg:#F4F4F1;--s1:#fff;--s2:#F0F0EC;--s3:#E6E6E0;--ink:#0C0C0E;--ink2:#52535A;--ink3:#8A8B91;--line:rgba(12,12,14,.09);--acc:#5546F6;--acc-s:#ECEAFF;--acc-t:#4335E0;--ok:#11A050;--ok-s:#E3F6EA;--bad:#D63B3B;--bad-s:#FCE8E8;--warn:#B57200;--warn-s:#FFF3DC;--r:18px;--sh:0 1px 2px rgba(12,12,14,.04),0 8px 24px -12px rgba(12,12,14,.12)}
-@media (prefers-color-scheme:dark){:root{--bg:#0A0A0C;--s1:#151519;--s2:#1E1E23;--s3:#28282E;--ink:#F3F3F5;--ink2:#B4B5BC;--ink3:#7D7E86;--line:rgba(255,255,255,.08);--acc-s:#24204A;--acc-t:#A9A1FF;--ok-s:#0F2A1B;--bad-s:#331617;--warn-s:#33270F;--sh:none}}
+:root{--bg:#F4F4F1;--s1:#fff;--s2:#F0F0EC;--s3:#E6E6E0;--ink:#0C0C0E;--ink2:#52535A;--ink3:#8A8B91;--line:rgba(12,12,14,.09);--acc:#5546F6;--acc2:#7B5CFF;--acc-s:#ECEAFF;--acc-t:#4335E0;--ok:#11A050;--ok-s:#E3F6EA;--bad:#D63B3B;--bad-s:#FCE8E8;--warn:#B57200;--warn-s:#FFF3DC;--teal:#0E9494;--teal-s:#DDF5F5;--pink:#D63A72;--pink-s:#FCE6EF;--r:20px;--sh:0 1px 2px rgba(12,12,14,.04),0 10px 30px -14px rgba(12,12,14,.16)}
+@media (prefers-color-scheme:dark){:root{--bg:#0A0A0C;--s1:#151519;--s2:#1E1E23;--s3:#28282E;--ink:#F3F3F5;--ink2:#B4B5BC;--ink3:#7D7E86;--line:rgba(255,255,255,.08);--acc-s:#24204A;--acc-t:#A9A1FF;--ok-s:#0F2A1B;--bad-s:#331617;--warn-s:#33270F;--teal-s:#0C2A2A;--pink-s:#33141F;--sh:none}}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-header{position:sticky;top:0;z-index:5;background:#0C0C0E;color:#fff}
-.hin{max-width:880px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
-.lg{width:38px;height:38px;border-radius:12px;background:#1d1d22;display:grid;place-items:center;flex:none}
-.ht b{display:block;font-size:17px;letter-spacing:-.01em}.ht span{font-size:12px;color:#A3A4AB}
-#who{margin-left:auto;font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:999px;background:#1d1d22;color:#C9CAD0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
-#who.on{background:rgba(17,160,80,.18);color:#6BE39C}
-main{max-width:880px;margin:0 auto;padding:18px 18px 130px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
-.stat{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:var(--sh)}
-.stat b{display:block;font-size:22px;letter-spacing:-.02em;line-height:1.1}.stat span{font-size:12px;font-weight:700;color:var(--ink3)}
-nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 0 14px;background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:6px;box-shadow:var(--sh)}
-nav button{flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:7px;border:0;background:transparent;color:var(--ink2);border-radius:11px;padding:9px 10px;font:inherit;font-weight:700;font-size:13.5px;cursor:pointer;white-space:nowrap}
-nav button svg{width:17px;height:17px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+header{background:linear-gradient(120deg,#3F2FE6 0%,#5546F6 45%,#8A5CFF 100%);color:#fff;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;right:-60px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%)}
+.hin{max-width:960px;margin:0 auto;padding:16px 18px 18px;display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.lg{width:42px;height:42px;border-radius:13px;background:rgba(255,255,255,.16);display:grid;place-items:center;flex:none;backdrop-filter:blur(6px)}
+.ht b{display:block;font-size:18px;letter-spacing:-.01em}.ht span{font-size:12.5px;color:rgba(255,255,255,.75)}
+#who{margin-left:auto;font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:999px;background:rgba(0,0,0,.18);color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:50%}
+#who.on::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#5BF09A;margin-right:7px;box-shadow:0 0 0 3px rgba(91,240,154,.25)}
+.navw{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{max-width:960px;margin:0 auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:8px 12px}
+nav::-webkit-scrollbar{display:none}
+nav button{flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:7px;color:var(--ink2);border-radius:12px;padding:9px 12px;font-weight:700;font-size:13.5px;white-space:nowrap;transition:background .15s,color .15s}
+nav button svg{width:18px;height:18px}
 nav button:hover{background:var(--s2);color:var(--ink)}
-nav button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+nav button[aria-pressed=true]{background:var(--acc);color:#fff;box-shadow:0 6px 16px -8px var(--acc)}
+main{max-width:960px;margin:0 auto;padding:18px 18px 140px}
+.grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start}
 .card{background:var(--s1);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:14px;box-shadow:var(--sh)}
-h2{font-size:18px;letter-spacing:-.01em;margin:0 0 4px}h3{font-size:12px;margin:18px 0 8px;color:var(--ink3);text-transform:uppercase;letter-spacing:.1em}
-.card>.hint:first-of-type{margin:0 0 14px}
+.ch{display:flex;align-items:center;gap:10px;margin:0 0 12px}.ch h2{margin:0}
+.ci{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;flex:none;background:var(--acc-s);color:var(--acc-t)}.ci svg{width:18px;height:18px}
+.ci.ok{background:var(--ok-s);color:var(--ok)}.ci.warn{background:var(--warn-s);color:var(--warn)}.ci.teal{background:var(--teal-s);color:var(--teal)}.ci.pink{background:var(--pink-s);color:var(--pink)}
+h2{font-size:17.5px;letter-spacing:-.01em;margin:0 0 4px}h3{font-size:11.5px;margin:18px 0 8px;color:var(--ink3);text-transform:uppercase;letter-spacing:.11em}
+.ch+.hint{margin-top:-6px}
 label{display:block;font-size:13px;font-weight:700;color:var(--ink2);margin:0 0 12px}
+label .cnt{float:right;font-weight:600;color:var(--ink3)}
 input,select,textarea{display:block;width:100%;margin-top:6px;font:inherit;font-size:15px;padding:11px 13px;border-radius:12px;border:1.5px solid transparent;background:var(--s2);color:var(--ink);outline:none;transition:border-color .15s,background .15s}
 input:focus,select:focus,textarea:focus{border-color:var(--acc);background:var(--s1)}
-textarea{min-height:90px;resize:vertical}.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;min-height:200px}
+input[aria-invalid=true]{border-color:var(--bad)}
+textarea{min-height:96px;resize:vertical}.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;min-height:200px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:12px;padding:11px 16px;font:inherit;font-weight:800;font-size:14.5px;cursor:pointer;background:var(--ink);color:var(--bg);transition:transform .1s,opacity .15s}
-.btn:active{transform:scale(.97)}.btn.acc{background:var(--acc);color:#fff}.btn.soft{background:var(--s2);color:var(--ink)}.btn.bad{background:var(--bad);color:#fff}.btn.sm{padding:7px 11px;font-size:13px;border-radius:10px}
-.btn[disabled]{opacity:.35;pointer-events:none}
-.item{display:flex;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}.item:first-of-type{border-top:0}
-.item div{flex:1;min-width:0}.item b{display:block}.item small{display:block;color:var(--ink3);font-weight:600;font-size:12.5px}
-.item .hint{display:block;margin-top:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:12px;padding:11px 16px;font-weight:800;font-size:14.5px;background:var(--ink);color:var(--bg);transition:transform .1s,opacity .15s}
+.btn svg{width:17px;height:17px}
+.btn:active{transform:scale(.97)}.btn.acc{background:var(--acc);color:#fff}.btn.soft{background:var(--s2);color:var(--ink)}.btn.bad{background:var(--bad-s);color:var(--bad)}.btn.sm{padding:7px 11px;font-size:13px;border-radius:10px}
+.btn[disabled]{opacity:.35;pointer-events:none}.btns{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.item{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}.item:first-of-type{border-top:0}
+.item>div{flex:1;min-width:0}.item b{display:block;overflow-wrap:anywhere}.item small{display:block;color:var(--ink3);font-weight:600;font-size:12.5px}
+.item .hint{display:block;margin-top:2px;overflow-wrap:anywhere}
+.item .acts{display:flex;gap:6px;flex:none}
 .dot{width:10px;height:10px;border-radius:50%;flex:none;background:var(--ink3)}
-.dot.key{background:#5546F6}.dot.hol{background:#E8A21A}.dot.event{background:#14A3A3}.dot.exam{background:#E0457B}.dot.ann{background:#11A050}
+.dot.key{background:#5546F6}.dot.hol{background:#E8A21A}.dot.event{background:#14A3A3}.dot.exam{background:#E0457B}.dot.ann{background:#11A050}.dot.off{background:var(--s3)}
 .hint{font-size:13.5px;color:var(--ink2)}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
-details{border-top:1px solid var(--line);padding:10px 0}details:first-of-type{border-top:0}
+.tag{display:inline-block;font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px;background:var(--s2);color:var(--ink2);margin-left:4px;vertical-align:1px}
+.tag.ok{background:var(--ok-s);color:var(--ok)}.tag.warn{background:var(--warn-s);color:var(--warn)}.tag.acc{background:var(--acc-s);color:var(--acc-t)}
+details.sub{border-top:1px solid var(--line);padding:10px 0}details.sub:first-of-type{border-top:0}
 summary{cursor:pointer;list-style:none;display:flex;gap:8px;align-items:baseline}summary::-webkit-details-marker{display:none}
-summary::before{content:"›";color:var(--ink3);font-weight:800;transition:transform .15s}details[open] summary::before{transform:rotate(90deg)}
+details.sub summary::before{content:"›";color:var(--ink3);font-weight:800;transition:transform .15s}details.sub[open] summary::before{transform:rotate(90deg)}
 details .row{margin-top:10px}
 .empty{text-align:center;padding:18px;color:var(--ink3);font-weight:600}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.chips button{padding:7px 11px;border-radius:999px;background:var(--s2);font-weight:700;font-size:13px;color:var(--ink2)}
+.chips button[aria-pressed=true]{background:var(--acc);color:#fff}
+.editing{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--warn-s);color:var(--warn);font-weight:700;font-size:13.5px;margin-bottom:12px}.editing svg{width:18px;height:18px;flex:none}
+/* home */
+.hello{background:linear-gradient(135deg,var(--acc-s),var(--s1) 70%);}
+.hello h2{font-size:22px;letter-spacing:-.02em}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}
+.stat{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.stat b{display:block;font-size:22px;letter-spacing:-.02em;line-height:1.1}.stat span{font-size:12px;font-weight:700;color:var(--ink3)}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.qa{display:flex;flex-direction:column;gap:10px;align-items:flex-start;text-align:left;background:var(--s1);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh);font-weight:800;font-size:14px;transition:transform .12s}
+.qa:hover{transform:translateY(-2px)}.qa small{display:block;font-weight:600;color:var(--ink3);font-size:12px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+/* preview */
+.phone{background:var(--s2);border-radius:26px;padding:14px;border:1px solid var(--line)}
+.pv-notif{display:flex;gap:10px;background:var(--s1);border-radius:16px;padding:11px 12px;box-shadow:var(--sh);margin-bottom:12px}
+.pv-notif .ap{width:30px;height:30px;border-radius:9px;background:#0C0C0E;color:#fff;display:grid;place-items:center;flex:none;font-weight:900;font-size:11px}
+.pv-notif b{display:block;font-size:13.5px}.pv-notif span{display:block;font-size:12.5px;color:var(--ink2);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pv-notif small{font-size:11px;color:var(--ink3);font-weight:700}
+.pv-ann{background:var(--s1);border-radius:16px;padding:13px 14px}
+.pv-ann b{display:block;font-size:15px}.pv-ann p{margin:3px 0 8px;font-size:14px;color:var(--ink2);overflow-wrap:anywhere}
+.pv-ann .lnk{color:var(--acc-t);font-weight:700;text-decoration:underline}
+.pv-link{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:13px;background:var(--acc-s);color:var(--acc-t);font-weight:800;font-size:13.5px;margin-bottom:8px}
+.pv-link small{margin-left:auto;color:var(--ink3);font-size:11px}
+.pv-ann>small{font-size:12px;color:var(--ink3);font-weight:600}
+/* bottom bar */
 #bar{position:fixed;left:0;right:0;bottom:0;z-index:6;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
-.bin{max-width:880px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.bin{max-width:960px;margin:0 auto;display:flex;gap:10px;align-items:center}
 #state{flex:1;font-size:13.5px;font-weight:700;color:var(--ink2);display:flex;align-items:center;gap:8px;min-width:0}
-#state .pill{white-space:nowrap;padding:5px 10px;border-radius:999px;font-size:12.5px}
+.pill{white-space:nowrap;padding:5px 10px;border-radius:999px;font-size:12.5px;font-weight:800}
 .pill.warn{background:var(--warn-s);color:var(--warn)}.pill.ok{background:var(--ok-s);color:var(--ok)}.pill.bad{background:var(--bad-s);color:var(--bad)}
-.diff{font-size:13.5px;padding-left:18px}.diff li{margin:4px 0}.diff .add{color:var(--ok)}.diff .del{color:var(--bad)}.diff .chg{color:var(--warn)}
-#toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:14px;font-weight:700;font-size:14px;display:none;z-index:9;max-width:92%;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.diff{font-size:14px;padding:0;list-style:none;margin:0}.diff li{margin:0;padding:8px 0;border-top:1px solid var(--line);display:flex;gap:8px}.diff li:first-child{border-top:0}
+.diff li::before{font-weight:900;width:14px;flex:none}.diff .add::before{content:"+";color:var(--ok)}.diff .del::before{content:"−";color:var(--bad)}.diff .chg::before{content:"~";color:var(--warn)}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 12px 10px 16px;border-radius:14px;font-weight:700;font-size:14px;display:none;align-items:center;gap:12px;z-index:9;max-width:92%;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+#toast button{color:#A9A1FF;font-weight:900;padding:4px 8px;border-radius:8px}
+dialog{border:0;border-radius:24px;padding:0;width:min(560px,94vw);background:var(--s1);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(10,10,12,.5);backdrop-filter:blur(3px)}
+.dh{padding:20px 20px 6px}.db{padding:4px 20px;max-height:55vh;overflow:auto}.df{padding:14px 20px 20px;display:flex;gap:10px;justify-content:flex-end}
 .hide{display:none}
-@media (max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}nav button span{display:none}nav button{padding:10px}.row{grid-template-columns:1fr}main{padding:14px 12px 130px}#who{max-width:45%}}
-@media (max-width:620px){nav button[aria-pressed=true] span{display:inline}}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}.quick{grid-template-columns:repeat(2,1fr)}.tiles{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}nav button span{display:none}nav button{padding:10px}nav button[aria-pressed=true] span{display:inline}.row{grid-template-columns:1fr}main{padding:14px 12px 140px}#who{max-width:42%}#state span:not(.pill){display:none}.ht span{display:none}.item{flex-wrap:wrap}.item .acts{width:100%;justify-content:flex-end}}
 </style>
 </head>
 <body>
 <header><div class="hin"><div class="lg"><svg width="26" height="13" viewBox="0 0 128 64" aria-hidden="true"><path fill="#fff" d="M0,64L0,0L12,0L12,64Z M12,0L30,26L48,0L48,22L30,48L12,22Z M48,0L60,0L60,64L48,64Z M70,0L82,0L82,64L70,64Z M82,24L106,0L123,0L82,41Z M85,38L96,27L128,64L111,64Z"/></svg></div><div class="ht"><b>MK admin</b><span>Campus data for every MK phone</span></div><span id="who">Not signed in</span></div></header>
-<main>
-<div class="stats" id="stats"></div>
-<nav id="tabs"></nav>
-<section id="v"></section>
-</main>
-<div id="bar"><div class="bin"><span id="state">Load the current data to start.</span><button class="btn soft" id="reviewBtn" disabled>Review</button><button class="btn acc" id="pubBtn" disabled>Publish</button></div></div>
-<div id="toast"></div>
+<div class="navw"><nav id="tabs" aria-label="Sections"></nav></div>
+<main><section id="v"></section></main>
+<div id="bar"><div class="bin"><span id="state">Load the current data to start.</span><button class="btn soft" id="discardBtn" disabled>Discard</button><button class="btn acc" id="pubBtn" disabled>Review &amp; publish</button></div></div>
+<dialog id="dlg"><div class="dh"><h2>Publish these changes?</h2><p class="hint" style="margin:0">Every MK phone gets them within about 30 minutes, or straight away when MK is opened.</p></div><div class="db"><ul class="diff" id="dlgList"></ul></div><div class="df"><button class="btn soft" id="dlgNo">Not yet</button><button class="btn acc" id="dlgYes">Publish</button></div></dialog>
+<div id="toast" role="status"><span></span></div>
 <script>
 "use strict";
+/* ---------- built-in help questions (same list as the app) ---------- */
+const FAQ_DEF=[{"id":"f1","cat":"start","q":"Is MK an official PSG app?","a":"No. MK is an unofficial app made by a student. It is not made or checked by PSG. Your attendance comes from your own eCampus login. Dates, exams and the mess menu are typed in by MK admin from official notices.","go":"","k":"official college unofficial"},{"id":"f2","cat":"start","q":"How do I connect eCampus?","a":"Account → eCampus → Connect. The real eCampus page opens inside MK. Log in there, then tap Done on the black bar at the top. MK then reads your attendance and timetable.","go":"connect","k":"login log in sign in connect"},{"id":"f3","cat":"start","q":"Is my eCampus password saved?","a":"No. You type it on the real eCampus page. MK never sees or stores your password. Only your attendance and timetable are saved, on this phone.","go":"privacy","k":"password safe secure"},{"id":"f4","cat":"start","q":"How do I change what shows on Today?","a":"Tap the cards button at the top right of Today, or Account → Edit Today. Turn cards on or off and change their order.","go":"customise","k":"home cards widgets order"},{"id":"f5","cat":"att","q":"How do I refresh my attendance?","a":"MK refreshes when you open it. To refresh now, tap Refresh on the Attendance screen.","go":"att","k":"update refresh sync latest"},{"id":"f6","cat":"att","q":"Why is my % different from eCampus?","a":"MK counts present plus on-duty (exemption) hours, which matches eCampus's “% with exemption”. If your last refresh was a while ago, eCampus may have new hours, so refresh. eCampus is always the final word.","go":"howCalc","k":"wrong percentage mismatch different exemption"},{"id":"f7","cat":"att","q":"How does Bunker work?","a":"Open Attendance → Bunker and pick the days you want to skip. MK takes your timetable till the end of term, removes those days, and shows your lowest % for each subject. Green means safe.","go":"bunk","k":"bunk skip leave plan"},{"id":"f8","cat":"att","q":"How do I change my required %?","a":"On the Attendance screen, pick 65%, 75% or 85% next to Required. Bunker and the low-attendance alerts use it.","go":"att","k":"target 75 65 85 required"},{"id":"f9","cat":"notif","q":"How do I change when class reminders come?","a":"Account → Class starting. Pick 5, 10 or 15 minutes before each class, or switch it off.","go":"cls","k":"reminder time before class minutes"},{"id":"f10","cat":"notif","q":"Notifications have no sound","a":"Check that your phone isn't on silent or Do Not Disturb, and that Account → Sound is on. Between 10 pm and 6 am MK stays quiet when “Quiet at night” is on.","go":"sound","k":"silent sound ring vibrate quiet"},{"id":"f11","cat":"notif","q":"Why did an announcement come late?","a":"MK checks for new announcements about every 30 minutes, so one can take up to half an hour to arrive. Opening MK checks straight away.","go":"data","k":"late delay slow announcement"},{"id":"f12","cat":"notif","q":"Reminders come late or not at all","a":"Allow “Alarms & reminders” for MK, and let MK run in the background in your phone's battery settings. The help page has the steps for your phone brand.","go":"notifHelp","k":"late missing battery not coming"},{"id":"f13","cat":"notif","q":"How can I test notifications?","a":"Account → Send a test notification. One comes straight away and a second about a minute later. Lock your phone to see it on the lock screen.","go":"test","k":"test check try"},{"id":"f14","cat":"data","q":"What does MK keep, and where?","a":"Your attendance, timetable, name, notes and plans stay only on this phone. MK has no account and no server. It downloads one public file with campus dates, exams, the mess menu and announcements.","go":"privacy","k":"data stored privacy server"},{"id":"f15","cat":"data","q":"Where do exam dates and the mess menu come from?","a":"MK admin types them in from official notices. If something looks wrong, tell us with Send feedback and it gets fixed for everyone.","go":"feedback","k":"exam date wrong mess menu source"},{"id":"f16","cat":"data","q":"How do I remove all my data?","a":"Account → Clear everything. It disconnects eCampus and deletes everything MK saved on this phone.","go":"wipe","k":"delete reset logout remove"},{"id":"f17","cat":"fix","q":"eCampus is down or shows no attendance","a":"MK keeps your last saved attendance and shows when it was updated. At the start of a semester eCampus can be empty for a few days, and sometimes it is under maintenance. Tap Refresh later.","go":"att","k":"maintenance down empty new semester not working"},{"id":"f18","cat":"fix","q":"eCampus logged me out","a":"Tap “eCampus logged you out” on Today, or go to Account → eCampus, and log in again. Your saved data stays.","go":"connect","k":"logged out login again session"},{"id":"f19","cat":"fix","q":"I don't stay in the hostel","a":"Switch off Account → Hostel mess and the Mess tab disappears.","go":"hostel","k":"day scholar mess hide"},{"id":"f20","cat":"fix","q":"How do I turn on dark mode?","a":"Account → Theme. Pick Light, Dark, or Phone to follow your phone's setting.","go":"theme","k":"dark night theme colour"},{"id":"f21","cat":"fix","q":"Something else is wrong, or I have an idea","a":"Send feedback. It opens a short form with your phone details already filled in, so it can be fixed faster.","go":"feedback","k":"bug problem idea suggestion contact"}];
+const FAQ_CATS=[["start","Getting started"],["att","Attendance & Bunker"],["notif","Notifications"],["data","Data & privacy"],["fix","Problems"]];
+const GO_OPTS=[["","No button"],["connect","Account → eCampus"],["att","Attendance screen"],["bunk","Bunker"],["tt","Timetable"],["cal","Calendar"],["mess","Mess"],["inbox","Announcements (bell)"],["customise","Edit Today"],["cls","Account → Class starting"],["sound","Account → Sound"],["quiet","Account → Quiet at night"],["test","Account → Send a test notification"],["notifHelp","Not getting notifications? (help)"],["theme","Account → Theme"],["hostel","Account → Hostel mess"],["data","Account → Campus data"],["wipe","Account → Clear everything"],["howCalc","How MK calculates"],["privacy","Privacy"],["tour","Replay the tour"],["feedback","Feedback form"]];
 /* ---------- settings (kept only in this browser) ---------- */
 const CFG=JSON.parse(localStorage.getItem("mkAdmin")||"{}");
 const saveCfg=()=>localStorage.setItem("mkAdmin",JSON.stringify(CFG));
-let LIVE=null,LIVE_SHA=null,DRAFT=null,TAB="ann";
+let LIVE=null,LIVE_SHA=null,DRAFT=null,TAB="home",EDIT=null,HIDE_PICK="0";
 const $=s=>document.querySelector(s),esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const toast=m=>{const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display="none",3000);};
-const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
+let UNDO=null;
+function toast(m,undo){const t=$("#toast");t.innerHTML="<span>"+esc(m)+"</span>"+(undo?'<button id="undoBtn">Undo</button>':"");t.style.display="flex";UNDO=undo||null;
+  clearTimeout(toast.t);toast.t=setTimeout(()=>{t.style.display="none";UNDO=null;},undo?7000:3200);}
+const today=()=>ymd(new Date());
+const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const addDays=(s,n)=>{const d=new Date(s+"T00:00:00");d.setDate(d.getDate()+n);return ymd(d);};
+const nice=s=>{if(!s)return "";const d=new Date(s+"T00:00:00");return d.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});};
 const clone=o=>JSON.parse(JSON.stringify(o));
+const isHttps=u=>/^https:\/\/[^\s"'<>]+$/.test(u||"");
+const host=u=>{try{return new URL(u).hostname.replace(/^www\./,"");}catch(e){return "";}};
 const b64e=s=>btoa(unescape(encodeURIComponent(s))),b64d=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,""))));
 const api=(path,opt={})=>fetch("https://api.github.com/repos/"+CFG.owner+"/"+(CFG.repo||"mk-data")+path,Object.assign({},opt,{headers:Object.assign({"Accept":"application/vnd.github+json","Authorization":"Bearer "+CFG.token,"X-GitHub-Api-Version":"2022-11-28"},opt.headers||{})}));
+const uid=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
 
 async function load(){if(!CFG.owner||!CFG.token){TAB="set";draw();return;}
   $("#state").textContent="Loading…";
   try{const r=await api("/contents/data.json?ref="+(CFG.branch||"main"));if(!r.ok)throw new Error(r.status===401?"Token not accepted":r.status===404?"Repo or data.json not found":"GitHub error "+r.status);
-    const j=await r.json();LIVE=JSON.parse(b64d(j.content));LIVE_SHA=j.sha;DRAFT=clone(LIVE);const w=$("#who");w.textContent="● "+CFG.owner+"/"+(CFG.repo||"mk-data");w.className="on";mark();draw();}
+    const j=await r.json();LIVE=JSON.parse(b64d(j.content));LIVE_SHA=j.sha;DRAFT=clone(LIVE);norm(DRAFT);
+    /* unpublished changes from last time are kept in this browser */
+    try{const sv=JSON.parse(localStorage.getItem("mkAdminDraft")||"null");if(sv&&sv.v===LIVE.version&&sv.d){DRAFT=sv.d;norm(DRAFT);if(diff(LIVE,DRAFT).length)setTimeout(()=>toast("Restored your unpublished changes"),300);}}catch(e){}
+    const w=$("#who");w.textContent=CFG.owner+"/"+(CFG.repo||"mk-data");w.className="on";mark();if(TAB==="set")TAB="home";draw();}
   catch(e){$("#state").innerHTML='<span class="pill bad">'+esc(e.message)+"</span>";TAB="set";draw();}}
+function norm(D){["announcements","calendar","exams"].forEach(k=>{if(!Array.isArray(D[k]))D[k]=[];});D.courses=D.courses||{};D.links=D.links||{};}
 
 /* ---------- what changed (plain words) ---------- */
 function diff(a,b){const out=[];if(!a||!b)return out;
   const byId=(L,k)=>Object.fromEntries((L||[]).map(x=>[x[k],x]));
   const cmp=(name,L1,L2,k,label)=>{const A=byId(L1,k),B=byId(L2,k);
-    Object.keys(B).forEach(id=>{if(!A[id])out.push(["add",name+": "+label(B[id])]);else if(JSON.stringify(A[id])!==JSON.stringify(B[id]))out.push(["chg",name+": "+label(A[id])+" → "+label(B[id])]);});
+    Object.keys(B).forEach(id=>{if(!A[id])out.push(["add",name+": "+label(B[id])]);else if(JSON.stringify(A[id])!==JSON.stringify(B[id]))out.push(["chg",name+" edited: "+label(B[id])]);});
     Object.keys(A).forEach(id=>{if(!B[id])out.push(["del",name+" removed: "+label(A[id])]);});};
   cmp("Announcement",a.announcements,b.announcements,"id",x=>x.t);
-  cmp("Calendar",a.calendar,b.calendar,"id",x=>x.date+(x.end?"–"+x.end:"")+" "+x.t+" ("+x.cat+")");
+  cmp("Calendar",a.calendar,b.calendar,"id",x=>x.date+(x.end?"–"+x.end:"")+" "+x.t);
   cmp("Exam",a.exams,b.exams,"code",x=>x.code+" on "+x.date+" "+x.slot);
-  cmp("Course",Object.entries(a.courses||{}).map(([k,v])=>({k,...v})),Object.entries(b.courses||{}).map(([k,v])=>({k,...v})),"k",x=>x.k+" "+x.name+(x.room?" · "+x.room:""));
-  ["periods","breaks","term","examSlots","links"].forEach(k=>{if(JSON.stringify(a[k])!==JSON.stringify(b[k]))out.push(["chg",k+" changed"]);});
+  cmp("Subject",Object.entries(a.courses||{}).map(([k,v])=>({k,...v})),Object.entries(b.courses||{}).map(([k,v])=>({k,...v})),"k",x=>x.k+" "+x.name);
+  if(JSON.stringify(a.faq||[])!==JSON.stringify(b.faq||[]))out.push(["chg",(b.faq&&b.faq.length?"Help questions changed ("+b.faq.length+")":"Help questions reset to the built-in list")]);
+  if(JSON.stringify(a.appUpdate||null)!==JSON.stringify(b.appUpdate||null))out.push(["chg",b.appUpdate?"Update banner: MK "+(b.appUpdate.name||b.appUpdate.latest):"Update banner removed"]);
+  if(JSON.stringify(a.links||{})!==JSON.stringify(b.links||{}))out.push(["chg","App links changed"]);
+  ["periods","breaks","term","examSlots"].forEach(k=>{if(JSON.stringify(a[k])!==JSON.stringify(b[k]))out.push(["chg",k+" changed"]);});
   if(JSON.stringify(a.mess)!==JSON.stringify(b.mess))out.push(["chg","Mess menu or timings changed"]);
   return out;}
-function mark(){const d=diff(LIVE,DRAFT);$("#state").innerHTML=d.length?'<span class="pill warn">'+d.length+" change"+(d.length>1?"s":"")+'</span> not published yet':'<span class="pill ok">Up to date</span> Everything is published';$("#pubBtn").disabled=!d.length;$("#reviewBtn").disabled=!d.length;}
+function mark(){const d=diff(LIVE,DRAFT);$("#state").innerHTML=d.length?'<span class="pill warn">'+d.length+" change"+(d.length>1?"s":"")+'</span><span>not published yet</span>':(LIVE?'<span class="pill ok">Up to date</span><span>Everything is published</span>':"");
+  $("#pubBtn").disabled=!d.length;$("#discardBtn").disabled=!d.length;
+  try{if(LIVE&&d.length)localStorage.setItem("mkAdminDraft",JSON.stringify({v:LIVE.version,d:DRAFT}));else localStorage.removeItem("mkAdminDraft");}catch(e){}}
+function change(fn,msg,undoable){const before=clone(DRAFT);fn();draw();mark();if(msg)toast(msg,undoable?before:null);}
 
 /* ---------- publish ---------- */
 function nextVersion(){const d=today().replace(/-/g,"");let v=+(d+"01");const cur=+(LIVE&&LIVE.version||0);if(v<=cur)v=cur+1;return v;}
 function check(o){const errs=[];const isD=s=>/^\d{4}-\d\d-\d\d$/.test(s);
   if(o.app!=="mk"||o.schema!==2)errs.push("Not an MK data file (app/schema).");
-  (o.exams||[]).forEach(x=>{if(!x.code||!isD(x.date)||!["FN","AN"].includes(x.slot))errs.push("Exam "+(x.code||"?")+": needs code, date YYYY-MM-DD and FN or AN.");});
+  (o.exams||[]).forEach(x=>{if(!x.code||!isD(x.date)||!["FN","AN"].includes(x.slot))errs.push("Exam "+(x.code||"?")+": needs code, date and FN or AN.");});
   (o.calendar||[]).forEach(x=>{if(!x.id||!isD(x.date)||!x.t||!["key","hol","event"].includes(x.cat))errs.push("Calendar item "+(x.t||x.id)+": needs date, title and type.");});
-  (o.announcements||[]).forEach(x=>{if(!x.id||!x.t)errs.push("Announcement needs a title.");});
+  (o.announcements||[]).forEach(x=>{if(!x.id||!x.t)errs.push("An announcement has no title.");if(x.link&&!isHttps(x.link))errs.push("Announcement “"+x.t+"”: the link must start with https://");if(x.until&&!isD(x.until))errs.push("Announcement “"+x.t+"”: auto-hide date is wrong.");});
+  (o.faq||[]).forEach(f=>{if(!f.q||!f.a)errs.push("A help question is missing its question or answer.");});
+  Object.entries(o.links||{}).forEach(([k,v])=>{if(v&&!isHttps(v))errs.push("Link “"+k+"” must start with https://");});
+  if(o.appUpdate&&!(+o.appUpdate.latest>0))errs.push("Update banner: version code must be a number.");
   if(JSON.stringify(o).length>450000)errs.push("File too big.");return errs;}
-async function publish(){const d=diff(LIVE,DRAFT);if(!d.length)return;const errs=check(DRAFT);if(errs.length){alert("Fix these first:\n\n"+errs.join("\n"));return;}
-  if(!confirm("Publish "+d.length+" change(s) to every MK phone?\n\n"+d.map(x=>"• "+x[1]).slice(0,15).join("\n")))return;
-  const out=clone(DRAFT);out.version=nextVersion();out.updated=today();
-  $("#pubBtn").disabled=true;$("#state").textContent="Publishing…";
+function review(){const d=diff(LIVE,DRAFT);if(!d.length)return;const errs=check(DRAFT);if(errs.length){alert("Fix these first:\n\n"+errs.join("\n"));return;}
+  $("#dlgList").innerHTML=d.map(x=>`<li class="${x[0]}">${esc(x[1])}</li>`).join("");$("#dlg").showModal();}
+async function publish(){$("#dlg").close();const d=diff(LIVE,DRAFT);const out=clone(DRAFT);out.version=nextVersion();out.updated=today();
+  $("#pubBtn").disabled=true;$("#state").innerHTML='<span class="pill warn">Publishing…</span>';
   const r=await api("/contents/data.json",{method:"PUT",body:JSON.stringify({message:"MK data v"+out.version+": "+d.map(x=>x[1]).slice(0,3).join("; "),content:b64e(JSON.stringify(out,null,1)+"\n"),sha:LIVE_SHA,branch:CFG.branch||"main"})});
-  if(!r.ok){const t=await r.text();$("#state").innerHTML='<span class="bad">Publish failed ('+r.status+'). '+(r.status===409?"Someone else changed it. Reload and try again.":esc(t.slice(0,120)))+"</span>";$("#pubBtn").disabled=false;return;}
-  toast("Published v"+out.version+". Phones get it next time MK opens, or within about an hour.");await load();}
+  if(!r.ok){const t=await r.text();$("#state").innerHTML='<span class="pill bad">Publish failed ('+r.status+')</span><span>'+(r.status===409?"Changed somewhere else. Reload the page and redo it.":esc(t.slice(0,100)))+"</span>";$("#pubBtn").disabled=false;return;}
+  localStorage.removeItem("mkAdminDraft");toast("Published ✓  Phones get it within about 30 minutes.");await load();}
 
-/* ---------- views ---------- */
-const TABS=[["ann","Announce"],["cal","Calendar"],["exam","Exams"],["mess","Mess"],["course","Subjects"],["paste","Paste update"],["history","Restore"],["set","Settings"]];
-const IC={ann:'<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 0 1 0 6"/>',cal:'<rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',exam:'<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>',mess:'<path d="M5 3v8a3 3 0 0 0 3 3v7M11 3v8M8 3v7M17 3c-2 2-2 6 0 8v10"/>',course:'<path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/>',paste:'<path d="M9 4h6v3H9z"/><path d="M15 5h3v16H6V5h3"/><path d="M9 12h6M9 16h4"/>',history:'<path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v4h4M12 8v4l3 2"/>',set:'<circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2 1.2L10 21h4l.5-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.4-2-1.6c.1-.4.1-.8.1-1.2z"/>'};
-const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
-function stats(){const el=$("#stats");if(!DRAFT){el.innerHTML="";return;}const t=today(),D=DRAFT;
-  const up=(D.exams||[]).filter(x=>x.date>=t).length,cal=(D.calendar||[]).filter(x=>(x.end||x.date)>=t).length;
-  el.innerHTML=[[`v${LIVE.version}`,"Live version"],[(D.announcements||[]).length,"Announcements"],[up,"Exams ahead"],[cal,"Dates ahead"]].map(([b,l])=>`<div class="stat"><b>${esc(b)}</b><span>${l}</span></div>`).join("");}
-function draw(){stats();$("#tabs").innerHTML=TABS.map(([k,l])=>`<button data-tab="${k}" aria-pressed="${TAB===k}" title="${l}">${svg(k)}<span>${l}</span></button>`).join("");
-  const V={ann:vAnn,cal:vCal,exam:vExam,mess:vMess,course:vCourse,paste:vPaste,history:vHist,set:vSet}[TAB];
-  $("#v").innerHTML=(!DRAFT&&TAB!=="set")?'<div class="card"><p class="hint">Fill in Settings first.</p></div>':V();}
-function vAnn(){const L=(DRAFT.announcements||[]).slice().sort((a,b)=>(b.date||"").localeCompare(a.date||""));
-  return `<div class="card"><h2>Send an announcement</h2><p class="hint">Shows under the bell in MK and as a notification. Keep it short.</p>
-  <label>Title<input id="aT" maxlength="80" placeholder="e.g. Class shifted to room 007"></label>
-  <label>Message<textarea id="aB" maxlength="600" placeholder="Details (optional)"></textarea></label>
-  <div class="row"><label>For<input id="aTo" value="Everyone" maxlength="40"></label><label>Date<input id="aD" type="date" value="${today()}"></label></div>
-  <button class="btn acc" data-act="annAdd">Add announcement</button></div>
-  <div class="card"><h2>Current (${L.length})</h2>${L.length?L.map(a=>`<div class="item"><span class="dot ann"></span><div><b>${esc(a.t)}</b><small>${esc(a.date||"")} · ${esc(a.to||"Everyone")}</small>${a.b?`<span class="hint">${esc(a.b)}</span>`:""}</div><button class="btn soft sm" data-act="annDel" data-id="${esc(a.id)}">Remove</button></div>`).join(""):'<p class="empty">No announcements. Students see an empty bell.</p>'}</div>`;}
-function vCal(){const L=(DRAFT.calendar||[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
-  return `<div class="card"><h2>Add a calendar date</h2><div class="row"><label>Date<input id="cD" type="date"></label><label>Till (optional)<input id="cE" type="date"></label></div>
-  <label>Title<input id="cT" maxlength="80" placeholder="e.g. Guest lecture"></label>
-  <label>Type<select id="cC"><option value="key">Key date</option><option value="hol">Holiday</option><option value="event">Event</option></select></label>
-  <label>Note shown in the app if this changed (optional)<input id="cU" maxlength="120" placeholder="e.g. Moved from 12 Nov"></label>
-  <button class="btn acc" data-act="calAdd">Add date</button></div>
-  <div class="card"><h2>All dates (${L.length})</h2>${L.map(x=>`<div class="item"><span class="dot ${x.cat}"></span><div><b>${esc(x.t)}</b><small>${esc(x.date)}${x.end?" → "+esc(x.end):""} · ${({key:"Key date",hol:"Holiday",event:"Event"})[x.cat]}${x.upd?" · "+esc(x.upd):""}</small></div><button class="btn soft sm" data-act="calDel" data-id="${esc(x.id)}">Remove</button></div>`).join("")}</div>`;}
-function vExam(){const L=(DRAFT.exams||[]).slice().sort((a,b)=>a.date.localeCompare(b.date)||a.code.localeCompare(b.code));
-  return `<div class="card"><h2>Add or change an exam</h2><p class="hint">Same course code again = that exam is moved. Students only see exams for their own subjects.</p>
-  <div class="row"><label>Course code<input id="xC" maxlength="10" placeholder="24GA03" style="text-transform:uppercase"></label><label>Session<select id="xS"><option>AN</option><option>FN</option></select></label></div>
+/* ---------- icons ---------- */
+const IC={home:'<path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"/>',ann:'<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 0 1 0 6"/>',cal:'<rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',exam:'<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>',mess:'<path d="M5 3v8a3 3 0 0 0 3 3v7M11 3v8M8 3v7M17 3c-2 2-2 6 0 8v10"/>',
+ faq:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/>',more:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',course:'<path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/>',paste:'<path d="M9 4h6v3H9z"/><path d="M15 5h3v16H6V5h3"/><path d="M9 12h6M9 16h4"/>',history:'<path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v4h4M12 8v4l3 2"/>',
+ set:'<circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2 1.2L10 21h4l.5-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.4-2-1.6c.1-.4.1-.8.1-1.2z"/>',app:'<rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/>',link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',up:'<path d="m6 15 6-6 6 6"/>',down:'<path d="m6 9 6 6 6-6"/>',alert:'<path d="M12 4 2.8 19.5h18.4z"/><path d="M12 10v4M12 17h.01"/>',check:'<path d="m5 12 5 5 9-10"/>',ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/>',dl:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>'};
+const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]||""}</svg>`;
+const head=(ic,t,cls)=>`<div class="ch"><span class="ci ${cls||""}">${svg(ic)}</span><h2>${t}</h2></div>`;
+
+/* ---------- layout ---------- */
+const NAV=[["home","Home"],["ann","Announce"],["cal","Calendar"],["exam","Exams"],["mess","Mess"],["faq","Help Q&A"],["more","More"]];
+const MORE=[["course","Subjects","Names, staff, rooms"],["app","App & links","Update banner, Play, Instagram"],["paste","Paste update","Code from Claude"],["history","Restore","Undo a publish"],["set","Settings","GitHub token"]];
+function draw(){const navKey=MORE.some(m=>m[0]===TAB)?"more":TAB;
+  $("#tabs").innerHTML=NAV.map(([k,l])=>`<button data-tab="${k}" aria-pressed="${navKey===k}" title="${l}">${svg(k)}<span>${l}</span></button>`).join("");
+  const V={home:vHome,ann:vAnn,cal:vCal,exam:vExam,mess:vMess,faq:vFaq,more:vMore,course:vCourse,app:vApp,paste:vPaste,history:vHist,set:vSet}[TAB];
+  $("#v").innerHTML=(!DRAFT&&TAB!=="set")?`<div class="card">${head("set","First, connect GitHub")}<p class="hint">Open Settings and paste your token.</p><button class="btn acc" data-tab="set">Open Settings</button></div>`:V();
+  if(TAB==="ann")preview();}
+const annLive=a=>!(a.until&&a.until<today());
+
+/* ---------- Home ---------- */
+function vHome(){const D=DRAFT,t=today(),A=D.announcements.filter(annLive).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+  const ex=D.exams.filter(x=>x.date>=t).sort((a,b)=>a.date.localeCompare(b.date)),cal=D.calendar.filter(x=>(x.end||x.date)>=t).sort((a,b)=>a.date.localeCompare(b.date));
+  const old=D.announcements.filter(a=>!annLive(a)),L=D.links||{};
+  const todo=[];if(old.length)todo.push([`${old.length} announcement${old.length>1?"s are":" is"} past the auto-hide date`,"Students no longer see them.","cleanOld","Clean up"]);
+  if(!isHttps(L.feedback))todo.push(["Feedback form link is missing","The Send feedback button won't work.","tab:app","Add"]);
+  if(!isHttps(L.app))todo.push(["Play Store link not added yet","Add it once MK is live, for Share MK and updates.","tab:app","Add"]);
+  return `<div class="card hello"><h2>Hi MK ✌️</h2><p class="hint" style="margin:0">Live version <b>v${esc(LIVE.version)}</b> · updated ${esc(nice(LIVE.updated)||LIVE.updated||"")}. Phones get changes within about 30 minutes.</p>
+   <div class="stats">${[[A.length,"Live announcements"],[ex.length,"Exams ahead"],[cal.length,"Dates ahead"],[(D.faq&&D.faq.length)||FAQ_DEF.length,"Help questions"]].map(([b,l])=>`<div class="stat"><b>${b}</b><span>${l}</span></div>`).join("")}</div></div>
+  <div class="quick">${[["ann","New announcement","Bell + notification","tab:ann"],["exam","Add or move exam","Dates and sessions","tab:exam"],["cal","Add a date","Holidays and events","tab:cal"],["paste","Paste update","From a notice via Claude","tab:paste"]].map(([i,b,s,a],n)=>`<button class="qa" data-act="${a}"><span class="ci ${["","pink","teal","warn"][n]}">${svg(i)}</span><span>${b}<small>${s}</small></span></button>`).join("")}</div>
+  ${todo.length?`<div class="card">${head("alert","Needs a look","warn")}${todo.map(x=>`<div class="item"><div><b>${x[0]}</b><small>${x[1]}</small></div><div class="acts"><button class="btn soft sm" data-act="${x[2]}">${x[3]}</button></div></div>`).join("")}</div>`:""}
+  <div class="grid2"><div class="card">${head("ann","What students see now","ok")}${A.length?A.slice(0,4).map(annItem).join(""):'<p class="empty">No live announcements.</p>'}${A.length>4?`<button class="btn soft sm" data-tab="ann">See all ${A.length}</button>`:""}</div>
+  <div class="card">${head("cal","Coming up","teal")}${[...ex.slice(0,3).map(x=>`<div class="item"><span class="dot exam"></span><div><b>${esc(x.code)} · ${esc((D.courses[x.code]||{}).name||"")}</b><small>${esc(nice(x.date))} · ${esc(x.slot)}</small></div></div>`),...cal.slice(0,3).map(x=>`<div class="item"><span class="dot ${x.cat}"></span><div><b>${esc(x.t)}</b><small>${esc(nice(x.date))}${x.end?" → "+esc(nice(x.end)):""}</small></div></div>`)].join("")||'<p class="empty">Nothing ahead.</p>'}</div></div>`;}
+
+/* ---------- Announcements ---------- */
+const HIDE=[["0","Never"],["1","After 1 day"],["3","3 days"],["7","1 week"],["14","2 weeks"],["30","1 month"],["pick","Pick a date"]];
+function annItem(a){const live=annLive(a);
+  return `<div class="item"><span class="dot ${live?"ann":"off"}"></span><div><b>${esc(a.t)}${a.edited?'<span class="tag">Edited</span>':""}${live?"":'<span class="tag warn">Hidden</span>'}</b>
+   <small>${esc(nice(a.date))} · ${esc(a.to||"Everyone")}${a.until?" · "+(live?"hides after ":"hidden since ")+esc(nice(a.until)):""}${a.link?" · 🔗 "+esc(host(a.link)):""}</small>${a.b?`<span class="hint">${esc(a.b.length>140?a.b.slice(0,140)+"…":a.b)}</span>`:""}</div>
+   <div class="acts"><button class="btn soft sm" data-act="annEdit" data-id="${esc(a.id)}">${svg("edit")}Edit</button><button class="btn bad sm" data-act="annDel" data-id="${esc(a.id)}" aria-label="Remove">${svg("trash")}</button></div></div>`;}
+function vAnn(){const e=EDIT&&EDIT.k==="ann"?DRAFT.announcements.find(x=>x.id===EDIT.id):null;const f=e||{t:"",b:"",link:"",btn:"",to:"Everyone",date:today(),until:""};
+  const pick=e?(e.until?"pick":"0"):HIDE_PICK;
+  const L=DRAFT.announcements.slice().sort((a,b)=>(b.date||"").localeCompare(a.date||"")),live=L.filter(annLive),gone=L.filter(a=>!annLive(a));
+  return `<div class="grid2"><div class="card">${head("ann",e?"Edit announcement":"Send an announcement")}
+  ${e?`<div class="editing">${svg("edit")}<span>Editing. Students see the change, but don't get a second notification.</span></div>`:'<p class="hint">Shows under the bell in MK and as a notification. Keep the title short.</p>'}
+  <label>Title <span class="cnt" id="cT">${f.t.length}/80</span><input id="aT" maxlength="80" value="${esc(f.t)}" placeholder="e.g. SSM feedback form"></label>
+  <label>Message <span class="cnt" id="cB">${f.b.length}/600</span><textarea id="aB" maxlength="600" placeholder="Details (optional). Links like https://… become tappable.">${esc(f.b)}</textarea></label>
+  <div class="row"><label>Link (optional)<input id="aL" value="${esc(f.link||"")}" placeholder="https://forms.gle/…" inputmode="url" autocapitalize="off"></label><label>Button text<input id="aBt" maxlength="30" value="${esc(f.btn||"")}" placeholder="Open link"></label></div>
+  <div class="row"><label>For<input id="aTo" value="${esc(f.to||"Everyone")}" maxlength="40"></label><label>Date<input id="aD" type="date" value="${esc(f.date||today())}"></label></div>
+  <label>Hide automatically<div class="chips" role="group" aria-label="Hide automatically">${HIDE.map(([v,l])=>`<button type="button" data-act="hidePick" data-id="${v}" aria-pressed="${pick===v}">${l}</button>`).join("")}</div></label>
+  <label id="untilWrap" class="${pick==="pick"?"":"hide"}">Hide after<input id="aU" type="date" value="${esc(f.until||"")}"></label>
+  <div class="btns">${e?`<button class="btn acc" data-act="annSave">${svg("check")}Save changes</button><button class="btn soft" data-act="annCancel">Cancel</button>`:`<button class="btn acc" data-act="annAdd">${svg("plus")}Add announcement</button>`}</div></div>
+  <div class="card">${head("app","Preview","teal")}<div class="phone" id="pv"></div><p class="hint" style="margin:10px 0 0">Top: the notification. Bottom: how it looks under the bell.</p></div></div>
+  <div class="card">${head("ann","Live ("+live.length+")","ok")}${live.length?live.map(annItem).join(""):'<p class="empty">No announcements. Students see an empty bell.</p>'}</div>
+  ${gone.length?`<div class="card">${head("history","Hidden by date ("+gone.length+")")}<p class="hint">Students don't see these any more.</p>${gone.map(annItem).join("")}<button class="btn soft sm" data-act="cleanOld">${svg("trash")}Remove all hidden</button></div>`:""}`;}
+function annForm(){const t=$("#aT").value.trim(),b=$("#aB").value.trim(),link=$("#aL").value.trim(),btn=$("#aBt").value.trim(),to=$("#aTo").value.trim()||"Everyone",date=$("#aD").value||today();
+  const p=document.querySelector('[data-act="hidePick"][aria-pressed="true"]'),pk=p?p.dataset.id:"0";
+  const until=pk==="pick"?$("#aU").value:pk==="0"?"":addDays(date,+pk);return {t,b,link,btn,to,date,until};}
+function preview(){const el=$("#pv");if(!el)return;const f=annForm();
+  const lk=s=>esc(s).replace(/https:\/\/[^\s<]+/g,m=>{const t=(m.match(/[.,;:!?)\]]+$/)||[""])[0],u=t?m.slice(0,-t.length):m;return `<span class="lnk">${u}</span>${t}`;}).replace(/\n/g,"<br>");
+  $("#aL").setAttribute("aria-invalid",f.link&&!isHttps(f.link)?"true":"false");
+  el.innerHTML=`<div class="pv-notif"><span class="ap">MK</span><div style="min-width:0"><small>MK · now</small><b>${esc(f.t||"Title")}</b><span>${esc(f.b||"")}</span></div></div>
+  <div class="pv-ann"><b>${esc(f.t||"Title")}</b>${f.b?`<p>${lk(f.b)}</p>`:""}${isHttps(f.link)?`<div class="pv-link">${esc(f.btn||"Open link")} ↗<small>${esc(host(f.link))}</small></div>`:""}<small>${esc(nice(f.date))}${f.to!=="Everyone"?" · For "+esc(f.to):""}${f.until?" · hides after "+esc(nice(f.until)):""}</small></div>`;
+  const cT=$("#cT"),cB=$("#cB");if(cT)cT.textContent=f.t.length+"/80";if(cB)cB.textContent=$("#aB").value.length+"/600";}
+function annValid(f){if(!f.t){toast("Add a title");return false;}if(f.link&&!isHttps(f.link)){toast("The link must start with https://");return false;}if(f.until&&f.until<f.date){toast("Hide date is before the announcement date");return false;}return true;}
+
+/* ---------- Calendar ---------- */
+function vCal(){const e=EDIT&&EDIT.k==="cal"?DRAFT.calendar.find(x=>x.id===EDIT.id):null,f=e||{date:"",end:"",t:"",cat:"key",upd:""};
+  const L=DRAFT.calendar.slice().sort((a,b)=>a.date.localeCompare(b.date)),t=today(),up=L.filter(x=>(x.end||x.date)>=t),past=L.filter(x=>(x.end||x.date)<t);
+  const row=x=>`<div class="item"><span class="dot ${x.cat}"></span><div><b>${esc(x.t)}</b><small>${esc(nice(x.date))}${x.end?" → "+esc(nice(x.end)):""} · ${({key:"Key date",hol:"Holiday",event:"Event"})[x.cat]}${x.upd?" · "+esc(x.upd):""}</small></div><div class="acts"><button class="btn soft sm" data-act="calEdit" data-id="${esc(x.id)}">${svg("edit")}Edit</button><button class="btn bad sm" data-act="calDel" data-id="${esc(x.id)}" aria-label="Remove">${svg("trash")}</button></div></div>`;
+  return `<div class="card">${head("cal",e?"Edit date":"Add a calendar date","teal")}${e?`<div class="editing">${svg("edit")}<span>Editing “${esc(e.t)}”.</span></div>`:""}
+  <div class="row"><label>Date<input id="cD" type="date" value="${esc(f.date)}"></label><label>Till (optional)<input id="cE" type="date" value="${esc(f.end||"")}"></label></div>
+  <label>Title<input id="cT2" maxlength="80" value="${esc(f.t)}" placeholder="e.g. Guest lecture"></label>
+  <div class="row"><label>Type<select id="cC">${[["key","Key date"],["hol","Holiday"],["event","Event"]].map(([v,l])=>`<option value="${v}" ${f.cat===v?"selected":""}>${l}</option>`).join("")}</select></label>
+  <label>Change note (optional)<input id="cU" maxlength="120" value="${esc(f.upd||"")}" placeholder="e.g. Moved from 12 Nov"></label></div>
+  <div class="btns">${e?`<button class="btn acc" data-act="calSave">${svg("check")}Save changes</button><button class="btn soft" data-act="calCancel">Cancel</button>`:`<button class="btn acc" data-act="calAdd">${svg("plus")}Add date</button>`}</div></div>
+  <div class="card">${head("cal","Coming up ("+up.length+")","teal")}${up.map(row).join("")||'<p class="empty">Nothing ahead.</p>'}</div>
+  ${past.length?`<div class="card"><details class="sub"><summary><b>Past dates (${past.length})</b></summary>${past.map(row).join("")}</details></div>`:""}`;}
+
+/* ---------- Exams ---------- */
+function vExam(){const L=DRAFT.exams.slice().sort((a,b)=>a.date.localeCompare(b.date)||a.code.localeCompare(b.code)),t=today();
+  const codes=Object.keys(DRAFT.courses).sort();
+  return `<div class="card">${head("exam","Add or move an exam","pink")}<p class="hint">Same course code again = that exam is moved. Students only see exams for their own subjects.</p>
+  <div class="row"><label>Course<select id="xC">${codes.map(k=>`<option value="${esc(k)}">${esc(k)} · ${esc(DRAFT.courses[k].name)}</option>`).join("")}<option value="_new">Other code…</option></select></label><label>Session<select id="xS"><option value="AN">AN (afternoon)</option><option value="FN">FN (forenoon)</option></select></label></div>
+  <label id="xNewW" class="hide">Course code<input id="xNew" maxlength="10" placeholder="24GA03" style="text-transform:uppercase"></label>
   <div class="row"><label>Date<input id="xD" type="date"></label><label>Change note (optional)<input id="xU" maxlength="120" placeholder="Moved from 27 Nov"></label></div>
-  <button class="btn acc" data-act="exAdd">Save exam</button></div>
-  <div class="card"><h2>All exams (${L.length})</h2>${L.map(x=>`<div class="item"><span class="dot exam"></span><div><b>${esc(x.code)} · ${esc((DRAFT.courses[x.code]||{}).name||"")}</b><small>${esc(x.date)} ${esc(x.slot)}${x.upd?" · "+esc(x.upd):""}</small></div><button class="btn soft sm" data-act="exDel" data-id="${esc(x.code)}">Remove</button></div>`).join("")}</div>`;}
-function vMess(){const m=DRAFT.mess,days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-  return `<div class="card"><h2>Mess menu</h2><p class="hint">One line per dish. Put * in front of token items (e.g. *Omelette). No prices.</p>
-  <label>Day<select id="mDay">${days.map(d=>`<option ${d===(window.MDAY||"Monday")?"selected":""}>${d}</option>`).join("")}</select></label>
-  ${m.meals.map(ml=>`<label>${esc(ml.l)} (${esc(ml.s)}–${esc(ml.e)})<textarea data-meal="${esc(ml.k)}">${esc(((m.menu[window.MDAY||"Monday"]||{})[ml.k]||[]).join("\n"))}</textarea></label>`).join("")}
-  <button class="btn acc" data-act="messSave">Save this day</button></div>
-  <div class="card"><h2>Meal timings</h2>${m.meals.map((ml,i)=>`<div class="row"><label>${esc(ml.l)} from<input type="time" data-ms="${i}" value="${esc(ml.s)}"></label><label>till<input type="time" data-me="${i}" value="${esc(ml.e)}"></label></div>`).join("")}
-  <label>Menu valid from<input id="mFrom" type="date" value="${esc(m.from||"")}"></label><button class="btn acc" data-act="mealSave">Save timings</button></div>`;}
+  <button class="btn acc" data-act="exAdd">${svg("check")}Save exam</button></div>
+  <div class="card">${head("exam","All exams ("+L.length+")","pink")}${L.map(x=>`<div class="item"><span class="dot ${x.date<t?"off":"exam"}"></span><div><b>${esc(x.code)} · ${esc((DRAFT.courses[x.code]||{}).name||"")}</b><small>${esc(nice(x.date))} · ${esc(x.slot)}${x.upd?" · "+esc(x.upd):""}${x.date<t?" · over":""}</small></div><div class="acts"><button class="btn soft sm" data-act="exEdit" data-id="${esc(x.code)}">${svg("edit")}Move</button><button class="btn bad sm" data-act="exDel" data-id="${esc(x.code)}" aria-label="Remove">${svg("trash")}</button></div></div>`).join("")||'<p class="empty">No exams yet.</p>'}</div>`;}
+
+/* ---------- Mess ---------- */
+function vMess(){const m=DRAFT.mess,days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],day=window.MDAY||"Monday";
+  return `<div class="card">${head("mess","Mess menu","warn")}<p class="hint">One line per dish. Put * in front of token items (e.g. *Omelette). No prices.</p>
+  <div class="chips" role="group" aria-label="Day" style="margin-bottom:12px">${days.map(d=>`<button type="button" data-act="mDay" data-id="${d}" aria-pressed="${d===day}">${d.slice(0,3)}</button>`).join("")}</div>
+  <div class="row">${m.meals.map(ml=>`<label>${esc(ml.l)} <span class="cnt">${esc(ml.s)}–${esc(ml.e)}</span><textarea data-meal="${esc(ml.k)}">${esc(((m.menu[day]||{})[ml.k]||[]).join("\n"))}</textarea></label>`).join("")}</div>
+  <button class="btn acc" data-act="messSave">${svg("check")}Save ${day}</button></div>
+  <div class="card">${head("history","Meal timings","warn")}${m.meals.map((ml,i)=>`<div class="row"><label>${esc(ml.l)} from<input type="time" data-ms="${i}" value="${esc(ml.s)}"></label><label>till<input type="time" data-me="${i}" value="${esc(ml.e)}"></label></div>`).join("")}
+  <label>Menu valid from<input id="mFrom" type="date" value="${esc(m.from||"")}"></label><button class="btn acc" data-act="mealSave">${svg("check")}Save timings</button></div>`;}
+
+/* ---------- Help Q&A ---------- */
+const goLabel=g=>(GO_OPTS.find(x=>x[0]===g)||["",""])[1];
+function vFaq(){const custom=Array.isArray(DRAFT.faq)&&DRAFT.faq.length,L=custom?DRAFT.faq:FAQ_DEF;
+  const e=EDIT&&EDIT.k==="faq"&&custom?DRAFT.faq.find(x=>x.id===EDIT.id):null,f=e||{cat:"start",q:"",a:"",go:"",k:""};
+  const list=FAQ_CATS.map(([c,l])=>{const I=L.filter(x=>x.cat===c);if(!I.length)return "";
+    return `<h3>${l}</h3>`+I.map(x=>{const i=L.indexOf(x);return `<div class="item"><div><b>${esc(x.q)}</b><small>${x.go?"Show me → "+esc(goLabel(x.go)):"No button"}</small><span class="hint">${esc(x.a.length>150?x.a.slice(0,150)+"…":x.a)}</span></div>${custom?`<div class="acts"><button class="btn soft sm" data-act="fqUp" data-id="${i}" aria-label="Move up">${svg("up")}</button><button class="btn soft sm" data-act="fqDown" data-id="${i}" aria-label="Move down">${svg("down")}</button><button class="btn soft sm" data-act="fqEdit" data-id="${esc(x.id)}">${svg("edit")}Edit</button><button class="btn bad sm" data-act="fqDel" data-id="${esc(x.id)}" aria-label="Remove">${svg("trash")}</button></div>`:""}</div>`;}).join("");}).join("");
+  const form=`<div class="card">${head("faq",e?"Edit question":"Add a question")}${e?`<div class="editing">${svg("edit")}<span>Editing “${esc(e.q)}”.</span></div>`:""}
+   <div class="row"><label>Section<select id="fC">${FAQ_CATS.map(([c,l])=>`<option value="${c}" ${f.cat===c?"selected":""}>${l}</option>`).join("")}</select></label>
+   <label>“Show me” takes students to<select id="fG">${GO_OPTS.map(([g,l])=>`<option value="${g}" ${f.go===g?"selected":""}>${l}</option>`).join("")}</select></label></div>
+   <label>Question<input id="fQ" maxlength="90" value="${esc(f.q)}" placeholder="Write it the way students ask it"></label>
+   <label>Answer<textarea id="fA" maxlength="500" placeholder="Short and direct. Say where to tap.">${esc(f.a)}</textarea></label>
+   <label>Extra search words (optional)<input id="fK" maxlength="120" value="${esc(f.k||"")}" placeholder="e.g. bunk skip leave"></label>
+   <div class="btns">${e?`<button class="btn acc" data-act="fqSave">${svg("check")}Save changes</button><button class="btn soft" data-act="fqCancel">Cancel</button>`:`<button class="btn acc" data-act="fqAdd">${svg("plus")}Add question</button>`}</div></div>`;
+  return `<div class="card">${head("faq","Help questions in the app")}<p class="hint">Students find these in Account → Questions & answers. Each can have a “Show me” button that opens the right place in MK.</p>
+   ${custom?`<p class="hint"><span class="tag acc">Your list</span> ${L.length} questions. <button class="btn soft sm" data-act="fqReset">Go back to the built-in list</button></p>`:`<p class="hint"><span class="tag">Built-in</span> MK comes with these ${L.length} questions. To change or add any, copy them into your list first.</p><button class="btn acc" data-act="fqCopy">${svg("edit")}Edit these questions</button>`}</div>
+   ${custom?form:""}<div class="card">${list}</div>`;}
+
+/* ---------- More ---------- */
+function vMore(){return `<div class="tiles">${MORE.map(([k,l,s])=>`<button class="qa" data-tab="${k}"><span class="ci">${svg(k)}</span><span>${l}<small>${s}</small></span></button>`).join("")}</div>`;}
 function vCourse(){const C=DRAFT.courses;
-  return `<div class="card"><h2>Subjects</h2><p class="hint">Names, short forms (2–4 letters), staff and room shown in MK. Students' own edits always win on their phone.</p>
-  ${Object.keys(C).sort().map(k=>`<details><summary><b>${esc(k)}</b> · ${esc(C[k].name)} <span class="hint">${esc(C[k].short||"")}</span></summary>
+  return `<div class="card">${head("course","Subjects")}<p class="hint">Names, short forms (2–4 letters), staff and room shown in MK. Students' own edits always win on their phone.</p>
+  ${Object.keys(C).sort().map(k=>`<details class="sub"><summary><b>${esc(k)}</b> · ${esc(C[k].name)} <span class="hint">${esc(C[k].short||"")}</span></summary>
    <div class="row"><label>Name<input data-c="${k}" data-f="name" value="${esc(C[k].name||"")}"></label><label>Short<input data-c="${k}" data-f="short" maxlength="4" value="${esc(C[k].short||"")}"></label></div>
    <div class="row"><label>Staff<input data-c="${k}" data-f="staff" value="${esc(C[k].staff||"")}"></label><label>Room<input data-c="${k}" data-f="room" value="${esc(C[k].room||"")}"></label></div></details>`).join("")}
-  <h3>Add a subject</h3><div class="row"><label>Code<input id="nC" maxlength="10"></label><label>Short<input id="nS" maxlength="4"></label></div><label>Name<input id="nN"></label><button class="btn acc" data-act="courseAdd">Add subject</button></div>`;}
-function vPaste(){return `<div class="card"><h2>Paste an update from Claude</h2>
-  <p class="hint">Got a notice on paper, a PDF or an Excel sheet? Send it to Claude and say <b>“MK update”</b>. Paste the code you get back here, check the list of changes, then Publish.</p>
+  <h3>Add a subject</h3><div class="row"><label>Code<input id="nC" maxlength="10"></label><label>Short<input id="nS" maxlength="4"></label></div><label>Name<input id="nN"></label><button class="btn acc" data-act="courseAdd">${svg("plus")}Add subject</button></div>`;}
+function vApp(){const U=DRAFT.appUpdate||{},L=DRAFT.links||{};
+  return `<div class="grid2"><div class="card">${head("dl","“Update available” banner","acc")}<p class="hint">After a new version is live on the Play Store, enter its version code here. Phones with an older version see a banner with an Update button.</p>
+  <div class="row"><label>Version code<input id="uC" inputmode="numeric" value="${esc(U.latest||"")}" placeholder="e.g. 2"></label><label>Version name<input id="uN" maxlength="12" value="${esc(U.name||"")}" placeholder="e.g. 1.1"></label></div>
+  <label>What's new (short)<input id="uW" maxlength="110" value="${esc(U.notes||"")}" placeholder="e.g. Help answers and links in announcements"></label>
+  <p class="hint">Find both in Android Studio: <b>app/build.gradle</b> → versionCode and versionName.</p>
+  <div class="btns"><button class="btn acc" data-act="updSave">${svg("check")}Save</button>${DRAFT.appUpdate?`<button class="btn soft" data-act="updOff">Remove banner</button>`:""}</div></div>
+  <div class="card">${head("link","App links","teal")}<p class="hint">Rows appear in MK's Account → Help only when a link is filled in.</p>
+  <label>Feedback form (Google Forms pre-filled link with {text})<input id="lF" value="${esc(L.feedback||"")}" placeholder="https://docs.google.com/forms/d/e/…&entry.123={text}" autocapitalize="off"></label>
+  <label>Play Store link<input id="lP" value="${esc(L.app||"")}" placeholder="https://play.google.com/store/apps/details?id=com.mohankumar.mk" autocapitalize="off"></label>
+  <label>Instagram page<input id="lI" value="${esc(L.instagram||"")}" placeholder="https://instagram.com/…" autocapitalize="off"></label>
+  <label>WhatsApp channel<input id="lW" value="${esc(L.whatsapp||"")}" placeholder="https://whatsapp.com/channel/…" autocapitalize="off"></label>
+  <button class="btn acc" data-act="linkSave">${svg("check")}Save links</button></div></div>`;}
+function vPaste(){return `<div class="card">${head("paste","Paste an update from Claude","warn")}
+  <p class="hint">Got a notice on paper, a PDF or an Excel sheet? Send it to Claude and say <b>“MK update”</b>. Paste the code you get back here, check the list of changes, then publish.</p>
   <textarea id="pIn" class="code" placeholder='{"mk_update":1, ...}'></textarea>
   <button class="btn acc" data-act="pasteApply">Check and add to draft</button><div id="pOut"></div></div>`;}
-function vHist(){return `<div class="card"><h2>Restore an earlier version</h2><p class="hint">Published something wrong? Pick an earlier version, check it, then Publish. Phones switch back on their next refresh.</p><button class="btn soft" data-act="histLoad">Show recent versions</button><div id="hOut"></div></div>`;}
-function vSet(){return `<div class="card"><h2>Settings</h2><p class="hint">Saved only in this browser. Never share the token.</p>
+function vHist(){return `<div class="card">${head("history","Restore an earlier version")}<p class="hint">Published something wrong? Pick an earlier version, check it, then publish. Phones switch back on their next check.</p><button class="btn soft" data-act="histLoad">Show recent versions</button><div id="hOut"></div></div>`;}
+function vSet(){return `<div class="card">${head("set","Settings")}<p class="hint">Saved only in this browser. Never share the token.</p>
   <label>GitHub user name<input id="sO" value="${esc(CFG.owner||"")}" autocapitalize="off"></label>
   <div class="row"><label>Repository<input id="sR" value="${esc(CFG.repo||"mk-data")}"></label><label>Branch<input id="sB" value="${esc(CFG.branch||"main")}"></label></div>
   <label>Access token (fine-grained, Contents: Read and write, only mk-data)<input id="sT" type="password" value="${esc(CFG.token||"")}" autocomplete="off"></label>
-  <button class="btn acc" data-act="setSave">Save and load data</button> <button class="btn soft" data-act="setForget">Forget token</button></div>
-  ${DRAFT?`<div class="card"><h2>App links</h2><label>Feedback form link (Google Forms pre-filled link with {text})<input id="lF" value="${esc((DRAFT.links||{}).feedback||"")}" placeholder="https://docs.google.com/forms/d/e/.../viewform?usp=pp_url&entry.123={text}"></label><button class="btn acc" data-act="linkSave">Save to draft</button></div>`:""}`;}
+  <div class="btns"><button class="btn acc" data-act="setSave">Save and load data</button><button class="btn soft" data-act="setForget">Forget token</button></div></div>`;}
 
 /* ---------- "MK update" codes from Claude ---------- */
-function applyUpdate(D,u){const log=[],uid=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
-  if(!u||u.mk_update!==1)throw new Error('This is not an MK update code (it must start with {"mk_update":1).');
-  const A=u.announcements||{};(A.add||[]).forEach(a=>{D.announcements.push({id:uid("a"),t:String(a.t||a.title),b:String(a.b||a.body||""),to:String(a.to||"Everyone"),date:a.date||today()});log.push("announcement");});
+function applyUpdate(D,u){if(!u||u.mk_update!==1)throw new Error('This is not an MK update code (it must start with {"mk_update":1).');
+  const A=u.announcements||{};(A.add||[]).forEach(a=>{const o={id:uid("a"),t:String(a.t||a.title),b:String(a.b||a.body||""),to:String(a.to||"Everyone"),date:a.date||today()};if(isHttps(a.link)){o.link=a.link;if(a.btn)o.btn=String(a.btn).slice(0,30);}if(a.until)o.until=a.until;D.announcements.push(o);});
   (A.remove||[]).forEach(id=>{D.announcements=D.announcements.filter(x=>x.id!==id);});
   const C=u.calendar||{};(C.add||[]).forEach(x=>{const o={id:uid("c"+String(x.date).replace(/-/g,"")),date:x.date,t:String(x.t),cat:x.cat||"key"};if(x.end)o.end=x.end;if(x.upd)o.upd=String(x.upd);D.calendar.push(o);});
   (C.remove||[]).forEach(id=>{D.calendar=D.calendar.filter(x=>x.id!==id);});
@@ -185,36 +340,69 @@ function applyUpdate(D,u){const log=[],uid=p=>p+Date.now().toString(36)+Math.ran
   (E.remove||[]).forEach(c=>{D.exams=D.exams.filter(e=>e.code!==c);});
   if(u.courses&&u.courses.set)Object.entries(u.courses.set).forEach(([k,v])=>{D.courses[k]=Object.assign(D.courses[k]||{},v);});
   if(u.mess){const m=u.mess;if(m.menu)Object.entries(m.menu).forEach(([d,v])=>{D.mess.menu[d]=Object.assign(D.mess.menu[d]||{},v);});["meals","from","daily","specials","tokens","notes","portal"].forEach(k=>{if(m[k]!==undefined)D.mess[k]=m[k];});}
-  ["periods","breaks","term","examSlots","links"].forEach(k=>{if(u[k]!==undefined)D[k]=u[k];});
+  ["periods","breaks","term","examSlots"].forEach(k=>{if(u[k]!==undefined)D[k]=u[k];});
+  if(u.links)D.links=Object.assign({},D.links,u.links);
   return D;}
 
 /* ---------- actions ---------- */
+const go=t=>{TAB=t;EDIT=null;draw();scrollTo({top:0,behavior:"smooth"});};
 const ACT={
- annAdd(){const t=$("#aT").value.trim();if(!t)return toast("Add a title");DRAFT.announcements.push({id:"a"+Date.now().toString(36),t,b:$("#aB").value.trim(),to:$("#aTo").value.trim()||"Everyone",date:$("#aD").value||today()});draw();mark();toast("Added to draft. Tap Publish to send.");},
- annDel(id){DRAFT.announcements=DRAFT.announcements.filter(x=>x.id!==id);draw();mark();},
- calAdd(){const d=$("#cD").value,t=$("#cT").value.trim();if(!d||!t)return toast("Date and title needed");const o={id:"c"+d.replace(/-/g,"")+Date.now().toString(36).slice(-3),date:d,t,cat:$("#cC").value};const e=$("#cE").value;if(e&&e>d)o.end=e;const up=$("#cU").value.trim();if(up)o.upd=up;DRAFT.calendar.push(o);draw();mark();},
- calDel(id){DRAFT.calendar=DRAFT.calendar.filter(x=>x.id!==id);draw();mark();},
- exAdd(){const c=$("#xC").value.trim().toUpperCase(),d=$("#xD").value;if(!c||!d)return toast("Code and date needed");const o={code:c,date:d,slot:$("#xS").value},u=$("#xU").value.trim();if(u)o.upd=u;DRAFT.exams=DRAFT.exams.filter(x=>x.code!==c);DRAFT.exams.push(o);if(!DRAFT.courses[c])toast("Note: "+c+" isn't in Subjects yet. Add its name there.");draw();mark();},
- exDel(c){DRAFT.exams=DRAFT.exams.filter(x=>x.code!==c);draw();mark();},
- messSave(){const d=$("#mDay").value;DRAFT.mess.menu[d]=DRAFT.mess.menu[d]||{};document.querySelectorAll("[data-meal]").forEach(t=>{DRAFT.mess.menu[d][t.dataset.meal]=t.value.split("\n").map(s=>s.trim()).filter(Boolean);});mark();toast(d+" saved to draft");},
+ hidePick(v){document.querySelectorAll('[data-act="hidePick"]').forEach(b=>b.setAttribute("aria-pressed",b.dataset.id===v));HIDE_PICK=v;$("#untilWrap").classList.toggle("hide",v!=="pick");preview();},
+ annAdd(){const f=annForm();if(!annValid(f))return;const o={id:"a"+Date.now().toString(36),t:f.t,b:f.b,to:f.to,date:f.date};if(f.link){o.link=f.link;if(f.btn)o.btn=f.btn;}if(f.until)o.until=f.until;
+   change(()=>{DRAFT.announcements.push(o);},"Added to draft. Tap Review & publish to send.");},
+ annEdit(id){EDIT={k:"ann",id};TAB="ann";draw();scrollTo({top:0,behavior:"smooth"});},
+ annSave(){const f=annForm();if(!annValid(f))return;const a=DRAFT.announcements.find(x=>x.id===EDIT.id);if(!a)return;
+   change(()=>{a.t=f.t;a.b=f.b;a.to=f.to;a.date=f.date;["link","btn","until"].forEach(k=>delete a[k]);if(f.link){a.link=f.link;if(f.btn)a.btn=f.btn;}if(f.until)a.until=f.until;a.edited=true;EDIT=null;},"Saved. No new notification will be sent.");},
+ annCancel(){EDIT=null;draw();},
+ annDel(id){const a=DRAFT.announcements.find(x=>x.id===id);change(()=>{DRAFT.announcements=DRAFT.announcements.filter(x=>x.id!==id);if(EDIT&&EDIT.id===id)EDIT=null;},"Removed “"+(a?a.t:"")+"”",true);},
+ cleanOld(){const n=DRAFT.announcements.filter(a=>!annLive(a)).length;change(()=>{DRAFT.announcements=DRAFT.announcements.filter(annLive);},"Removed "+n+" hidden announcement"+(n>1?"s":""),true);},
+ calAdd(){const d=$("#cD").value,t=$("#cT2").value.trim();if(!d||!t)return toast("Date and title needed");const o={id:"c"+d.replace(/-/g,"")+Date.now().toString(36).slice(-3),date:d,t,cat:$("#cC").value};const e=$("#cE").value;if(e&&e>d)o.end=e;const up=$("#cU").value.trim();if(up)o.upd=up;change(()=>DRAFT.calendar.push(o),"Date added to draft");},
+ calEdit(id){EDIT={k:"cal",id};draw();scrollTo({top:0,behavior:"smooth"});},
+ calSave(){const x=DRAFT.calendar.find(c=>c.id===EDIT.id),d=$("#cD").value,t=$("#cT2").value.trim();if(!x)return;if(!d||!t)return toast("Date and title needed");
+   change(()=>{x.date=d;x.t=t;x.cat=$("#cC").value;const e=$("#cE").value;if(e&&e>d)x.end=e;else delete x.end;const up=$("#cU").value.trim();if(up)x.upd=up;else delete x.upd;EDIT=null;},"Saved to draft");},
+ calCancel(){EDIT=null;draw();},
+ calDel(id){const x=DRAFT.calendar.find(c=>c.id===id);change(()=>{DRAFT.calendar=DRAFT.calendar.filter(c=>c.id!==id);},"Removed “"+(x?x.t:"")+"”",true);},
+ exAdd(){let c=$("#xC").value;if(c==="_new")c=$("#xNew").value.trim().toUpperCase();const d=$("#xD").value;if(!c||!d)return toast("Course and date needed");const o={code:c,date:d,slot:$("#xS").value},u=$("#xU").value.trim();if(u)o.upd=u;
+   change(()=>{DRAFT.exams=DRAFT.exams.filter(x=>x.code!==c);DRAFT.exams.push(o);},DRAFT.courses[c]?"Exam saved to draft":"Saved. Add "+c+"'s name in Subjects too.");},
+ exEdit(code){const x=DRAFT.exams.find(e=>e.code===code);if(!x)return;$("#xC").value=DRAFT.courses[code]?code:"_new";$("#xNewW").classList.toggle("hide",!!DRAFT.courses[code]);if(!DRAFT.courses[code])$("#xNew").value=code;$("#xD").value=x.date;$("#xS").value=x.slot;$("#xU").value=x.upd||"";scrollTo({top:0,behavior:"smooth"});$("#xD").focus();},
+ exDel(c){change(()=>{DRAFT.exams=DRAFT.exams.filter(x=>x.code!==c);},"Removed exam "+c,true);},
+ mDay(d){window.MDAY=d;draw();},
+ messSave(){const d=window.MDAY||"Monday";DRAFT.mess.menu[d]=DRAFT.mess.menu[d]||{};document.querySelectorAll("[data-meal]").forEach(t=>{DRAFT.mess.menu[d][t.dataset.meal]=t.value.split("\n").map(s=>s.trim()).filter(Boolean);});mark();toast(d+" saved to draft");},
  mealSave(){DRAFT.mess.meals.forEach((m,i)=>{m.s=document.querySelector(`[data-ms="${i}"]`).value;m.e=document.querySelector(`[data-me="${i}"]`).value;});const f=$("#mFrom").value;if(f)DRAFT.mess.from=f;mark();toast("Timings saved to draft");},
- courseAdd(){const c=$("#nC").value.trim().toUpperCase(),n=$("#nN").value.trim();if(!c||!n)return toast("Code and name needed");DRAFT.courses[c]={name:n,short:$("#nS").value.trim().toUpperCase()||c};draw();mark();},
+ fqCopy(){change(()=>{DRAFT.faq=clone(FAQ_DEF);},"Copied. Now edit, add or remove questions.");},
+ fqReset(){if(!confirm("Use MK's built-in questions again? Your own list will be removed (you can undo before publishing)."))return;change(()=>{DRAFT.faq=[];EDIT=null;},"Back to the built-in list",true);},
+ fqAdd(){const o={id:uid("q"),cat:$("#fC").value,q:$("#fQ").value.trim(),a:$("#fA").value.trim(),go:$("#fG").value,k:$("#fK").value.trim()};if(!o.q||!o.a)return toast("Question and answer needed");change(()=>DRAFT.faq.push(o),"Question added to draft");},
+ fqEdit(id){EDIT={k:"faq",id};draw();scrollTo({top:0,behavior:"smooth"});},
+ fqSave(){const x=DRAFT.faq.find(f=>f.id===EDIT.id),q=$("#fQ").value.trim(),a=$("#fA").value.trim();if(!x)return;if(!q||!a)return toast("Question and answer needed");
+   change(()=>{Object.assign(x,{cat:$("#fC").value,q,a,go:$("#fG").value,k:$("#fK").value.trim()});EDIT=null;},"Saved to draft");},
+ fqCancel(){EDIT=null;draw();},
+ fqDel(id){const x=DRAFT.faq.find(f=>f.id===id);change(()=>{DRAFT.faq=DRAFT.faq.filter(f=>f.id!==id);},"Removed “"+(x?x.q:"")+"”",true);},
+ fqUp(i){i=+i;const L=DRAFT.faq,c=L[i].cat;let j=i-1;while(j>=0&&L[j].cat!==c)j--;if(j<0)return;change(()=>{[L[i],L[j]]=[L[j],L[i]];});},
+ fqDown(i){i=+i;const L=DRAFT.faq,c=L[i].cat;let j=i+1;while(j<L.length&&L[j].cat!==c)j++;if(j>=L.length)return;change(()=>{[L[i],L[j]]=[L[j],L[i]];});},
+ updSave(){const c=parseInt($("#uC").value,10);if(!(c>0))return toast("Version code must be a number, e.g. 2");change(()=>{DRAFT.appUpdate={latest:c,name:$("#uN").value.trim(),notes:$("#uW").value.trim()};},"Saved to draft. Publish after the update is live on Play.");},
+ updOff(){change(()=>{delete DRAFT.appUpdate;},"Banner removed from draft",true);},
+ courseAdd(){const c=$("#nC").value.trim().toUpperCase(),n=$("#nN").value.trim();if(!c||!n)return toast("Code and name needed");change(()=>{DRAFT.courses[c]={name:n,short:$("#nS").value.trim().toUpperCase()||c};},"Subject added");},
  pasteApply(){const out=$("#pOut");try{const raw=$("#pIn").value.trim().replace(/^```(json)?|```$/g,"");const u=JSON.parse(raw);const before=clone(DRAFT);applyUpdate(DRAFT,u);
-   const d=diff(before,DRAFT);out.innerHTML=`<h3>Added to draft</h3><ul class="diff">${d.map(x=>`<li class="${x[0]}">${esc(x[1])}</li>`).join("")||"<li>No changes</li>"}</ul><p class="hint">Check these, then tap Publish.</p>`;mark();}
+   const d=diff(before,DRAFT);out.innerHTML=`<h3>Added to draft</h3><ul class="diff">${d.map(x=>`<li class="${x[0]}">${esc(x[1])}</li>`).join("")||"<li>No changes</li>"}</ul><p class="hint">Check these, then tap Review & publish.</p>`;mark();}
    catch(e){out.innerHTML='<p class="bad">'+esc(e.message)+"</p>";}},
  async histLoad(){const o=$("#hOut");o.textContent="Loading…";const r=await api("/commits?path=data.json&per_page=10&sha="+(CFG.branch||"main"));if(!r.ok){o.textContent="Couldn't load history";return;}
-   const L=await r.json();o.innerHTML=L.map((c,i)=>`<div class="item"><div><b>${esc(c.commit.message.split("\n")[0])}</b><small>${esc(new Date(c.commit.author.date).toLocaleString())}${i===0?" · live now":""}</small></div>${i?`<button class="btn soft sm" data-act="histUse" data-id="${c.sha}">Use this</button>`:""}</div>`).join("");},
- async histUse(sha){const r=await api("/contents/data.json?ref="+sha);if(!r.ok)return toast("Couldn't load that version");const j=await r.json();DRAFT=JSON.parse(b64d(j.content));DRAFT.version=LIVE.version;draw();mark();toast("Loaded into draft. Review, then Publish.");},
- setSave(){CFG.owner=$("#sO").value.trim();CFG.repo=$("#sR").value.trim()||"mk-data";CFG.branch=$("#sB").value.trim()||"main";CFG.token=$("#sT").value.trim();saveCfg();TAB="ann";load();},
- linkSave(){const u=$("#lF").value.trim();if(u&&!/^https:\/\//.test(u))return toast("Link must start with https://");DRAFT.links=Object.assign({},DRAFT.links,{feedback:u});mark();toast("Saved to draft. Tap Publish.");},
+   const L=await r.json();o.innerHTML=L.map((c,i)=>`<div class="item"><div><b>${esc(c.commit.message.split("\n")[0])}</b><small>${esc(new Date(c.commit.author.date).toLocaleString())}${i===0?" · live now":""}</small></div>${i?`<div class="acts"><button class="btn soft sm" data-act="histUse" data-id="${c.sha}">Use this</button></div>`:""}</div>`).join("");},
+ async histUse(sha){const r=await api("/contents/data.json?ref="+sha);if(!r.ok)return toast("Couldn't load that version");const j=await r.json();DRAFT=JSON.parse(b64d(j.content));norm(DRAFT);DRAFT.version=LIVE.version;draw();mark();toast("Loaded into draft. Review, then publish.");},
+ setSave(){CFG.owner=$("#sO").value.trim();CFG.repo=$("#sR").value.trim()||"mk-data";CFG.branch=$("#sB").value.trim()||"main";CFG.token=$("#sT").value.trim();saveCfg();TAB="home";load();},
+ linkSave(){const v={feedback:$("#lF").value.trim(),app:$("#lP").value.trim(),instagram:$("#lI").value.trim(),whatsapp:$("#lW").value.trim()};
+   const bad=Object.entries(v).find(([k,u])=>u&&!isHttps(u));if(bad)return toast("Links must start with https://");
+   change(()=>{const L=Object.assign({},DRAFT.links);Object.entries(v).forEach(([k,u])=>{if(u)L[k]=u;else delete L[k];});DRAFT.links=L;},"Links saved to draft");},
  setForget(){delete CFG.token;saveCfg();toast("Token removed from this browser");draw();}
 };
-document.addEventListener("click",e=>{const t=e.target.closest("[data-tab]");if(t){TAB=t.dataset.tab;draw();return;}
-  const a=e.target.closest("[data-act]");if(a&&ACT[a.dataset.act])ACT[a.dataset.act](a.dataset.id);});
-document.addEventListener("change",e=>{if(e.target.id==="mDay"){window.MDAY=e.target.value;draw();}
+document.addEventListener("click",e=>{if(e.target.id==="undoBtn"&&UNDO){DRAFT=UNDO;UNDO=null;EDIT=null;$("#toast").style.display="none";draw();mark();return;}
+  const t=e.target.closest("[data-tab]");if(t){go(t.dataset.tab);return;}
+  const a=e.target.closest("[data-act]");if(!a)return;const k=a.dataset.act;
+  if(k.startsWith("tab:")){go(k.slice(4));return;}if(ACT[k])ACT[k](a.dataset.id);});
+document.addEventListener("input",e=>{if(["aT","aB","aL","aBt","aTo","aD","aU"].includes(e.target.id))preview();});
+document.addEventListener("change",e=>{if(e.target.id==="xC")$("#xNewW").classList.toggle("hide",e.target.value!=="_new");
   if(e.target.dataset.c){const c=DRAFT.courses[e.target.dataset.c];const v=e.target.value.trim();if(v)c[e.target.dataset.f]=e.target.dataset.f==="short"?v.toUpperCase():v;else delete c[e.target.dataset.f];mark();}});
-$("#pubBtn").onclick=publish;
-$("#reviewBtn").onclick=()=>{const d=diff(LIVE,DRAFT);alert(d.map(x=>({add:"+ ",del:"− ",chg:"~ "})[x[0]]+x[1]).join("\n"));};
+$("#pubBtn").onclick=review;$("#dlgYes").onclick=publish;$("#dlgNo").onclick=()=>$("#dlg").close();
+$("#discardBtn").onclick=()=>{if(!confirm("Throw away all unpublished changes?"))return;DRAFT=clone(LIVE);norm(DRAFT);EDIT=null;draw();mark();toast("Draft cleared");};
 window.addEventListener("beforeunload",e=>{if(LIVE&&diff(LIVE,DRAFT).length){e.preventDefault();e.returnValue="";}});
 load();draw();
 </script>
