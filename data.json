@@ -1,7 +1,7 @@
 {
  "app": "mk",
  "schema": 2,
- "version": 2026110801,
+ "version": 2026110802,
  "updated": "2026-11-08",
  "batch": "II MBA 2025-27 · PSG Institute of Management",
  "periods": [
@@ -1161,6 +1161,13 @@
    "id": "amw7f2j3n",
    "t": "Test",
    "b": "Diwali",
+   "to": "Everyone",
+   "date": "2026-11-08"
+  },
+  {
+   "id": "amw7gofm8",
+   "t": "Test 02",
+   "b": "Happy Diwali",
    "to": "Everyone",
    "date": "2026-11-08"
   }
