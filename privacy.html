@@ -146,7 +146,7 @@ footer b{color:var(--ink2)}
   <h1>Your data stays on your phone. <span class="pz" role="img" aria-label="peace">✌️</span></h1>
   <p class="lead">MK is an unofficial app made by a student for students. It is not affiliated with, endorsed by or run by PSG Institutions.</p>
   <div class="pills">
-    <span class="pill"><svg><use href="#cal"/></svg>Last updated: 9 November 2026</span>
+    <span class="pill"><svg><use href="#cal"/></svg>Last updated: 13 November 2026</span>
     <span class="pill"><svg><use href="#clock"/></svg>2 minute read</span>
     <span class="pill"><svg><use href="#info"/></svg>Unofficial student app</span>
   </div>
@@ -155,7 +155,7 @@ footer b{color:var(--ink2)}
 <main><div class="wrap">
   <div class="glance" aria-label="At a glance">
     <div class="g"><i><svg class="i"><use href="#check"/></svg></i><div><b>No accounts or servers</b><span>MK has nowhere to send your data</span></div></div>
-    <div class="g"><i><svg class="i"><use href="#check"/></svg></i><div><b>Password never seen</b><span>You type it on the real eCampus page</span></div></div>
+    <div class="g"><i><svg class="i"><use href="#check"/></svg></i><div><b>Password stays on your phone</b><span>Saved only if you choose Stay signed in, encrypted</span></div></div>
     <div class="g"><i><svg class="i"><use href="#check"/></svg></i><div><b>No ads or analytics</b><span>No tracking of any kind</span></div></div>
     <div class="g"><i><svg class="i"><use href="#check"/></svg></i><div><b>Nothing sold or shared</b><span>Not to anyone, ever</span></div></div>
   </div>
@@ -182,9 +182,9 @@ footer b{color:var(--ink2)}
         <p class="sub">Your eCampus data goes from eCampus to your phone and stays there. MK only downloads public campus information; it uploads nothing about you.</p>
         <div class="flow">
           <div class="node"><div class="ni"><svg><use href="#globe"/></svg></div><b>eCampus</b><small>The official website. You log in here yourself.</small></div>
-          <div class="arr"><svg><use href="#arrow"/></svg>Your attendance and timetable</div>
+          <div class="arr"><svg><use href="#arrow"/></svg>Your attendance, timetable and CA marks</div>
           <div class="node me"><div class="ni"><svg><use href="#phone"/></svg></div><b>Your phone</b><small>Everything MK keeps is stored here only</small>
-            <ul><li>Attendance</li><li>Timetable</li><li>Notes and plans</li><li>Name and settings</li></ul></div>
+            <ul><li>Attendance</li><li>Timetable</li><li>CA marks</li><li>Notes and plans</li><li>Name and settings</li><li>eCampus login, only with Stay signed in</li></ul></div>
           <div class="arr"><svg><use href="#arrowL"/></svg>Download only</div>
           <div class="node"><div class="ni"><svg><use href="#file"/></svg></div><b>Public campus file</b><small>Dates, exams, mess menu and announcements, on GitHub</small></div>
         </div>
@@ -197,8 +197,8 @@ footer b{color:var(--ink2)}
         <table class="tbl">
           <thead><tr><th>Data</th><th>Does MK collect it?</th><th>Where it lives</th></tr></thead>
           <tbody>
-            <tr><td>eCampus password</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>Never seen</span></td><td data-l="Where it lives">Only typed on the eCampus page</td></tr>
-            <tr><td>Attendance and timetable</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No</span></td><td data-l="Where it lives">Your phone only</td></tr>
+            <tr><td>eCampus roll no. and password</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No, never sent</span></td><td data-l="Where it lives">Saved encrypted on your phone only if you turn on Stay signed in</td></tr>
+            <tr><td>Attendance, timetable and CA marks</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No</span></td><td data-l="Where it lives">Your phone only</td></tr>
             <tr><td>Name, notes, plans, settings</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No</span></td><td data-l="Where it lives">Your phone only</td></tr>
             <tr><td>Location, contacts, photos, files</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>Not accessed</span></td><td data-l="Where it lives">MK has no permission to read them</td></tr>
             <tr><td>Ads, analytics, tracking</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>None</span></td><td data-l="Where it lives">Not used in MK</td></tr>
@@ -213,11 +213,17 @@ footer b{color:var(--ink2)}
 
       <section class="sec" id="s2"><span class="ic"><svg><use href="#lock"/></svg><em>2</em></span><div>
         <h2>eCampus login</h2>
-        <p>When you connect eCampus, you type your roll number and password on the official eCampus web page shown inside the app. MK never reads, sees or stores your password. eCampus keeps you logged in with its own cookie, stored only on your phone.</p></div></section>
+        <p>When you connect eCampus, you type your roll number and password on the official eCampus web page shown inside the app. eCampus keeps you logged in with its own cookie, stored only on your phone. eCampus logs everyone out after a few hours.</p>
+        <p><b>Stay signed in (optional).</b> MK asks before connecting whether you want this, and it is off unless you choose it. If you turn it on, MK saves the roll number and password you type on the eCampus login page, so it can log you back in when eCampus logs you out. They are:</p>
+        <ul><li>encrypted with a key kept in your phone's secure Android Keystore, and stored only on your phone;</li>
+            <li>used only to log in to the official eCampus website (ecampus.psgtech.ac.in), never sent anywhere else, and never seen by MK's maker;</li>
+            <li>excluded from cloud backups and device transfers;</li>
+            <li>deleted automatically if eCampus does not accept them (MK never retries a wrong password), and deleted straight away when you turn Stay signed in off, disconnect, clear everything or uninstall MK.</li></ul>
+        <p>If you do not turn on Stay signed in, MK does not save your password and you log in on the eCampus page when it asks.</p></div></section>
 
       <section class="sec" id="s3"><span class="ic"><svg><use href="#phone"/></svg><em>3</em></span><div>
         <h2>Data stored on your phone</h2>
-        <p>After you log in, MK reads your attendance and timetable from eCampus and saves them on your phone. Your own edits are also saved only on your phone:</p>
+        <p>After you log in, MK reads your attendance, timetable and CA marks (Continuous Assessment marks page) from eCampus and saves them on your phone. Your own edits are also saved only on your phone:</p>
         <ul><li>subject names, short forms, rooms and staff</li><li>notes and your own plans</li><li>your name and settings</li></ul>
         <div class="hl"><svg class="i"><use href="#info"/></svg><span>This data is excluded from cloud backups and device transfers.</span></div></div></section>
 
@@ -244,7 +250,8 @@ footer b{color:var(--ink2)}
       <section class="sec" id="s8"><span class="ic"><svg><use href="#trash"/></svg><em>8</em></span><div id="delete">
         <h2>Deleting your data in MK – Campus Companion</h2>
         <p><b>Data on your phone</b> (attendance, timetable, notes, plans, name and settings) is deleted straight away when you do any of these:</p>
-        <ul><li><span class="path">Account → Disconnect</span> logs you out of eCampus and deletes your attendance and timetable.</li>
+        <ul><li><span class="path">Account → Disconnect</span> logs you out of eCampus and deletes your attendance, timetable, CA marks and any saved eCampus login.</li>
+            <li><span class="path">Account → Stay signed in</span> switched off deletes the saved eCampus login.</li>
             <li><span class="path">Account → Clear everything</span> deletes all of MK's data on your phone.</li>
             <li>Uninstalling MK deletes everything it stored.</li></ul>
         <p><b>Feedback you sent</b> through the feedback form is the only data MK's maker receives. To have it deleted, email <a href="mailto:mkapps2406@gmail.com?subject=Delete%20my%20MK%20feedback">mkapps2406@gmail.com</a> with the subject “Delete my MK feedback” and roughly when you sent it. It is deleted within 30 days and nothing is kept.</p>
