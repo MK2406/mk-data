@@ -22,9 +22,9 @@ def live_releases(get_json):
     out = []
     for track in TRACKS:
         status, body = get_json(API.format(pkg=PACKAGE, track=track))
-        if status == 404:                      # track not used yet (for example production before launch)
+        if status in (204, 404):               # track empty / not used yet (for example production before launch)
             continue
-        if status != 200:
+        if not 200 <= status < 300:
             raise SystemExit(f"Google Play answered {status} for track '{track}': {str(body)[:300]}")
         for r in (body or {}).get("releases", []):
             if r.get("releaseLifecycleState") != "RELEASE_LIFECYCLE_STATE_PUBLISHED":
@@ -71,6 +71,8 @@ def main():
 
     def get_json(url):
         r = session.get(url, timeout=30)
+        if r.status_code == 204 or not r.content:
+            return r.status_code, {}
         try:
             return r.status_code, r.json()
         except ValueError:
