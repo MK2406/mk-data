@@ -311,7 +311,7 @@ function vApp(){const U=DRAFT.appUpdate||{},L=DRAFT.links||{};
   <div class="row"><label>Version code<input id="uC" inputmode="numeric" value="${esc(U.latest||"")}" placeholder="e.g. 2"></label><label>Version name<input id="uN" maxlength="12" value="${esc(U.name||"")}" placeholder="e.g. 1.1"></label></div>
   <label>What's new (short)<input id="uW" maxlength="110" value="${esc(U.notes||"")}" placeholder="e.g. Help answers and links in announcements"></label>
   <p class="hint">Find both in Android Studio: <b>app/build.gradle</b> → versionCode and versionName.</p>
-  <details><summary class="hint" style="cursor:pointer;font-weight:700">Emergency: make old versions update (from MK 1.0.7)</summary>
+  <details><summary class="hint" style="cursor:pointer;font-weight:700">Emergency: make old versions update (from MK 1.0.8)</summary>
   <p class="hint">Only if old versions can't work any more, for example eCampus changed its pages. Phones below this version code see a full screen asking them to update and can't use MK until they do. Leave empty normally.</p>
   <div class="row"><label>Minimum version code<input id="uM" inputmode="numeric" value="${esc(U.min||"")}" placeholder="empty = off"></label></div>
   <label>Message (optional)<input id="uMm" maxlength="160" value="${esc(U.minMsg||"")}" placeholder="This version can't read eCampus any more. Please update."></label></details>
