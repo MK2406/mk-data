@@ -146,7 +146,7 @@ footer b{color:var(--ink2)}
   <h1>Your data stays on your phone. <span class="pz" role="img" aria-label="peace">✌️</span></h1>
   <p class="lead">MK is an unofficial app made by a student for students. It is not affiliated with, endorsed by or run by PSG Institutions.</p>
   <div class="pills">
-    <span class="pill"><svg><use href="#cal"/></svg>Last updated: 13 November 2026</span>
+    <span class="pill"><svg><use href="#cal"/></svg>Last updated: 14 November 2026</span>
     <span class="pill"><svg><use href="#clock"/></svg>2 minute read</span>
     <span class="pill"><svg><use href="#info"/></svg>Unofficial student app</span>
   </div>
@@ -214,11 +214,12 @@ footer b{color:var(--ink2)}
       <section class="sec" id="s2"><span class="ic"><svg><use href="#lock"/></svg><em>2</em></span><div>
         <h2>eCampus login</h2>
         <p>When you connect eCampus, you type your roll number and password on the official eCampus web page shown inside the app. eCampus keeps you logged in with its own cookie, stored only on your phone. eCampus logs everyone out after a few hours.</p>
-        <p><b>Stay signed in (optional).</b> MK asks before connecting whether you want this, and it is off unless you choose it. If you turn it on, MK saves the roll number and password you type on the eCampus login page, so it can log you back in when eCampus logs you out. They are:</p>
+        <p><b>Stay signed in (optional).</b> MK asks before connecting whether you want this, and it is off unless you choose it. If you turn it on, MK saves the roll number and password you type on the eCampus login page, so it can log you back in when eCampus logs you out, and so it can check eCampus about every 6 hours in the background for new CA marks and attendance changes (you can turn the background check off in Account). They are:</p>
         <ul><li>encrypted with a key kept in your phone's secure Android Keystore, and stored only on your phone;</li>
             <li>used only to log in to the official eCampus website (ecampus.psgtech.ac.in), never sent anywhere else, and never seen by MK's maker;</li>
             <li>excluded from cloud backups and device transfers;</li>
-            <li>deleted automatically if eCampus does not accept them (MK never retries a wrong password), and deleted straight away when you turn Stay signed in off, disconnect, clear everything or uninstall MK.</li></ul>
+            <li>deleted automatically if eCampus says the password is wrong (MK never keeps retrying a wrong password), and deleted straight away when you turn Stay signed in off, disconnect, clear everything or uninstall MK.</li></ul>
+        <p>The background check reads the same two eCampus pages as the app (attendance and CA marks), saves the result on your phone and shows a notification when something changed. Nothing is sent anywhere else.</p>
         <p>If you do not turn on Stay signed in, MK does not save your password and you log in on the eCampus page when it asks.</p></div></section>
 
       <section class="sec" id="s3"><span class="ic"><svg><use href="#phone"/></svg><em>3</em></span><div>
