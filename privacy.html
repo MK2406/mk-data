@@ -179,12 +179,12 @@ footer b{color:var(--ink2)}
       <section class="card" id="flow">
         <p class="kick">In one picture</p>
         <h2>How your data moves</h2>
-        <p class="sub">Your eCampus data goes from eCampus to your phone and stays there. MK only downloads public campus information; it uploads nothing about you.</p>
+        <p class="sub">Your data goes from PSG's own websites to your phone and stays there. MK only downloads public campus information; it uploads nothing about you.</p>
         <div class="flow">
-          <div class="node"><div class="ni"><svg><use href="#globe"/></svg></div><b>eCampus</b><small>The official website. You log in here yourself.</small></div>
-          <div class="arr"><svg><use href="#arrow"/></svg>Your attendance, timetable and CA marks</div>
+          <div class="node"><div class="ni"><svg><use href="#globe"/></svg></div><b>PSG websites</b><small>eCampus, Student Zone (exams) and, for hostel students, the hostel portal. Official PSG sites, one PSG login.</small></div>
+          <div class="arr"><svg><use href="#arrow"/></svg>Your attendance, timetable, CA marks, exams and seats, results, leave dates and hostel tokens</div>
           <div class="node me"><div class="ni"><svg><use href="#phone"/></svg></div><b>Your phone</b><small>Everything MK keeps is stored here only</small>
-            <ul><li>Attendance</li><li>Timetable</li><li>CA marks</li><li>Notes and plans</li><li>Name and settings</li><li>eCampus login, only with Stay signed in</li></ul></div>
+            <ul><li>Attendance</li><li>Timetable</li><li>CA marks</li><li>Exams, hall &amp; seat, results</li><li>Leave dates</li><li>Hostel tokens, room, mess</li><li>Notes and plans</li><li>Name and settings</li><li>PSG login, only with Stay signed in</li></ul></div>
           <div class="arr"><svg><use href="#arrowL"/></svg>Download only</div>
           <div class="node"><div class="ni"><svg><use href="#file"/></svg></div><b>Public campus file</b><small>Dates, exams, mess menu and announcements, on GitHub</small></div>
         </div>
@@ -197,12 +197,15 @@ footer b{color:var(--ink2)}
         <table class="tbl">
           <thead><tr><th>Data</th><th>Does MK collect it?</th><th>Where it lives</th></tr></thead>
           <tbody>
-            <tr><td>eCampus roll no. and password</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No, never sent</span></td><td data-l="Where it lives">Saved encrypted on your phone only if you turn on Stay signed in</td></tr>
+            <tr><td>PSG roll no. and password (eCampus login)</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No, never sent</span></td><td data-l="Where it lives">Saved encrypted on your phone only if you turn on Stay signed in</td></tr>
             <tr><td>Attendance, timetable and CA marks</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No</span></td><td data-l="Where it lives">Your phone only</td></tr>
+            <tr><td>Exam timetable, hall and seat, semester results</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No</span></td><td data-l="Where it lives">Your phone only</td></tr>
+            <tr><td>Leave dates you posted on eCampus</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No</span></td><td data-l="Where it lives">Your phone only</td></tr>
+            <tr><td>Hostel tokens, room and mess (hostel students)</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No</span></td><td data-l="Where it lives">Your phone only. MK never reads your hostel balance, fees or payments</td></tr>
             <tr><td>Name, notes, plans, settings</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>No</span></td><td data-l="Where it lives">Your phone only</td></tr>
             <tr><td>Location, contacts, photos, files</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>Not accessed</span></td><td data-l="Where it lives">MK has no permission to read them</td></tr>
             <tr><td>Ads, analytics, tracking</td><td data-l="Does MK collect it?"><span class="tag t-ok"><svg><use href="#check"/></svg>None</span></td><td data-l="Where it lives">Not used in MK</td></tr>
-            <tr><td>Feedback you send</td><td data-l="Does MK collect it?"><span class="tag t-w"><svg><use href="#info"/></svg>Only if you send it</span></td><td data-l="Where it lives">MK's Google Form (see section 7)</td></tr>
+            <tr><td>Feedback you send</td><td data-l="Does MK collect it?"><span class="tag t-w"><svg><use href="#info"/></svg>Only if you send it</span></td><td data-l="Where it lives">MK's Google Form, with a screenshot only if you attach one (section 7)</td></tr>
           </tbody>
         </table>
       </section>
@@ -212,19 +215,20 @@ footer b{color:var(--ink2)}
         <p>MK has no server and no accounts. The app does not collect, send, sell or share any personal data. There are no ads and no analytics. The only thing that ever reaches MK's maker is feedback you choose to send (section 7).</p></div></section>
 
       <section class="sec" id="s2"><span class="ic"><svg><use href="#lock"/></svg><em>2</em></span><div>
-        <h2>eCampus login</h2>
+        <h2>Your PSG login</h2>
         <p>When you connect eCampus, you type your roll number and password on the official eCampus web page shown inside the app. eCampus keeps you logged in with its own cookie, stored only on your phone. eCampus logs everyone out after a few hours.</p>
-        <p><b>Stay signed in (optional).</b> MK asks before connecting whether you want this, and it is off unless you choose it. If you turn it on, MK saves the roll number and password you type on the eCampus login page, so it can log you back in when eCampus logs you out, and so it can check eCampus about every 6 hours in the background for new CA marks and attendance changes (you can turn the background check off in Account). They are:</p>
+        <p><b>Stay signed in (optional).</b> MK asks before connecting whether you want this, and it is off unless you choose it. If you turn it on, MK saves the roll number and password you type on the eCampus login page, so it can log you back in when eCampus logs you out, open PSG pages for you already logged in, and check in the background: eCampus about every 6 hours (new CA marks, attendance changes) and Student Zone about once a day (changed exam dates, new results). You can turn the background check off in <span class="path">You → eCampus &amp; login</span>. The same PSG login works on these PSG websites, so MK uses it only there. They are:</p>
         <ul><li>encrypted with a key kept in your phone's secure Android Keystore, and stored only on your phone;</li>
-            <li>used only to log in to the official eCampus website (ecampus.psgtech.ac.in), never sent anywhere else, and never seen by MK's maker;</li>
+            <li>used only to log in to PSG's own websites: eCampus and Student Zone (ecampus.psgtech.ac.in) and, only if you say you stay in the hostel, the hostel portal (edviewx.psgtech.ac.in). Never sent anywhere else, and never seen by MK's maker;</li>
             <li>excluded from cloud backups and device transfers;</li>
-            <li>deleted automatically if eCampus says the password is wrong (MK never keeps retrying a wrong password), and deleted straight away when you turn Stay signed in off, disconnect, clear everything or uninstall MK.</li></ul>
-        <p>The background check reads the same two eCampus pages as the app (attendance and CA marks), saves the result on your phone and shows a notification when something changed. Nothing is sent anywhere else.</p>
+            <li>deleted automatically if eCampus says the password is wrong (MK never keeps retrying a wrong password; if another PSG site rejects it, MK just stops and tells you), and deleted straight away when you turn Stay signed in off, disconnect, clear everything or uninstall MK.</li></ul>
+        <p>The background check reads the same pages as the app (eCampus attendance and CA marks; Student Zone exam timetable, seating and results), saves the result on your phone and shows a notification when something changed. Nothing is sent anywhere else.</p>
+        <p><b>PSG pages opened inside MK.</b> Buttons such as <span class="path">Book token</span>, <span class="path">Apply leave</span> (hostel) or <span class="path">Apply leave on eCampus</span> open the real PSG page inside MK and log in for you. MK only logs in and opens the right tab; booking, cancelling and applying are done by you, and MK does not record what you do on those pages. Other links open in your browser.</p>
         <p>If you do not turn on Stay signed in, MK does not save your password and you log in on the eCampus page when it asks.</p></div></section>
 
       <section class="sec" id="s3"><span class="ic"><svg><use href="#phone"/></svg><em>3</em></span><div>
         <h2>Data stored on your phone</h2>
-        <p>After you log in, MK reads your attendance, timetable and CA marks (Continuous Assessment marks page) from eCampus and saves them on your phone. Your own edits are also saved only on your phone:</p>
+        <p>After you log in, MK reads and saves on your phone: your attendance, timetable and CA marks (eCampus); the leave dates you posted (eCampus leave entry); your exam timetable, hall and seat and semester results (Student Zone); and, if you stay in the hostel, your booked mess tokens, room and mess (hostel portal). MK never reads your hostel balance, fees or payment history. Your own edits are also saved only on your phone:</p>
         <ul><li>subject names, short forms, rooms and staff</li><li>notes and your own plans</li><li>your name and settings</li></ul>
         <div class="hl"><svg class="i"><use href="#info"/></svg><span>This data is excluded from cloud backups and device transfers.</span></div></div></section>
 
@@ -236,7 +240,7 @@ footer b{color:var(--ink2)}
       <section class="sec" id="s5"><span class="ic"><svg><use href="#bell"/></svg><em>5</em></span><div>
         <h2>Reminders and announcements</h2>
         <p>Class, exam and mess reminders are set on your phone by MK itself. To check for new announcements, MK downloads the same public file about every 30 minutes. Nothing about you is sent.</p>
-        <p>Sound and vibration are played by MK on your phone. You can turn them off, and MK stays quiet on silent, in Do Not Disturb and, if you choose, at night. You can turn each kind of notification on or off in <span class="path">Account</span>.</p></div></section>
+        <p>Sound and vibration are played by MK on your phone. You can turn them off, and MK stays quiet on silent, in Do Not Disturb and, if you choose, at night. You can turn each kind of notification on or off in <span class="path">You → Notifications</span>.</p></div></section>
 
       <section class="sec" id="s6"><span class="ic"><svg><use href="#link"/></svg><em>6</em></span><div>
         <h2>Links and updates</h2>
@@ -246,17 +250,18 @@ footer b{color:var(--ink2)}
       <section class="sec" id="s7"><span class="ic"><svg><use href="#msg"/></svg><em>7</em></span><div>
         <h2>Feedback</h2>
         <p><span class="path">Send feedback</span> opens a Google Form in your browser. To help fix problems, the form is pre-filled with your MK version, Android version and phone model. You can see and change this before sending, and nothing is sent unless you submit the form.</p>
-        <p>Feedback is stored in MK's Google Forms account and used only to fix and improve MK. Google's own privacy policy applies to Google Forms.</p></div></section>
+        <p>If something looks wrong, you can attach a screenshot in the form. Uploading a file in Google Forms asks you to sign in to Google. Please don't include passwords or other private details in the text or screenshot.</p>
+        <p>Feedback (and any screenshot) is stored in MK's Google account and used only to fix and improve MK. Google's own privacy policy applies to Google Forms.</p></div></section>
 
       <section class="sec" id="s8"><span class="ic"><svg><use href="#trash"/></svg><em>8</em></span><div id="delete">
         <h2>Deleting your data in MK – Campus Companion</h2>
-        <p><b>Data on your phone</b> (attendance, timetable, notes, plans, name and settings) is deleted straight away when you do any of these:</p>
-        <ul><li><span class="path">Account → Disconnect</span> logs you out of eCampus and deletes your attendance, timetable, CA marks and any saved eCampus login.</li>
-            <li><span class="path">Account → Stay signed in</span> switched off deletes the saved eCampus login.</li>
-            <li><span class="path">Account → Clear everything</span> deletes all of MK's data on your phone.</li>
+        <p><b>Data on your phone</b> (attendance, timetable, marks, exams, results, leave dates, hostel tokens, notes, plans, name and settings) is deleted straight away when you do any of these:</p>
+        <ul><li><span class="path">You → eCampus &amp; login → Disconnect</span> logs you out and deletes everything MK read from PSG's websites and any saved login.</li>
+            <li><span class="path">You → eCampus &amp; login → Stay signed in</span> switched off deletes the saved eCampus login.</li>
+            <li><span class="path">You → Clear everything</span> deletes all of MK's data on your phone.</li>
             <li>Uninstalling MK deletes everything it stored.</li></ul>
-        <p><b>Feedback you sent</b> through the feedback form is the only data MK's maker receives. To have it deleted, email <a href="mailto:mkapps2406@gmail.com?subject=Delete%20my%20MK%20feedback">mkapps2406@gmail.com</a> with the subject “Delete my MK feedback” and roughly when you sent it. It is deleted within 30 days and nothing is kept.</p>
-        <div class="hl"><svg class="i"><use href="#info"/></svg><span>Your eCampus account belongs to your college. MK does not store it anywhere, so there is nothing for MK to delete; for the account itself, contact your college.</span></div></div></section>
+        <p><b>Feedback you sent</b> (with any screenshot) through the feedback form is the only data MK's maker receives. To have it deleted, email <a href="mailto:mkapps2406@gmail.com?subject=Delete%20my%20MK%20feedback">mkapps2406@gmail.com</a> with the subject “Delete my MK feedback” and roughly when you sent it. It is deleted within 30 days and nothing is kept.</p>
+        <div class="hl"><svg class="i"><use href="#info"/></svg><span>Your PSG accounts belong to your college. MK does not store it anywhere, so there is nothing for MK to delete; for the account itself, contact your college.</span></div></div></section>
 
       <div class="contact" id="s9">
         <div><b>Questions about privacy or the app?</b><span>Write to MK. A real person reads every email.</span></div>
