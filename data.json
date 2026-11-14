@@ -1,7 +1,7 @@
 {
  "app": "mk",
  "schema": 2,
- "version": 2026111401,
+ "version": 2026111402,
  "updated": "2026-11-14",
  "batch": "II MBA 2025-27 · PSG Institute of Management",
  "periods": [
@@ -1165,10 +1165,5 @@
   "Academic Calendar 2026-27",
   "Academic Schedule II MBA & MBA (WM&SE) 2026-27",
   "CoE Semester Examinations Nov 2026 timetable (09.10.2026) + correction (22.10.2026)"
- ],
- "appUpdate": {
-  "latest": 6,
-  "name": "1.0.6",
-  "notes": "Stay signed in, CA marks and more"
- }
+ ]
 }
