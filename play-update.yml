@@ -1,0 +1,38 @@
+# MK - automatic "Update available" banner (see .github/scripts/play_update.py)
+name: Play update banner
+
+on:
+  schedule:
+    - cron: "23 * * * *"     # every hour at :23 (GitHub may run it a few minutes late)
+  workflow_dispatch:          # "Run workflow" button for a check right now
+
+permissions:
+  contents: write             # to save data.json
+
+concurrency:
+  group: play-update
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Google sign-in library
+        run: pip install --quiet google-auth requests
+      - name: Ask Google Play which version is live
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        run: python .github/scripts/play_update.py
+      - name: Save data.json if a new version is live
+        run: |
+          if git diff --quiet -- data.json; then echo "Nothing to save"; exit 0; fi
+          git config user.name "MK update bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git commit -m "Update banner: $(python -c 'import json;u=json.load(open("data.json"))["appUpdate"];print("MK "+(u.get("name") or str(u["latest"])))')"
+          git push
