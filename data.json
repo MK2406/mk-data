@@ -1,8 +1,8 @@
 {
  "app": "mk",
  "schema": 2,
- "version": 2026111405,
- "updated": "2026-11-14",
+ "version": 2026111501,
+ "updated": "2026-11-15",
  "batch": "II MBA 2025-27 · PSG Institute of Management",
  "periods": [
   [
@@ -1167,7 +1167,7 @@
   "CoE Semester Examinations Nov 2026 timetable (09.10.2026) + correction (22.10.2026)"
  ],
  "appUpdate": {
-  "latest": 9,
-  "name": "1.0.9"
+  "latest": 10,
+  "name": "1.0.10"
  }
 }
