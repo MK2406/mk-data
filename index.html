@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MK – Campus Companion</title>
+<meta name="description" content="Attendance, timetable, exams with hall and seat, CA marks, mess menu and hostel tokens in one app for PSG eCampus students. Unofficial.">
+<meta name="theme-color" content="#5546F6"><meta name="referrer" content="no-referrer">
+<meta property="og:title" content="MK – Campus Companion"><meta property="og:description" content="Your whole campus day, at a glance. For PSG eCampus students. Unofficial.">
+<meta property="og:image" content="shot-today.jpg">
+<link rel="preload" href="fonts/pjs-800.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:P;font-weight:600;font-display:swap;src:url(fonts/pjs-600.woff2) format("woff2")}
+@font-face{font-family:P;font-weight:800;font-display:swap;src:url(fonts/pjs-800.woff2) format("woff2")}
+:root{--acc:#5546F6;--ink:#0C0C0E;--ink2:#56575D;--ink3:#8A8B91;--bg:#F4F4F1;--s1:#fff;--s2:#ECECE7;--line:rgba(12,12,14,.08);--ok:#11A050}
+@media (prefers-color-scheme:dark){:root{--ink:#F4F4F0;--ink2:#B8B9C2;--ink3:#8A8B97;--bg:#0B0B0D;--s1:#17171B;--s2:#212127;--line:rgba(255,255,255,.08)}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;font:600 16px/1.5 P,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit}.w{max-width:1040px;margin:0 auto;padding:0 20px}
+header{padding:18px 0}header .w{display:flex;align-items:center;gap:10px}.lg{width:38px;height:38px;border-radius:11px;background:#0C0C0E;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:-.02em}
+header b{font-weight:800}header nav{margin-left:auto;display:flex;gap:18px;font-size:14px}header nav a{text-decoration:none;color:var(--ink2)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:30px 0 50px}
+h1{font-size:clamp(36px,6vw,60px);line-height:1.03;letter-spacing:-.035em;margin:0 0 16px;font-weight:800}
+.lead{font-size:19px;color:var(--ink2);margin:0 0 26px;max-width:32em}
+.play{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--bg);text-decoration:none;padding:14px 22px;border-radius:16px;font-weight:800;font-size:17px}
+.play[aria-disabled=true]{background:var(--s2);color:var(--ink2);pointer-events:none}.play svg{width:22px;height:22px}
+.sub{display:block;margin-top:12px;font-size:13.5px;color:var(--ink3)}
+.shots{position:relative;height:520px}.shots img{position:absolute;width:250px;height:auto;border-radius:30px;box-shadow:0 30px 60px -20px rgba(40,30,140,.45)}
+.shots img:first-child{left:6%;top:0;z-index:2}.shots img:last-child{right:2%;top:60px;transform:rotate(4deg)}
+h2{font-size:28px;letter-spacing:-.02em;margin:0 0 6px;font-weight:800}.h2s{color:var(--ink2);margin:0 0 20px}
+section{padding:40px 0}.f{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.f div{background:var(--s1);border:1px solid var(--line);border-radius:20px;padding:18px}.f b{display:block;font-weight:800;margin-bottom:4px}.f span{color:var(--ink2);font-size:14.5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:18px}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin:0 0 12px;scrollbar-width:none}.tabs button{flex:none;border:0;background:var(--s2);color:var(--ink2);font:inherit;font-size:13.5px;padding:7px 12px;border-radius:999px;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.meal{padding:10px 0;border-top:1px solid var(--line)}.meal:first-of-type{border-top:0}.meal b{display:flex;justify-content:space-between;font-weight:800}.meal b span{color:var(--ink3);font-weight:600;font-size:13.5px}.meal p{margin:2px 0 0;color:var(--ink2);font-size:14.5px}
+.ev{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line)}.ev:first-of-type{border-top:0}.ev .d{flex:none;width:54px;text-align:center;border-radius:12px;background:var(--s2);padding:6px 0;font-size:12px;color:var(--ink2)}.ev .d b{display:block;font-size:20px;color:var(--ink);font-weight:800;line-height:1.1}
+.ev .t{font-size:15px}.ev .t span{display:block;font-size:12.5px;color:var(--ink3)}.ev.hol .d{background:#FCE4E2;color:#D63B3B}.ev.hol .d b{color:#D63B3B}
+.muted{color:var(--ink3);font-size:13px}.qr{display:flex;gap:22px;align-items:center}.qr svg{width:150px;height:150px;flex:none;border-radius:14px;background:#fff;padding:10px}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.trust div{padding:16px;border-radius:18px;background:var(--s2)}.trust b{display:block;font-weight:800}.trust span{color:var(--ink2);font-size:14px}
+footer{padding:30px 0 50px;color:var(--ink3);font-size:13.5px}footer .w{display:flex;flex-wrap:wrap;gap:8px 20px}
+@media (max-width:820px){.hero{grid-template-columns:1fr;gap:10px;padding-top:10px}.shots{height:420px}.shots img{width:200px;height:auto}.f,.two,.trust{grid-template-columns:1fr}.qr{flex-direction:column;align-items:flex-start}header nav{display:none}}
+</style></head><body>
+<header><div class="w"><span class="lg">MK</span><b>MK – Campus Companion</b><nav><a href="#features">Features</a><a href="#mess">Mess menu</a><a href="#calendar">Calendar</a><a href="privacy.html">Privacy</a></nav></div></header>
+<main>
+<div class="w hero"><div><h1>Your whole campus day, at a glance.</h1>
+<p class="lead">Attendance with the maths done, your timetable, exams with hall and seat, CA marks, the mess menu and hostel tokens. One app, one login.</p>
+<a class="play" id="play" href="https://play.google.com/store/apps/details?id=com.mohankumar.mk" aria-disabled="true" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 2.8v18.4c0 .7.8 1.1 1.4.7l15.7-9.2c.6-.3.6-1.2 0-1.5L5.4 2.1C4.8 1.7 4 2.1 4 2.8z"/></svg><span id="playT">Coming soon to Google Play</span></a>
+<span class="sub">Free · No ads · Android · For PSG eCampus students · Unofficial</span></div>
+<div class="shots"><img src="shot-today.jpg" width="540" height="960" alt="MK Today screen with sample data: next class, quick buttons and today's events"><img src="shot-hostel.jpg" width="540" height="960" alt="MK Hostel screen with sample data" loading="lazy"></div></div>
+
+<section id="features"><div class="w"><h2>What MK does</h2><p class="h2s">Everything comes from eCampus and PSG's own sites, read on your phone.</p>
+<div class="f">
+<div><b>Attendance and Bunker</b><span>Your % from eCampus, and which days are safe to skip for 65, 75 or 85%.</span></div>
+<div><b>Class now and next</b><span>A live countdown, the room, and reminders 10 minutes before.</span></div>
+<div><b>Exams</b><span>Dates, hall, row and seat, the days between exams, and a quiet phone during your exam.</span></div>
+<div><b>CA marks and results</b><span>Both eCampus CA pages, open electives too. MK tells you when a new mark is in.</span></div>
+<div><b>Mess and hostel</b><span>The menu, meal times, token booking and the token QR at the counter.</span></div>
+<div><b>Leave</b><span>College and hostel leave from one place. MK fills the form; you press Apply.</span></div>
+</div></div></section>
+
+<section id="mess"><div class="w two">
+<div class="card"><h2>Mess menu</h2><p class="h2s" id="messS">This week, from the hostel mess.</p><div class="tabs" id="messT" role="group" aria-label="Day"></div><div id="messL"><p class="muted">Loading…</p></div></div>
+<div class="card" id="calendar"><h2>Coming up</h2><p class="h2s">Holidays and events on the academic calendar.</p><div id="calL"><p class="muted">Loading…</p></div></div>
+</div><div class="w"><p class="muted" style="margin-top:12px">Your own attendance, marks and seat stay in the app on your phone. This page only shows what's the same for everyone.</p></div></section>
+
+<section><div class="w"><h2>Safe by design</h2><p class="h2s">MK has no server and no account.</p>
+<div class="trust"><div><b>Stays on your phone</b><span>Your login is encrypted on your phone. Your marks and attendance never leave it.</span></div>
+<div><b>Only reads</b><span>MK never books, buys or applies for you. You always press the button.</span></div>
+<div><b>No ads, no trackers</b><span>Nothing is sold or shared. Read the <a href="privacy.html">privacy policy</a>.</span></div></div></div></section>
+
+<section id="get"><div class="w qr"><svg viewBox="-2 -2 41 41" role="img" aria-label="QR code for MK on Google Play"><rect x="-2" y="-2" width="41" height="41" fill="#fff"/><path fill="#0C0C0E" d="M0 0h7v1h-7zM8 0h2v1h-2zM12 0h1v1h-1zM15 0h5v1h-5zM21 0h1v1h-1zM23 0h2v1h-2zM26 0h1v1h-1zM30 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h2v1h-2zM11 1h1v1h-1zM13 1h1v1h-1zM17 1h2v1h-2zM20 1h2v1h-2zM28 1h1v1h-1zM30 1h1v1h-1zM36 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h4v1h-4zM14 2h1v1h-1zM16 2h1v1h-1zM20 2h2v1h-2zM24 2h4v1h-4zM30 2h1v1h-1zM32 2h3v1h-3zM36 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM10 3h2v1h-2zM13 3h3v1h-3zM17 3h3v1h-3zM21 3h1v1h-1zM25 3h1v1h-1zM27 3h2v1h-2zM30 3h1v1h-1zM32 3h3v1h-3zM36 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h2v1h-2zM11 4h1v1h-1zM14 4h1v1h-1zM17 4h3v1h-3zM22 4h1v1h-1zM26 4h1v1h-1zM28 4h1v1h-1zM30 4h1v1h-1zM32 4h3v1h-3zM36 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM10 5h1v1h-1zM12 5h2v1h-2zM15 5h4v1h-4zM21 5h1v1h-1zM23 5h1v1h-1zM30 5h1v1h-1zM36 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h1v1h-1zM28 6h1v1h-1zM30 6h7v1h-7zM10 7h3v1h-3zM14 7h3v1h-3zM19 7h3v1h-3zM23 7h1v1h-1zM25 7h1v1h-1zM27 7h2v1h-2zM0 8h1v1h-1zM3 8h8v1h-8zM12 8h2v1h-2zM15 8h2v1h-2zM18 8h4v1h-4zM23 8h2v1h-2zM26 8h1v1h-1zM28 8h2v1h-2zM32 8h1v1h-1zM34 8h3v1h-3zM0 9h1v1h-1zM3 9h1v1h-1zM5 9h1v1h-1zM7 9h3v1h-3zM12 9h1v1h-1zM17 9h1v1h-1zM20 9h1v1h-1zM22 9h1v1h-1zM27 9h1v1h-1zM31 9h5v1h-5zM0 10h3v1h-3zM4 10h1v1h-1zM6 10h1v1h-1zM9 10h6v1h-6zM21 10h2v1h-2zM24 10h2v1h-2zM27 10h7v1h-7zM36 10h1v1h-1zM2 11h4v1h-4zM8 11h3v1h-3zM12 11h2v1h-2zM15 11h1v1h-1zM17 11h1v1h-1zM22 11h1v1h-1zM26 11h1v1h-1zM29 11h4v1h-4zM34 11h3v1h-3zM3 12h4v1h-4zM8 12h1v1h-1zM12 12h1v1h-1zM14 12h1v1h-1zM19 12h1v1h-1zM24 12h1v1h-1zM27 12h2v1h-2zM30 12h1v1h-1zM36 12h1v1h-1zM0 13h4v1h-4zM8 13h1v1h-1zM10 13h2v1h-2zM13 13h6v1h-6zM23 13h6v1h-6zM32 13h2v1h-2zM0 14h3v1h-3zM4 14h1v1h-1zM6 14h1v1h-1zM9 14h1v1h-1zM11 14h7v1h-7zM19 14h1v1h-1zM21 14h2v1h-2zM27 14h1v1h-1zM29 14h1v1h-1zM32 14h5v1h-5zM0 15h1v1h-1zM7 15h3v1h-3zM12 15h1v1h-1zM17 15h2v1h-2zM20 15h1v1h-1zM26 15h2v1h-2zM29 15h1v1h-1zM31 15h1v1h-1zM33 15h4v1h-4zM2 16h2v1h-2zM5 16h2v1h-2zM8 16h2v1h-2zM14 16h1v1h-1zM16 16h2v1h-2zM20 16h2v1h-2zM25 16h4v1h-4zM30 16h1v1h-1zM34 16h2v1h-2zM2 17h4v1h-4zM7 17h1v1h-1zM10 17h3v1h-3zM14 17h1v1h-1zM16 17h3v1h-3zM20 17h2v1h-2zM23 17h3v1h-3zM27 17h1v1h-1zM29 17h1v1h-1zM31 17h1v1h-1zM33 17h1v1h-1zM3 18h6v1h-6zM13 18h1v1h-1zM15 18h1v1h-1zM17 18h1v1h-1zM20 18h1v1h-1zM23 18h1v1h-1zM25 18h1v1h-1zM27 18h1v1h-1zM31 18h1v1h-1zM34 18h1v1h-1zM36 18h1v1h-1zM8 19h1v1h-1zM10 19h5v1h-5zM18 19h1v1h-1zM22 19h1v1h-1zM24 19h4v1h-4zM30 19h1v1h-1zM33 19h1v1h-1zM36 19h1v1h-1zM0 20h2v1h-2zM6 20h2v1h-2zM13 20h1v1h-1zM15 20h3v1h-3zM20 20h1v1h-1zM24 20h1v1h-1zM26 20h1v1h-1zM28 20h6v1h-6zM1 21h3v1h-3zM9 21h3v1h-3zM15 21h1v1h-1zM18 21h2v1h-2zM21 21h1v1h-1zM23 21h1v1h-1zM25 21h3v1h-3zM32 21h1v1h-1zM34 21h1v1h-1zM0 22h1v1h-1zM6 22h2v1h-2zM9 22h1v1h-1zM11 22h1v1h-1zM13 22h1v1h-1zM15 22h4v1h-4zM22 22h2v1h-2zM25 22h1v1h-1zM27 22h1v1h-1zM29 22h1v1h-1zM31 22h1v1h-1zM33 22h1v1h-1zM36 22h1v1h-1zM9 23h1v1h-1zM12 23h1v1h-1zM14 23h1v1h-1zM16 23h2v1h-2zM21 23h2v1h-2zM27 23h1v1h-1zM29 23h6v1h-6zM0 24h1v1h-1zM3 24h1v1h-1zM6 24h4v1h-4zM16 24h4v1h-4zM21 24h1v1h-1zM24 24h1v1h-1zM28 24h1v1h-1zM30 24h2v1h-2zM0 25h4v1h-4zM8 25h1v1h-1zM10 25h5v1h-5zM16 25h1v1h-1zM19 25h2v1h-2zM25 25h4v1h-4zM31 25h2v1h-2zM0 26h8v1h-8zM12 26h1v1h-1zM14 26h1v1h-1zM16 26h1v1h-1zM19 26h2v1h-2zM22 26h7v1h-7zM30 26h1v1h-1zM35 26h2v1h-2zM0 27h1v1h-1zM2 27h1v1h-1zM8 27h1v1h-1zM10 27h3v1h-3zM14 27h2v1h-2zM20 27h1v1h-1zM22 27h2v1h-2zM27 27h1v1h-1zM29 27h3v1h-3zM33 27h3v1h-3zM0 28h1v1h-1zM4 28h4v1h-4zM9 28h1v1h-1zM12 28h1v1h-1zM20 28h1v1h-1zM22 28h1v1h-1zM24 28h3v1h-3zM28 28h7v1h-7zM8 29h2v1h-2zM12 29h2v1h-2zM15 29h1v1h-1zM19 29h2v1h-2zM22 29h1v1h-1zM25 29h1v1h-1zM28 29h1v1h-1zM32 29h1v1h-1zM34 29h1v1h-1zM0 30h7v1h-7zM8 30h2v1h-2zM11 30h1v1h-1zM15 30h1v1h-1zM19 30h1v1h-1zM21 30h3v1h-3zM25 30h1v1h-1zM28 30h1v1h-1zM30 30h1v1h-1zM32 30h1v1h-1zM35 30h2v1h-2zM0 31h1v1h-1zM6 31h1v1h-1zM8 31h5v1h-5zM17 31h2v1h-2zM22 31h4v1h-4zM28 31h1v1h-1zM32 31h1v1h-1zM35 31h1v1h-1zM0 32h1v1h-1zM2 32h3v1h-3zM6 32h1v1h-1zM8 32h2v1h-2zM11 32h1v1h-1zM13 32h1v1h-1zM15 32h1v1h-1zM21 32h2v1h-2zM24 32h1v1h-1zM26 32h7v1h-7zM36 32h1v1h-1zM0 33h1v1h-1zM2 33h3v1h-3zM6 33h1v1h-1zM8 33h2v1h-2zM11 33h3v1h-3zM16 33h1v1h-1zM18 33h1v1h-1zM24 33h7v1h-7zM33 33h1v1h-1zM35 33h1v1h-1zM0 34h1v1h-1zM2 34h3v1h-3zM6 34h1v1h-1zM12 34h1v1h-1zM14 34h4v1h-4zM19 34h5v1h-5zM25 34h1v1h-1zM27 34h2v1h-2zM32 34h1v1h-1zM34 34h3v1h-3zM0 35h1v1h-1zM6 35h1v1h-1zM9 35h2v1h-2zM14 35h1v1h-1zM16 35h5v1h-5zM24 35h1v1h-1zM29 35h2v1h-2zM32 35h5v1h-5zM0 36h7v1h-7zM8 36h1v1h-1zM12 36h2v1h-2zM15 36h2v1h-2zM20 36h1v1h-1zM22 36h1v1h-1zM24 36h1v1h-1zM28 36h1v1h-1zM30 36h2v1h-2zM33 36h1v1h-1zM36 36h1v1h-1z"/></svg>
+<div><h2>On a laptop? Scan to get MK on your phone.</h2><p class="h2s" id="getS">Opens MK on Google Play.</p></div></div></section>
+</main>
+<footer><div class="w"><span>MK – Campus Companion by MK · Unofficial. Not made by or affiliated with PSG.</span><a href="privacy.html">Privacy</a><a href="mailto:mkapps2406@gmail.com">mkapps2406@gmail.com</a></div></footer>
+<script>
+(function(){var $=function(i){return document.getElementById(i)};var DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function hm(t){var p=String(t).split(":"),h=+p[0],m=p[1];return (h%12||12)+(m!=="00"?":"+m:"")+(h<12?" am":" pm")}
+function iso(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
+fetch("data.json",{cache:"no-cache"}).then(function(r){return r.json()}).then(function(o){
+ if(o.app&&o.app.live){var p=$("play");p.removeAttribute("aria-disabled");$("playT").textContent="Get it on Google Play"}else{$("getS").textContent="MK opens to everyone on Google Play soon."}
+ var M=o.mess||{},meals=M.meals||[],menu=M.menu||{},cur=DAYS[new Date().getDay()];
+ function day(d){cur=d;var h="";meals.forEach(function(m){var L=(menu[d]||{})[m.k]||[];if(!L.length)return;h+='<div class="meal"><b>'+esc(m.l)+'<span>'+hm(m.s)+' – '+hm(m.e)+'</span></b><p>'+L.map(function(x){return esc(String(x).replace(/^\*/,""))}).join(", ")+'</p></div>'});
+  $("messL").innerHTML=h||'<p class="muted">No menu for this day.</p>';$("messT").innerHTML=[1,2,3,4,5,6,0].map(function(i){var n=DAYS[i];return '<button aria-pressed="'+(n===cur)+'" data-d="'+n+'">'+(n===DAYS[new Date().getDay()]?"Today":n.slice(0,3))+'</button>'}).join("")}
+ $("messT").addEventListener("click",function(e){var b=e.target.closest("button");if(b)day(b.dataset.d)});
+ if(meals.length)day(cur);else $("messL").innerHTML='<p class="muted">The mess menu isn\'t published yet.</p>';
+ var td=iso(new Date()),L=(o.calendar||[]).filter(function(x){return (x.end||x.date)>=td&&x.cat!=="hidden"}).sort(function(a,b){return a.date<b.date?-1:1}).slice(0,8);
+ $("calL").innerHTML=L.length?L.map(function(x){var d=new Date(x.date+"T00:00:00");return '<div class="ev'+(x.cat==="hol"||x.cat==="holiday"?" hol":"")+'"><div class="d"><b>'+d.getDate()+'</b>'+MON[d.getMonth()]+'</div><div class="t">'+esc(x.t)+'<span>'+DAYS[d.getDay()]+(x.end&&x.end!==x.date?" – "+(function(e){return e.getDate()+" "+MON[e.getMonth()]})(new Date(x.end+"T00:00:00")):"")+'</span></div></div>'}).join(""):'<p class="muted">Nothing coming up on the calendar.</p>';
+}).catch(function(){$("messL").innerHTML=$("calL").innerHTML='<p class="muted">Couldn\'t load right now. Try again later.</p>'});})();
+</script></body></html>
