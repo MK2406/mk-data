@@ -56,7 +56,7 @@ footer{padding:30px 0 50px;color:var(--ink3);font-size:13.5px}footer .w{display:
 </div></div></section>
 
 <section id="mess"><div class="w two">
-<div class="card"><h2>Mess menu</h2><p class="h2s" id="messS">This week, from the hostel mess.</p><div class="tabs" id="messT" role="group" aria-label="Day"></div><div id="messL"><p class="muted">Loading…</p></div></div>
+<div class="card"><h2>Mess menu</h2><p class="h2s" id="messS">This week, from the hostel mess.</p><div class="tabs" id="messK" role="group" aria-label="Mess" hidden></div><div class="tabs" id="messT" role="group" aria-label="Day"></div><div id="messL"><p class="muted">Loading…</p></div></div>
 <div class="card" id="calendar"><h2>Coming up</h2><p class="h2s">Holidays and events on the academic calendar.</p><div id="calL"><p class="muted">Loading…</p></div></div>
 </div><div class="w"><p class="muted" style="margin-top:12px">Your own attendance, marks and seat stay in the app on your phone. This page only shows what's the same for everyone.</p></div></section>
 
@@ -76,7 +76,9 @@ function hm(t){var p=String(t).split(":"),h=+p[0],m=p[1];return (h%12||12)+(m!==
 function iso(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
 fetch("data.json",{cache:"no-cache"}).then(function(r){return r.json()}).then(function(o){
  if(o.app&&o.app.live){var p=$("play");p.removeAttribute("aria-disabled");$("playT").textContent="Get it on Google Play"}else{$("getS").textContent="MK opens to everyone on Google Play soon."}
- var M=o.mess||{},meals=M.meals||[],menu=M.menu||{},cur=DAYS[new Date().getDay()];
+ var M=o.mess||{},meals=M.meals||[],menu=M.menu||{},cur=DAYS[new Date().getDay()],NI=M.north&&M.north.menu?M.north:null,side="south";
+ function kd(){$("messK").innerHTML=[["south","South Indian"],["north","North Indian"]].map(function(x){return '<button aria-pressed="'+(x[0]===side)+'" data-k="'+x[0]+'">'+x[1]+'</button>'}).join("")}
+ if(NI){$("messK").hidden=false;kd();$("messK").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;side=b.dataset.k;menu=side==="north"?NI.menu:(M.menu||{});kd();day(cur)});$("messS").textContent="This week, from the hostel's South Indian and North Indian messes."}
  function day(d){cur=d;var h="";meals.forEach(function(m){var L=(menu[d]||{})[m.k]||[];if(!L.length)return;h+='<div class="meal"><b>'+esc(m.l)+'<span>'+hm(m.s)+' – '+hm(m.e)+'</span></b><p>'+L.map(function(x){return esc(String(x).replace(/^\*/,""))}).join(", ")+'</p></div>'});
   $("messL").innerHTML=h||'<p class="muted">No menu for this day.</p>';$("messT").innerHTML=[1,2,3,4,5,6,0].map(function(i){var n=DAYS[i];return '<button aria-pressed="'+(n===cur)+'" data-d="'+n+'">'+(n===DAYS[new Date().getDay()]?"Today":n.slice(0,3))+'</button>'}).join("")}
  $("messT").addEventListener("click",function(e){var b=e.target.closest("button");if(b)day(b.dataset.d)});
